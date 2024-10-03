@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerStateMachine
 {
-    public Dictionary<PlayerEnum, PlayerState> stateDictionary = new Dictionary<PlayerEnum, PlayerState>();
-    public PlayerState currentState;
+    public Dictionary<PlayerEnum, PlayerMoveState> stateDictionary = new Dictionary<PlayerEnum, PlayerMoveState>();
+    public PlayerMoveState currentState;
 
     private Player _player;
     public void Init(PlayerEnum start, Player player)
@@ -20,7 +20,7 @@ public class PlayerStateMachine
         currentState = stateDictionary[type];
         currentState.Enter();
     }
-    public void AddState(PlayerEnum type, PlayerState state)
+    public void AddState(PlayerEnum type, PlayerMoveState state)
     {
         stateDictionary.Add(type, state);
     }

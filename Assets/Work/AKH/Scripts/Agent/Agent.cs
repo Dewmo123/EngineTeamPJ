@@ -8,16 +8,16 @@ public abstract class Agent : MonoBehaviour
     #region Components
     public Rigidbody2D rbCompo { get; private set; }
     public Animator animCompo { get; private set; }
-    public AgentMovement movementCompo { get; private set; }
+    public PlayerMovement movementCompo { get; private set; }
     #endregion
 
     public event Action OnFlipEvent;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rbCompo = GetComponent<Rigidbody2D>();
         animCompo = GetComponentInChildren<Animator>();
-        movementCompo = GetComponent<AgentMovement>();  
+        movementCompo = GetComponent<PlayerMovement>();  
     }
     #region Flip Charater
     public bool IsFacingRight()

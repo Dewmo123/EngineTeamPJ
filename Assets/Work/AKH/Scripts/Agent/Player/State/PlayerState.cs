@@ -13,7 +13,7 @@ public enum PlayerEnum
     Dead,
     Attack
 }
-public abstract class PlayerState : MonoBehaviour
+public abstract class PlayerState
 {
     protected Player _player;
     protected PlayerStateMachine _stateMachine;

@@ -5,7 +5,7 @@ using UnityEngine;
 using static PlayerInput;
 [CreateAssetMenu(menuName = "SO/PlayerInput")]
 
-public class InputReader : ScriptableObject, IActionActions
+public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
 {
     private PlayerInput _playerInput;
 
@@ -43,5 +43,9 @@ public class InputReader : ScriptableObject, IActionActions
     {
         if (context.performed)
             RopeEvent?.Invoke();
+    }
+
+    public void Initialize(Player player)
+    {
     }
 }
