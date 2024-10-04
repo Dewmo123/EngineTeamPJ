@@ -5,6 +5,8 @@ using System.Linq;
 using UnityEngine;
 public class Player : Agent
 {
+    public float speed;
+    public float jumpPower;
     [field: SerializeField] private InputReader _inputReader;
     private PlayerStateMachine _stateMachine;
     private Dictionary<Type, IPlayerComponent> _components;
@@ -22,8 +24,14 @@ public class Player : Agent
         _stateMachine.AddState(PlayerEnum.Idle, new PlayerIdleState(_stateMachine, "Idle", this));
         _stateMachine.AddState(PlayerEnum.Walk, new PlayerWalkState(_stateMachine, "Walk", this));
         _stateMachine.AddState(PlayerEnum.Jump, new PlayerJumpState(_stateMachine, "Jump", this));
+        _stateMachine.AddState(PlayerEnum.Fall, new PlayerFallState(_stateMachine, "Fall", this));
         _stateMachine.Init(PlayerEnum.Idle,this);
         #endregion
+    }
+    public void Move(Vector2 vector)
+    {
+        movementCompo.AcceptMovement(vector);
+        HandleSpriteFlip((Vector3)vector +transform.position);
     }
     public void EndTriggerCalled()
     {

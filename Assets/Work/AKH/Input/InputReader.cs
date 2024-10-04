@@ -14,6 +14,7 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
     public event Action AttackEvent;
 
     public Vector2 Movement { get; private set; }
+    public Vector2 Mouse { get; private set; }
 
     private void OnEnable()
     {
@@ -47,5 +48,10 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
 
     public void Initialize(Player player)
     {
+    }
+
+    public void OnMousePosition(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        Mouse = context.ReadValue<Vector2>();
     }
 }

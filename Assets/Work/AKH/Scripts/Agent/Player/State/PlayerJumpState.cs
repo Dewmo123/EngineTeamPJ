@@ -10,12 +10,11 @@ public class PlayerJumpState : PlayerMoveState
     public override void Enter()
     {
         base.Enter();
-        _player.rbCompo.AddForce(Vector2.up, ForceMode2D.Impulse);
+        _player.rbCompo.AddForce(Vector2.up * _player.jumpPower, ForceMode2D.Impulse);
     }
     public override void UpdateState()
     {
-        if (_endTriggerCalled)
-            _stateMachine.ChangeState(PlayerEnum.Idle);
+        base.UpdateState();
     }
     protected override void HandleJumpEvent()
     {

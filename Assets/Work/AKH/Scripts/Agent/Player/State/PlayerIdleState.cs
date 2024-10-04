@@ -9,10 +9,9 @@ public class PlayerIdleState : PlayerMoveState
     }
     public override void UpdateState()
     {
+        base.UpdateState();
         if (_input.Movement.x != 0)
-        {
             _stateMachine.ChangeState(PlayerEnum.Walk);
-        }
     }
 
     protected override void HandleJumpEvent()
