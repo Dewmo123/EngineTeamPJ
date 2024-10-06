@@ -10,7 +10,7 @@ public class PlayerFallState : PlayerMoveState
     public override void UpdateState()
     {
         base.UpdateState();
-        if (_player.rbCompo.velocity.y >= 0)
+        if (_player.movementCompo.isGround.Value)
             _stateMachine.ChangeState(PlayerEnum.Idle);
     }
     protected override void HandleJumpEvent()

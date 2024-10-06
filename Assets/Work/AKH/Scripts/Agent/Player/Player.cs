@@ -5,14 +5,18 @@ using System.Linq;
 using UnityEngine;
 public class Player : Agent
 {
-    public float speed;
-    public float jumpPower;
+    public DistanceJoint2D jointCompo { get; private set; }
+
     [field: SerializeField] private InputReader _inputReader;
+
     private PlayerStateMachine _stateMachine;
     private Dictionary<Type, IPlayerComponent> _components;
     protected override void Awake()
     {
         base.Awake();
+        jointCompo = GetComponent<DistanceJoint2D>();
+        jointCompo.enabled = false;
+        _inputReader.RopeEvent += HandleRope;
         #region SetIPlayerCompo
         _components = new Dictionary<Type, IPlayerComponent>();
         GetComponentsInChildren<IPlayerComponent>().ToList().ForEach(x => _components.Add(x.GetType(), x));
@@ -25,9 +29,17 @@ public class Player : Agent
         _stateMachine.AddState(PlayerEnum.Walk, new PlayerWalkState(_stateMachine, "Walk", this));
         _stateMachine.AddState(PlayerEnum.Jump, new PlayerJumpState(_stateMachine, "Jump", this));
         _stateMachine.AddState(PlayerEnum.Fall, new PlayerFallState(_stateMachine, "Fall", this));
+        _stateMachine.AddState(PlayerEnum.Rope, new PlayerRopeState(_stateMachine, "Rope", this));
         _stateMachine.Init(PlayerEnum.Idle,this);
         #endregion
     }
+
+    private void HandleRope()
+    {
+        movementCompo.ShootRope();
+        _stateMachine.ChangeState(PlayerEnum.Rope);
+    }
+
     public void Move(Vector2 vector)
     {
         movementCompo.AcceptMovement(vector);

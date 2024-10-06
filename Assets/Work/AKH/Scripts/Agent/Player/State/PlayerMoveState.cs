@@ -23,7 +23,7 @@ public abstract class PlayerMoveState : PlayerState
     }
     public override void UpdateState()
     {
-        Vector2 move = new Vector2(_input.Movement.x * _player.speed, _player.rbCompo.velocity.y);
+        Vector2 move = new Vector2(_input.Movement.x * _player.movementCompo.moveSpeed, _player.rbCompo.velocity.y);
         _player.Move(move);
         if (_player.rbCompo.velocity.y < 0)
             _stateMachine.ChangeState(PlayerEnum.Fall);

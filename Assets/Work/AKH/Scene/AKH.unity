@@ -789,8 +789,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2088927588}
   - component: {fileID: 2088927586}
+  - component: {fileID: 2088927594}
   - component: {fileID: 2088927590}
-  - component: {fileID: 2088927591}
   - component: {fileID: 2088927592}
   - component: {fileID: 2088927593}
   m_Layer: 6
@@ -841,6 +841,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 278461848}
+  - {fileID: 2113804731}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &2088927590
@@ -878,27 +879,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!231 &2088927591
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088927584}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_BreakAction: 3
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 4.5274715
-  m_DampingRatio: 0
-  m_Frequency: 0.5
 --- !u!114 &2088927592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,8 +891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09bad97bd938074b8fbd343beaa3dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpPower: 6
   _inputReader: {fileID: 11400000, guid: aa3e4570bf5ab8746998a4678fa33561, type: 2}
 --- !u!114 &2088927593
 MonoBehaviour:
@@ -926,6 +904,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f8281269f1ae542aeeac867d613f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundCheckerTrm: {fileID: 2113804731}
+  moveSpeed: 5
+  jumpPower: 7
+  extraGravity: 30
+  gravityDelay: 0.15
+  knockbackTime: 0.2
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 128
+  _groundCheckerSize: {x: 1, y: 0.3}
+  isRope: 0
+--- !u!232 &2088927594
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088927584}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 4.5274715
+  m_MaxDistanceOnly: 0
+--- !u!1 &2113804730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2113804731}
+  m_Layer: 6
+  m_Name: GroundChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2113804731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113804730}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.02, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2088927588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
