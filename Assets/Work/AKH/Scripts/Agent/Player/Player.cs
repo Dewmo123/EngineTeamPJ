@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 public class Player : Agent
 {
-    public DistanceJoint2D jointCompo { get; private set; }
+    public SpringJoint2D jointCompo { get; private set; }
 
     [field: SerializeField] private InputReader _inputReader;
 
@@ -14,8 +14,7 @@ public class Player : Agent
     protected override void Awake()
     {
         base.Awake();
-        jointCompo = GetComponent<DistanceJoint2D>();
-        jointCompo.enabled = false;
+        jointCompo = GetComponent<SpringJoint2D>();
         _inputReader.RopeEvent += HandleRope;
         #region SetIPlayerCompo
         _components = new Dictionary<Type, IPlayerComponent>();
@@ -36,8 +35,8 @@ public class Player : Agent
 
     private void HandleRope()
     {
-        movementCompo.ShootRope();
-        _stateMachine.ChangeState(PlayerEnum.Rope);
+        //movementCompo.ShootRope();
+        //_stateMachine.ChangeState(PlayerEnum.Rope);
     }
 
     public void Move(Vector2 vector)

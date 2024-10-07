@@ -17,7 +17,7 @@ public class PlayerRopeState : PlayerMoveState
     public override void Exit()
     {
         base.Exit();
-        _player.movementCompo.EscapeRope();
+        //_player.movementCompo.EscapeRope();
     }
 
     protected override void HandleJumpEvent()
