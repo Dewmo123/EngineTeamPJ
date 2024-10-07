@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static PlayerInput;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
+
 [CreateAssetMenu(menuName = "SO/PlayerInput")]
 
 public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
@@ -15,6 +18,7 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
 
     public Vector2 Movement { get; private set; }
     public Vector2 Mouse { get; private set; }
+    public bool RopeKeyDown { get; private set; }
 
     private void OnEnable()
     {
@@ -23,35 +27,45 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
         _playerInput.Action.SetCallbacks(this);
         _playerInput.Action.Enable();
     }
-    public void OnAttack(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
             AttackEvent?.Invoke();
     }
 
-    public void OnJump(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed)
             JumpEvent?.Invoke();
     }
 
-    public void OnMove(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
         Movement = context.ReadValue<Vector2>();
     }
 
-    public void OnRope(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    public void OnRope(InputAction.CallbackContext context)
     {
         if (context.performed)
+        {
             RopeEvent?.Invoke();
+        }
     }
 
     public void Initialize(Player player)
     {
     }
 
-    public void OnMousePosition(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    public void OnMousePosition(InputAction.CallbackContext context)
     {
         Mouse = context.ReadValue<Vector2>();
+    }
+
+    public void OnRopeKeyDown(InputAction.CallbackContext context)
+    {
+        if(context.interaction is HoldInteraction)
+        {
+            Debug.Log("asd");
+        }
     }
 }

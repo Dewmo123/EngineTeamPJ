@@ -717,38 +717,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &501224240
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 501224241}
-  m_Layer: 6
-  m_Name: GunHandler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &501224241
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 501224240}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: 0.99, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 664174647}
-  m_Father: {fileID: 2088927588}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &544755822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,13 +1029,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664174646}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.119999886, y: 0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1691519807}
-  m_Father: {fileID: 501224241}
+  m_Father: {fileID: 2088927588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789722106
 GameObject:
@@ -1095,12 +1063,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789722106}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.119999886, y: -0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2088927588}
+  m_Father: {fileID: 1706895630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &789722108
 LineRenderer:
@@ -1218,7 +1186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed57f630ca220e8479e16926599565e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grapplingGun: {fileID: 2088927599}
+  grapplingGun: {fileID: 1691519808}
   _lineRenderer: {fileID: 789722108}
   percision: 40
   straightenLineSpeed: 10
@@ -1226,8 +1194,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.025001526
-      value: 0.8797302
+      time: 0
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1245,7 +1213,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 0
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -1260,22 +1228,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.03541565
-      value: -0.0011787415
-      inSlope: 1.037938
-      outSlope: 1.037938
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1.037938
-      outSlope: 1.037938
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1606,7 +1574,7 @@ Transform:
   m_GameObject: {fileID: 1113746609}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.2616, y: 3.93, z: 0}
+  m_LocalPosition: {x: 10.2616, y: 3.65, z: 0}
   m_LocalScale: {x: 63.646828, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1835,6 +1803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1691519807}
+  - component: {fileID: 1691519808}
   m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
@@ -1854,8 +1823,71 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1706895630}
   m_Father: {fileID: 664174647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1691519808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691519806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877e5d7d69aa6944c933ef54900a4aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grappleToAll: 0
+  grappableLayerNumber: 7
+  m_camera: {fileID: 1004107438}
+  gunHolder: {fileID: 2088927588}
+  gunPivot: {fileID: 1691519807}
+  firePoint: {fileID: 1706895630}
+  rotateOverTime: 1
+  rotationSpeed: 16.1
+  hasMaxDistance: 1
+  maxDistnace: 20
+  launchToPoint: 1
+  launchType: 0
+  launchSpeed: 1
+  autoConfigureDistance: 1
+  targetDistance: 5
+  targetFrequncy: 1
+  grapplePoint: {x: 0, y: 0}
+  grappleDistanceVector: {x: 0, y: 0}
+--- !u!1 &1706895629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1706895630}
+  m_Layer: 6
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1706895630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706895629}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 789722107}
+  m_Father: {fileID: 1691519807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1907588876
 GameObject:
@@ -1987,7 +2019,6 @@ GameObject:
   - component: {fileID: 2088927596}
   - component: {fileID: 2088927598}
   - component: {fileID: 2088927597}
-  - component: {fileID: 2088927599}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -2010,8 +2041,7 @@ Transform:
   m_Children:
   - {fileID: 278461848}
   - {fileID: 2113804731}
-  - {fileID: 789722107}
-  - {fileID: 501224241}
+  - {fileID: 664174647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2088927592
@@ -2133,36 +2163,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2088927599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088927584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 877e5d7d69aa6944c933ef54900a4aab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grappleToAll: 0
-  grappableLayerNumber: 7
-  m_camera: {fileID: 1004107438}
-  gunHolder: {fileID: 501224241}
-  gunPivot: {fileID: 664174647}
-  firePoint: {fileID: 1691519807}
-  rotateOverTime: 1
-  rotationSpeed: 16.1
-  hasMaxDistance: 1
-  maxDistnace: 20
-  launchToPoint: 1
-  launchType: 1
-  launchSpeed: 3
-  autoConfigureDistance: 0
-  targetDistance: 3
-  targetFrequncy: 1
-  grapplePoint: {x: 0, y: 0}
-  grappleDistanceVector: {x: 0, y: 0}
 --- !u!1 &2113804730
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,15 +24,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rope",
-                    "type": "Button",
-                    "id": "66f27ea2-0d1d-4fec-bb72-da95cfda15b1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "99db75d7-2154-422a-8732-2ac18175c941",
@@ -49,6 +40,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "RopeKeyDown",
+                    "type": "Button",
+                    "id": "1a421271-2edf-40cb-98b3-89e700cf3a54",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Rope",
+                    "type": "Button",
+                    "id": "f247a7b3-6d9f-455d-b909-8c927b92c785",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -98,17 +107,6 @@
                 },
                 {
                     "name": "",
-                    "id": "a2d389a9-a70b-454a-abdd-3ecec5fd345e",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rope",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "30caf912-b78e-476e-a181-2d2b66297d26",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -126,6 +124,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0da0f375-83d5-4e84-bac9-74206da943ef",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RopeKeyDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bf689d9-890c-4441-b5c7-d3f50d5db9d3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rope",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

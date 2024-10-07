@@ -55,22 +55,18 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
         _player = player;
     }
 
-    //public void ShootRope()
-    //{
-    //    isRope = true;
-    //    _ray = Physics2D.Raycast(transform.position, (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized, 100, _whatIsGround);
-    //    _point = _ray.point;
-    //    _player.jointCompo.enabled = true;
-    //    _player.jointCompo.connectedAnchor = _point;
-    //    _player.jointCompo.distance *= 0.7f;
-    //}
-    //public void EscapeRope()
-    //{
-    //    isRope = false;
-    //    _point = Vector2.zero;
-    //    _player.jointCompo.connectedAnchor = _point;
-    //    _player.jointCompo.enabled = false;
-    //}
+    public void ShootRope()
+    {
+        _player.GetCompo<GrappleGun>().SetGrapplePoint();
+        isRope = true;
+    }
+    public void EscapeRope()
+    {
+        isRope = false;
+        _point = Vector2.zero;
+        _player.jointCompo.connectedAnchor = _point;
+        _player.jointCompo.enabled = false;
+    }
 
 
 #if UNITY_EDITOR

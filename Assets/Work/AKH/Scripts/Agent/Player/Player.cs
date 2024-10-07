@@ -32,11 +32,10 @@ public class Player : Agent
         _stateMachine.Init(PlayerEnum.Idle,this);
         #endregion
     }
-
     private void HandleRope()
     {
-        //movementCompo.ShootRope();
-        //_stateMachine.ChangeState(PlayerEnum.Rope);
+        movementCompo.ShootRope();
+        _stateMachine.ChangeState(PlayerEnum.Rope);
     }
 
     public void Move(Vector2 vector)

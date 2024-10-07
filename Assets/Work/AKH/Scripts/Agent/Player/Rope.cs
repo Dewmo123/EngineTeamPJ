@@ -57,8 +57,6 @@ public class Rope : MonoBehaviour, IPlayerComponent
 
     void DrawRope()
     {
-        Debug.Log("DrawRope");
-        Debug.Log(strightLine);
         if (!strightLine)
         {
             if (_lineRenderer.GetPosition(percision - 1).x == grapplingGun.grapplePoint.x)

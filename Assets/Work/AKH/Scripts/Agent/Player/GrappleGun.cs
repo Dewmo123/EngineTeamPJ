@@ -55,11 +55,7 @@ public class GrappleGun : MonoBehaviour,IPlayerComponent
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            SetGrapplePoint();
-        }
-        else if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             if (_grappleRope.enabled)
             {
@@ -85,6 +81,7 @@ public class GrappleGun : MonoBehaviour,IPlayerComponent
         {
             _grappleRope.enabled = false;
             _springJoint2D.enabled = false;
+            _player.movementCompo.EscapeRope();
             _rigidbody.gravityScale = 1;
         }
         else
@@ -109,7 +106,7 @@ public class GrappleGun : MonoBehaviour,IPlayerComponent
         }
     }
 
-    void SetGrapplePoint()
+    public void SetGrapplePoint()
     {
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
         if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
