@@ -64,15 +64,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""RopeKeyDown"",
-                    ""type"": ""Button"",
-                    ""id"": ""1a421271-2edf-40cb-98b3-89e700cf3a54"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Hold"",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Rope"",
                     ""type"": ""Button"",
                     ""id"": ""f247a7b3-6d9f-455d-b909-8c927b92c785"",
@@ -151,17 +142,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0da0f375-83d5-4e84-bac9-74206da943ef"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RopeKeyDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""6bf689d9-890c-4441-b5c7-d3f50d5db9d3"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -182,7 +162,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Action_Attack = m_Action.FindAction("Attack", throwIfNotFound: true);
         m_Action_Jump = m_Action.FindAction("Jump", throwIfNotFound: true);
         m_Action_MousePosition = m_Action.FindAction("MousePosition", throwIfNotFound: true);
-        m_Action_RopeKeyDown = m_Action.FindAction("RopeKeyDown", throwIfNotFound: true);
         m_Action_Rope = m_Action.FindAction("Rope", throwIfNotFound: true);
     }
 
@@ -249,7 +228,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Action_Attack;
     private readonly InputAction m_Action_Jump;
     private readonly InputAction m_Action_MousePosition;
-    private readonly InputAction m_Action_RopeKeyDown;
     private readonly InputAction m_Action_Rope;
     public struct ActionActions
     {
@@ -259,7 +237,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Action_Attack;
         public InputAction @Jump => m_Wrapper.m_Action_Jump;
         public InputAction @MousePosition => m_Wrapper.m_Action_MousePosition;
-        public InputAction @RopeKeyDown => m_Wrapper.m_Action_RopeKeyDown;
         public InputAction @Rope => m_Wrapper.m_Action_Rope;
         public InputActionMap Get() { return m_Wrapper.m_Action; }
         public void Enable() { Get().Enable(); }
@@ -282,9 +259,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
-            @RopeKeyDown.started += instance.OnRopeKeyDown;
-            @RopeKeyDown.performed += instance.OnRopeKeyDown;
-            @RopeKeyDown.canceled += instance.OnRopeKeyDown;
             @Rope.started += instance.OnRope;
             @Rope.performed += instance.OnRope;
             @Rope.canceled += instance.OnRope;
@@ -304,9 +278,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
-            @RopeKeyDown.started -= instance.OnRopeKeyDown;
-            @RopeKeyDown.performed -= instance.OnRopeKeyDown;
-            @RopeKeyDown.canceled -= instance.OnRopeKeyDown;
             @Rope.started -= instance.OnRope;
             @Rope.performed -= instance.OnRope;
             @Rope.canceled -= instance.OnRope;
@@ -333,7 +304,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
-        void OnRopeKeyDown(InputAction.CallbackContext context);
         void OnRope(InputAction.CallbackContext context);
     }
 }

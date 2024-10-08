@@ -1820,7 +1820,7 @@ Transform:
   m_GameObject: {fileID: 1691519806}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.594, y: -0.974, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1849,11 +1849,11 @@ MonoBehaviour:
   rotationSpeed: 16.1
   hasMaxDistance: 1
   maxDistnace: 20
-  launchToPoint: 1
+  launchToPoint: 0
   launchType: 0
-  launchSpeed: 1
+  launchSpeed: 5
   autoConfigureDistance: 1
-  targetDistance: 5
+  targetDistance: 3
   targetFrequncy: 1
   grapplePoint: {x: 0, y: 0}
   grappleDistanceVector: {x: 0, y: 0}

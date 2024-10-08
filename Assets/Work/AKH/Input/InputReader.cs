@@ -14,6 +14,7 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
 
     public event Action JumpEvent;
     public event Action RopeEvent;
+    public event Action RopeCancelEvent;
     public event Action AttackEvent;
 
     public Vector2 Movement { get; private set; }
@@ -47,9 +48,9 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
     public void OnRope(InputAction.CallbackContext context)
     {
         if (context.performed)
-        {
             RopeEvent?.Invoke();
-        }
+        if (context.canceled)
+            RopeCancelEvent?.Invoke();
     }
 
     public void Initialize(Player player)
@@ -59,13 +60,5 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
     public void OnMousePosition(InputAction.CallbackContext context)
     {
         Mouse = context.ReadValue<Vector2>();
-    }
-
-    public void OnRopeKeyDown(InputAction.CallbackContext context)
-    {
-        if(context.interaction is HoldInteraction)
-        {
-            Debug.Log("asd");
-        }
     }
 }

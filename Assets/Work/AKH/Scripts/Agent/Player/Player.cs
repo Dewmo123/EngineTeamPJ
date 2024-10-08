@@ -15,7 +15,6 @@ public class Player : Agent
     {
         base.Awake();
         jointCompo = GetComponent<SpringJoint2D>();
-        _inputReader.RopeEvent += HandleRope;
         #region SetIPlayerCompo
         _components = new Dictionary<Type, IPlayerComponent>();
         GetComponentsInChildren<IPlayerComponent>().ToList().ForEach(x => _components.Add(x.GetType(), x));
@@ -32,11 +31,7 @@ public class Player : Agent
         _stateMachine.Init(PlayerEnum.Idle,this);
         #endregion
     }
-    private void HandleRope()
-    {
-        movementCompo.ShootRope();
-        _stateMachine.ChangeState(PlayerEnum.Rope);
-    }
+
 
     public void Move(Vector2 vector)
     {

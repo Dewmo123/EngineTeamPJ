@@ -7,17 +7,32 @@ public class PlayerRopeState : PlayerMoveState
     public PlayerRopeState(PlayerStateMachine stateMachine, string animName, Player player) : base(stateMachine, animName, player)
     {
     }
+    public override void Enter()
+    {
+        base.Enter();
+        _input.RopeCancelEvent += HandleRopeCancel;
+    }
     public override void UpdateState()
     {
+        _player.GetCompo<GrappleGun>().Roping();
+
         Vector2 move = new Vector2(_input.Movement.x * _player.movementCompo.moveSpeed, _player.rbCompo.velocity.y);
         _player.rbCompo.AddForce(move.normalized, ForceMode2D.Force);
+
         if (_player.movementCompo.isGround.Value)
-            _stateMachine.ChangeState(PlayerEnum.Idle);
+            HandleRopeCancel();
     }
     public override void Exit()
     {
         base.Exit();
-        //_player.movementCompo.EscapeRope();
+        if (_player.movementCompo.isRope)
+            HandleRopeCancel();
+        _input.RopeCancelEvent -= HandleRopeCancel;
+    }
+    private void HandleRopeCancel()
+    {
+        _player.movementCompo.EscapeRope();
+        _stateMachine.ChangeState(PlayerEnum.Fall);
     }
 
     protected override void HandleJumpEvent()

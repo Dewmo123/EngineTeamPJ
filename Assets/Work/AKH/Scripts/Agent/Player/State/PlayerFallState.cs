@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFallState : PlayerMoveState
+public class PlayerFallState : PlayerCanRopeState
 {
     public PlayerFallState(PlayerStateMachine stateMachine, string animName, Player player) : base(stateMachine, animName, player)
     {

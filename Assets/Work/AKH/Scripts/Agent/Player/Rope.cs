@@ -60,17 +60,12 @@ public class Rope : MonoBehaviour, IPlayerComponent
         if (!strightLine)
         {
             if (_lineRenderer.GetPosition(percision - 1).x == grapplingGun.grapplePoint.x)
-            {
                 strightLine = true;
-            }
             else
-            {
                 DrawRopeWaves();
-            }
         }
         else
         {
-            Debug.Log(isGrappling);
             if (!isGrappling)
             {
                 grapplingGun.Grapple();

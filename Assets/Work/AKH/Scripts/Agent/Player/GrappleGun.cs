@@ -53,42 +53,40 @@ public class GrappleGun : MonoBehaviour,IPlayerComponent
         _springJoint2D.enabled = false;
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            if (_grappleRope.enabled)
-            {
-                RotateGun(grapplePoint, false);
-            }
-            else
-            {
-                Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-                RotateGun(mousePos, true);
-            }
 
-            if (launchToPoint && _grappleRope.isGrappling)
-            {
-                if (launchType == LaunchType.Transform_Launch)
-                {
-                    Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
-                    Vector2 targetPos = grapplePoint - firePointDistnace;
-                    gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
-                }
-            }
-        }
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
+    public void Roping()
+    {
+        if (_grappleRope.enabled)
         {
-            _grappleRope.enabled = false;
-            _springJoint2D.enabled = false;
-            _player.movementCompo.EscapeRope();
-            _rigidbody.gravityScale = 1;
+            RotateGun(grapplePoint, false);
         }
         else
         {
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
         }
+
+        if (grapplePoint.y < transform.position.y)
+            launchToPoint = true;
+        else
+            launchToPoint = false;
+
+        if (launchToPoint && _grappleRope.isGrappling)
+        {
+            if (launchType == LaunchType.Transform_Launch)
+            {
+                Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
+                Vector2 targetPos = grapplePoint - firePointDistnace;
+                gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
+            }
+        }
+    }
+
+    public void EscapeGrapple()
+    {
+        _grappleRope.enabled = false;
+        _springJoint2D.enabled = false;
+        _rigidbody.gravityScale = 1;
     }
 
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)

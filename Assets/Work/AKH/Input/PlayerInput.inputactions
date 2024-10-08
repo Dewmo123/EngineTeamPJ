@@ -42,15 +42,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RopeKeyDown",
-                    "type": "Button",
-                    "id": "1a421271-2edf-40cb-98b3-89e700cf3a54",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Rope",
                     "type": "Button",
                     "id": "f247a7b3-6d9f-455d-b909-8c927b92c785",
@@ -124,17 +115,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "MousePosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0da0f375-83d5-4e84-bac9-74206da943ef",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RopeKeyDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

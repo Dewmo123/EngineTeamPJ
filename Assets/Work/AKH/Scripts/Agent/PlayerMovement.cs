@@ -62,10 +62,8 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     }
     public void EscapeRope()
     {
+        _player.GetCompo<GrappleGun>().EscapeGrapple();
         isRope = false;
-        _point = Vector2.zero;
-        _player.jointCompo.connectedAnchor = _point;
-        _player.jointCompo.enabled = false;
     }
 
 

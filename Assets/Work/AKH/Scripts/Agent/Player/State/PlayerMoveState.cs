@@ -16,11 +16,13 @@ public abstract class PlayerMoveState : PlayerState
         _input = _player.GetCompo<InputReader>();
         _input.JumpEvent += HandleJumpEvent;
     }
+
     public override void Exit()
     {
         base.Exit();
         _input.JumpEvent -= HandleJumpEvent;
     }
+
     public override void UpdateState()
     {
         Vector2 move = new Vector2(_input.Movement.x * _player.movementCompo.moveSpeed, _player.rbCompo.velocity.y);
