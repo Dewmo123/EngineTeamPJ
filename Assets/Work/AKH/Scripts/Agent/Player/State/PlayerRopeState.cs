@@ -18,6 +18,7 @@ public class PlayerRopeState : PlayerMoveState
 
         Vector2 move = new Vector2(_input.Movement.x * _player.movementCompo.moveSpeed, _player.rbCompo.velocity.y);
         _player.rbCompo.AddForce(move.normalized, ForceMode2D.Force);
+        _player.HandleSpriteFlip(_player.rbCompo.velocity+(Vector2)_player.transform.position);
 
         if (_player.movementCompo.isGround.Value)
             HandleRopeCancel();
@@ -37,7 +38,8 @@ public class PlayerRopeState : PlayerMoveState
 
     protected override void HandleJumpEvent()
     {
-        _stateMachine.ChangeState(PlayerEnum.Fall);
+        _player.movementCompo.EscapeRope();
+        _stateMachine.ChangeState(PlayerEnum.AirRoll);
     }
 
 }

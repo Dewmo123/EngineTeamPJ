@@ -9,9 +9,10 @@ public enum PlayerEnum
     Rope,
     Jump,
     Fall,
-    Roll,
+    AirRoll,
     Dead,
-    Attack
+    Attack,
+    Dash
 }
 public abstract class PlayerState
 {

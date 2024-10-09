@@ -14,5 +14,6 @@ public class PlayerJumpState : PlayerCanRopeState
     }
     protected override void HandleJumpEvent()
     {
+        _stateMachine.ChangeState(PlayerEnum.AirRoll);
     }
 }

@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class GrappleGun : MonoBehaviour,IPlayerComponent
+public class GrappleGun : MonoBehaviour, IPlayerComponent
 {
     private Player _player;
 
     private Rope _grappleRope;
 
+
     [Header("Layers Settings:")]
     [SerializeField] private bool grappleToAll = false;
     [SerializeField] private int grappableLayerNumber = 9;
+    [SerializeField] private LayerMask _canRopeLayer;
 
     [Header("Main Camera:")]
     public Camera m_camera;
@@ -66,11 +68,6 @@ public class GrappleGun : MonoBehaviour,IPlayerComponent
             RotateGun(mousePos, true);
         }
 
-        if (grapplePoint.y < transform.position.y)
-            launchToPoint = true;
-        else
-            launchToPoint = false;
-
         if (launchToPoint && _grappleRope.isGrappling)
         {
             if (launchType == LaunchType.Transform_Launch)
@@ -109,12 +106,19 @@ public class GrappleGun : MonoBehaviour,IPlayerComponent
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
         if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
         {
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
+            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized,1000,_canRopeLayer);
+            if (!_hit) return;
             if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
             {
                 if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                 {
                     grapplePoint = _hit.point;
+
+                    if (grapplePoint.y < transform.position.y)
+                        launchToPoint = true;
+                    else
+                        launchToPoint = false;
+
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     _grappleRope.enabled = true;
                 }
@@ -124,8 +128,6 @@ public class GrappleGun : MonoBehaviour,IPlayerComponent
 
     public void Grapple()
     {
-        Debug.Log("asd");
-
         _springJoint2D.autoConfigureDistance = false;
         if (!launchToPoint && !autoConfigureDistance)
         {
@@ -161,6 +163,7 @@ public class GrappleGun : MonoBehaviour,IPlayerComponent
                     break;
             }
         }
+        _player.rbCompo.AddForce(_player.rbCompo.velocity*0.8f, ForceMode2D.Impulse);
     }
 
     private void OnDrawGizmosSelected()
