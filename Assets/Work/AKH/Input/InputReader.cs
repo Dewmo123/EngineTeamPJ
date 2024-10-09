@@ -14,6 +14,7 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
 
     public event Action JumpEvent;
     public event Action RopeEvent;
+    public event Action DashEvent;
     public event Action RopeCancelEvent;
     public event Action AttackEvent;
 
@@ -60,5 +61,11 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
     public void OnMousePosition(InputAction.CallbackContext context)
     {
         Mouse = context.ReadValue<Vector2>();
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            DashEvent?.Invoke();
     }
 }

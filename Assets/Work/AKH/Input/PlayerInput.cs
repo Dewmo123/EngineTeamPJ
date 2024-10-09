@@ -71,6 +71,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""37c1ba3d-068e-4537-9d06-92b714fadb51"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -150,6 +159,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Rope"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cc55ad2-8495-4e7d-832e-6af3bf7207de"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -163,6 +183,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Action_Jump = m_Action.FindAction("Jump", throwIfNotFound: true);
         m_Action_MousePosition = m_Action.FindAction("MousePosition", throwIfNotFound: true);
         m_Action_Rope = m_Action.FindAction("Rope", throwIfNotFound: true);
+        m_Action_Dash = m_Action.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +250,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Action_Jump;
     private readonly InputAction m_Action_MousePosition;
     private readonly InputAction m_Action_Rope;
+    private readonly InputAction m_Action_Dash;
     public struct ActionActions
     {
         private @PlayerInput m_Wrapper;
@@ -238,6 +260,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Action_Jump;
         public InputAction @MousePosition => m_Wrapper.m_Action_MousePosition;
         public InputAction @Rope => m_Wrapper.m_Action_Rope;
+        public InputAction @Dash => m_Wrapper.m_Action_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Action; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -262,6 +285,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Rope.started += instance.OnRope;
             @Rope.performed += instance.OnRope;
             @Rope.canceled += instance.OnRope;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IActionActions instance)
@@ -281,6 +307,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Rope.started -= instance.OnRope;
             @Rope.performed -= instance.OnRope;
             @Rope.canceled -= instance.OnRope;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IActionActions instance)
@@ -305,5 +334,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnRope(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

@@ -9,6 +9,7 @@ public abstract class Agent : MonoBehaviour
     public Rigidbody2D rbCompo { get; private set; }
     public Animator animCompo { get; private set; }
     public PlayerMovement movementCompo { get; private set; }
+    public SpriteRenderer rendererCompo { get; private set; }
     #endregion
 
     public event Action OnFlipEvent;
@@ -17,6 +18,7 @@ public abstract class Agent : MonoBehaviour
     {
         rbCompo = GetComponent<Rigidbody2D>();
         animCompo = GetComponentInChildren<Animator>();
+        rendererCompo = GetComponentInChildren<SpriteRenderer>();
         movementCompo = GetComponent<PlayerMovement>();  
     }
     #region Flip Charater

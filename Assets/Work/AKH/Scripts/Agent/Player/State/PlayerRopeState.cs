@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerRopeState : PlayerMoveState
 {
+    private bool _isDash;
     public PlayerRopeState(PlayerStateMachine stateMachine, string animName, Player player) : base(stateMachine, animName, player)
     {
     }
     public override void Enter()
     {
         base.Enter();
+        _isDash = false;
         _input.RopeCancelEvent += HandleRopeCancel;
     }
     public override void UpdateState()
@@ -42,4 +44,12 @@ public class PlayerRopeState : PlayerMoveState
         _stateMachine.ChangeState(PlayerEnum.AirRoll);
     }
 
+    protected override void HandleDashEvent()
+    {
+        if (!_isDash)
+        {
+            _player.rbCompo.AddForce(_input.Movement*10, ForceMode2D.Force);
+            _isDash = true;
+        }
+    }
 }

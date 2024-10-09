@@ -15,7 +15,9 @@ public abstract class PlayerMoveState : PlayerState
         base.Enter();
         _input = _player.GetCompo<InputReader>();
         _input.JumpEvent += HandleJumpEvent;
+        _input.DashEvent += HandleDashEvent;
     }
+
 
     public override void Exit()
     {
@@ -30,5 +32,6 @@ public abstract class PlayerMoveState : PlayerState
         if (_player.rbCompo.velocity.y < 0)
             _stateMachine.ChangeState(PlayerEnum.Fall);
     }
+    protected abstract void HandleDashEvent();
     protected abstract void HandleJumpEvent();
 }

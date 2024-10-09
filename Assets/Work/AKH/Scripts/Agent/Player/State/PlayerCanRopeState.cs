@@ -22,6 +22,12 @@ public class PlayerCanRopeState : PlayerMoveState
         _player.movementCompo.ShootRope();
         _stateMachine.ChangeState(PlayerEnum.Rope);
     }
+
+    protected override void HandleDashEvent()
+    {
+        _stateMachine.ChangeState(PlayerEnum.Dash);
+    }
+
     protected override void HandleJumpEvent()
     {
     }
