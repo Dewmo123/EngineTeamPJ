@@ -19,8 +19,9 @@ public class PlayerRopeState : PlayerMoveState
         _player.GetCompo<GrappleGun>().Roping();
 
         Vector2 move = new Vector2(_input.Movement.x * _player.movementCompo.moveSpeed, _player.rbCompo.velocity.y);
-        _player.rbCompo.AddForce(move.normalized, ForceMode2D.Force);
-        _player.HandleSpriteFlip(_player.rbCompo.velocity+(Vector2)_player.transform.position);
+        if (move.x != 0)
+            _player.rbCompo.AddForce(move.normalized, ForceMode2D.Force);
+        _player.HandleSpriteFlip(_player.rbCompo.velocity + (Vector2)_player.transform.position);
 
         if (_player.movementCompo.isGround.Value)
             HandleRopeCancel();
@@ -48,7 +49,7 @@ public class PlayerRopeState : PlayerMoveState
     {
         if (!_isDash)
         {
-            _player.rbCompo.AddForce(_input.Movement*10, ForceMode2D.Force);
+            _player.rbCompo.AddForce(_input.Movement * 10, ForceMode2D.Force);
             _isDash = true;
         }
     }
