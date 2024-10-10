@@ -17,9 +17,6 @@ public class EnemySO : ScriptableObject
 
     public float waitTime; //다시 움직이기 위해 기다릴 시간
 
-    public Transform movePoint1;
-    public Transform movePoint2; // 도착 / 출발 지점
-
     //각도 추가할 것
 }
 
