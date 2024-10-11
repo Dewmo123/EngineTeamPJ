@@ -18,10 +18,11 @@ public class PlayerRopeState : PlayerMoveState
     {
         _player.GetCompo<GrappleGun>().Roping();
 
+        _player.HandleSpriteFlip(_player.rbCompo.velocity + (Vector2)_player.transform.position);
+
         Vector2 move = new Vector2(_input.Movement.x * _player.movementCompo.moveSpeed, _player.rbCompo.velocity.y);
         if (move.x != 0)
             _player.rbCompo.AddForce(move.normalized, ForceMode2D.Force);
-        _player.HandleSpriteFlip(_player.rbCompo.velocity + (Vector2)_player.transform.position);
 
         if (_player.movementCompo.isGround.Value)
             HandleRopeCancel();
@@ -29,20 +30,20 @@ public class PlayerRopeState : PlayerMoveState
     public override void Exit()
     {
         base.Exit();
-        if (_player.movementCompo.isRope)
-            HandleRopeCancel();
         _input.RopeCancelEvent -= HandleRopeCancel;
+        _player.movementCompo.EscapeRope();
     }
     private void HandleRopeCancel()
     {
-        _player.movementCompo.EscapeRope();
-        _stateMachine.ChangeState(PlayerEnum.Fall);
+        if (_player.GetCompo<GrappleGun>().launchToPoint||_player.movementCompo.isGround.Value)
+            _stateMachine.ChangeState(PlayerEnum.Idle);
+        else
+            _stateMachine.ChangeState(PlayerEnum.AirRoll);
     }
 
     protected override void HandleJumpEvent()
     {
-        _player.movementCompo.EscapeRope();
-        _stateMachine.ChangeState(PlayerEnum.AirRoll);
+        _player.GetCompo<GrappleGun>().launchToPoint = true;
     }
 
     protected override void HandleDashEvent()

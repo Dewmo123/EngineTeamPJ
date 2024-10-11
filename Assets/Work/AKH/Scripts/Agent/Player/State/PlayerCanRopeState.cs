@@ -20,7 +20,8 @@ public class PlayerCanRopeState : PlayerMoveState
     public virtual void HandleRope()
     {
         _player.movementCompo.ShootRope();
-        _stateMachine.ChangeState(PlayerEnum.Rope);
+        if (_player.movementCompo.isRope)
+            _stateMachine.ChangeState(PlayerEnum.Rope);
     }
 
     protected override void HandleDashEvent()

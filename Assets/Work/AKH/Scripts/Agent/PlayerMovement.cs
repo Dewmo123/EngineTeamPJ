@@ -84,7 +84,6 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     public void ShootRope()
     {
         _player.GetCompo<GrappleGun>().SetGrapplePoint();
-        isRope = true;
     }
     public void EscapeRope()
     {

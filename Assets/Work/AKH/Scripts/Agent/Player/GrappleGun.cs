@@ -38,7 +38,7 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
     }
 
     [Header("Launching:")]
-    [SerializeField] private bool launchToPoint = true;
+    public bool launchToPoint = true;
     [SerializeField] private LaunchType launchType = LaunchType.Physics_Launch;
     [SerializeField] private float launchSpeed = 1;
 
@@ -113,12 +113,8 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
                 if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                 {
                     grapplePoint = _hit.point;
-
-                    if (grapplePoint.y < transform.position.y)
-                        launchToPoint = true;
-                    else
-                        launchToPoint = false;
-
+                    _player.movementCompo.isRope = true;
+                    launchToPoint = false;
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                     _grappleRope.enabled = true;
                 }
