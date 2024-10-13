@@ -4,35 +4,36 @@ using UnityEngine;
 
 public class EnemyState : MonoBehaviour
 {
-    public EnemyStateType stateType;
-
-    public void StateEnter() //state변경 되었을 때 (시작)
+    protected Enemy _enemy;
+    protected EnemyStateMachine _stateMachine;
+    protected int _animBoolHash;
+    protected bool _endTriggerCalled;
+    public EnemyState(EnemyStateMachine stateMachine, string animName, Enemy enemy)
+    {
+        _stateMachine = stateMachine;
+        _animBoolHash = Animator.StringToHash(animName);
+        _enemy = enemy;
+    }
+    public virtual void Enter()
+    {
+        _enemy.animCompo.SetBool(_animBoolHash, true);
+        _endTriggerCalled = false;
+    }
+    public virtual void Exit()
+    {
+        _enemy.animCompo.SetBool(_animBoolHash, false);
+    }
+    public virtual void UpdateState()
     {
 
     }
-
-    public void StateUpdate() //그 state 실행 되는 동안 실행
+    public void AnimationEndTrigger()
     {
-
-    }
-
-    protected virtual void Idle()
-    {
-
-    }
-
-    protected virtual void Movement()
-    {
-
-    }
-
-    protected virtual void Die()
-    {
-
+        _endTriggerCalled = true;
     }
 }
 
 public enum EnemyStateType
 {
-    Idle, Move, Die
+    Stop, Move, Die,Look
 }

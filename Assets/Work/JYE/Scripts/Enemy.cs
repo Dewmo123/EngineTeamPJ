@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public EnemySO enemyType;
     private EnemyState State;
 
     private SpriteRenderer enemyColor;
+    public Animator animCompo { get; private set; }
+    private EnemyStateMachine _stateMachine;
+
 
     public bool target; //타겟 구별
 
@@ -22,12 +25,14 @@ public class EnemyManager : MonoBehaviour
     {
         State = GetComponent<EnemyState>();
         enemyColor = GetComponent<SpriteRenderer>();
+        animCompo = GetComponent<Animator>();
         Setting();
+        _stateMachine = new EnemyStateMachine();
     }
 
     private void Update()
     {
-        State.StateUpdate();
+        _stateMachine.currentState.UpdateState();
     }
 
     private void Setting() //적 기본 세팅하기
@@ -44,17 +49,17 @@ public class EnemyManager : MonoBehaviour
         switch (type) //초기 상태 정하기 및 기타
         {
             case EnemyType.Look:
-                State.stateType = EnemyStateType.Idle;
+                _stateMachine.ChangeState(EnemyStateType.Look);
                 break;
             case EnemyType.Move:
-                State.stateType = EnemyStateType.Move;
+                _stateMachine.ChangeState(EnemyStateType.Move);
 
                 speed = enemyType.speed; //속도
 
                 waitTime = enemyType.waitTime; //다시 움직이기 위해 기다릴 시간
                 break;
             case EnemyType.Stop:
-                State.stateType = EnemyStateType.Idle;
+                _stateMachine.ChangeState(EnemyStateType.Stop);
                 break;
             default:
                 break;
