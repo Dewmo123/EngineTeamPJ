@@ -159,7 +159,7 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
                     break;
             }
         }
-        _player.rbCompo.AddForce(_player.rbCompo.velocity*0.8f, ForceMode2D.Impulse);
+        _player.rbCompo.AddForce(_player.rbCompo.velocity*0.3f, ForceMode2D.Impulse);
     }
 
     private void OnDrawGizmosSelected()

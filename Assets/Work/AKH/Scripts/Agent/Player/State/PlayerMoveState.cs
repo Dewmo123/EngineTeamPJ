@@ -23,6 +23,7 @@ public abstract class PlayerMoveState : PlayerState
     {
         base.Exit();
         _input.JumpEvent -= HandleJumpEvent;
+        _input.DashEvent -= HandleDashEvent;
     }
 
     public override void UpdateState()

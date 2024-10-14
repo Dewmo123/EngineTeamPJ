@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
+
 public class Player : Agent
 {
     public SpringJoint2D jointCompo { get; private set; }
 
     [field: SerializeField] private InputReader _inputReader;
-
     private PlayerStateMachine _stateMachine;
+
+    public UnityEvent GrappleEvent;
+    
     private Dictionary<Type, IPlayerComponent> _components;
     protected override void Awake()
     {
@@ -48,6 +52,17 @@ public class Player : Agent
     {
         _stateMachine.currentState.UpdateState();
     }
+    public void WaitCoroutine(float time,Action callback)
+    {
+        StartCoroutine(Wait(time, callback));
+    }
+
+    private IEnumerator Wait(float time, Action callback)
+    {
+        yield return new WaitForSeconds(time);
+        callback.Invoke();
+    }
+
     public T GetCompo<T>() where T : class
     {
         Type t = typeof(T);

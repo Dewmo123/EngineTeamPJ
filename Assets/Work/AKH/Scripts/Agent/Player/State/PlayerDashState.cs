@@ -10,7 +10,7 @@ public class PlayerDashState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        _player.movementCompo.OnDash(_player.GetCompo<InputReader>().Movement,0.2f,AnimationEndTrigger);
+        _player.movementCompo.OnDash(_player.GetCompo<InputReader>().Movement, _player.movementCompo.afterImageTime, AnimationEndTrigger);
     }
     public override void UpdateState()
     {

@@ -12,6 +12,7 @@ public class PlayerRopeState : PlayerMoveState
     {
         base.Enter();
         _isDash = false;
+        _player.GrappleEvent?.Invoke();
         _input.RopeCancelEvent += HandleRopeCancel;
     }
     public override void UpdateState()
@@ -20,7 +21,7 @@ public class PlayerRopeState : PlayerMoveState
 
         _player.HandleSpriteFlip(_player.rbCompo.velocity + (Vector2)_player.transform.position);
 
-        Vector2 move = new Vector2(_input.Movement.x * _player.movementCompo.moveSpeed, _player.rbCompo.velocity.y);
+        Vector2 move = new Vector2(_input.Movement.x * _player.movementCompo.moveSpeed,0);
         if (move.x != 0)
             _player.rbCompo.AddForce(move.normalized, ForceMode2D.Force);
 
@@ -50,7 +51,9 @@ public class PlayerRopeState : PlayerMoveState
     {
         if (!_isDash)
         {
-            _player.rbCompo.AddForce(_input.Movement * 10, ForceMode2D.Force);
+            _player.rbCompo.AddForce(_player.rbCompo.velocity.normalized, ForceMode2D.Impulse);
+            _player.GetCompo<AgentVFX>().ToggleAfterImage(true);
+            _player.WaitCoroutine(_player.movementCompo.ropeAfterImageTime, () => _player.GetCompo<AgentVFX>().ToggleAfterImage(false));
             _isDash = true;
         }
     }
