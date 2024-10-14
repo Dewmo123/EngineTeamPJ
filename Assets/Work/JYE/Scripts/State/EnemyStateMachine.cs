@@ -7,11 +7,11 @@ public class EnemyStateMachine
     public Dictionary<EnemyStateType, EnemyState> stateDictionary = new Dictionary<EnemyStateType, EnemyState>();
     public EnemyState currentState;
 
-    private Enemy _player;
+    private Enemy _Enemy;
     public void Init(EnemyStateType start, Enemy player)
     {
         ChangeState(start);
-        _player = player;
+        _Enemy = player;
     }
     public void ChangeState(EnemyStateType type)
     {

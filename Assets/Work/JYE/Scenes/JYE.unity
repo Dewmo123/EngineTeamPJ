@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 643380058}
   - component: {fileID: 643380057}
   - component: {fileID: 643380056}
-  - component: {fileID: 643380055}
+  - component: {fileID: 643380059}
   m_Layer: 0
   m_Name: MoveEnemy
   m_TagString: Untagged
@@ -142,23 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &643380055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643380054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24915296e3982814689998c0fdae6e35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyType: {fileID: 11400000, guid: 0822d1a18254bfd4ca463706549a59c6, type: 2}
-  target: 0
-  movePoint1: {fileID: 1863468622}
-  movePoint2: {fileID: 1089530394}
-  type: 0
 --- !u!95 &643380056
 Animator:
   serializedVersion: 5
@@ -247,6 +230,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1958371600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &643380059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643380054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcc02ddd498607409ef425378647006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyType: {fileID: 11400000, guid: 0822d1a18254bfd4ca463706549a59c6, type: 2}
+  target: 0
+  movePoint1: {fileID: 1863468622}
+  movePoint2: {fileID: 1089530394}
 --- !u!1 &1089530393
 GameObject:
   m_ObjectHideFlags: 0
