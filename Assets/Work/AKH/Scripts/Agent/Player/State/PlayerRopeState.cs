@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerRopeState : PlayerMoveState
@@ -12,18 +10,24 @@ public class PlayerRopeState : PlayerMoveState
     {
         base.Enter();
         _isDash = false;
-        _player.GrappleEvent?.Invoke();
         _input.RopeCancelEvent += HandleRopeCancel;
     }
     public override void UpdateState()
     {
         _player.GetCompo<GrappleGun>().Roping();
-
+        Vector2 move;
         _player.HandleSpriteFlip(_player.rbCompo.velocity + (Vector2)_player.transform.position);
 
-        Vector2 move = new Vector2(_input.Movement.x * _player.movementCompo.moveSpeed,0);
-        if (move.x != 0)
-            _player.rbCompo.AddForce(move.normalized, ForceMode2D.Force);
+        if (Mathf.Sign(_player.rbCompo.velocity.x) != Mathf.Sign(_input.Movement.x))
+            move = -_player.rbCompo.velocity.normalized;
+        else
+            move = _player.rbCompo.velocity.normalized;
+
+        if (_input.Movement.x != 0)
+        {//anchor.y - distance == min y 
+            _player.rbCompo.AddForce(move, ForceMode2D.Force);
+            _player.rbCompo.AddForce(Vector2.down * Mathf.Abs(_player.rbCompo.velocity.y*0.6F), ForceMode2D.Force);
+        }
 
         if (_player.movementCompo.isGround.Value)
             HandleRopeCancel();
@@ -36,7 +40,7 @@ public class PlayerRopeState : PlayerMoveState
     }
     private void HandleRopeCancel()
     {
-        if (_player.GetCompo<GrappleGun>().launchToPoint||_player.movementCompo.isGround.Value)
+        if (_player.GetCompo<GrappleGun>().launchToPoint || _player.movementCompo.isGround.Value)
             _stateMachine.ChangeState(PlayerEnum.Idle);
         else
             _stateMachine.ChangeState(PlayerEnum.AirRoll);
@@ -51,7 +55,7 @@ public class PlayerRopeState : PlayerMoveState
     {
         if (!_isDash)
         {
-            _player.rbCompo.AddForce(_player.rbCompo.velocity.normalized, ForceMode2D.Impulse);
+            _player.rbCompo.AddForce(_player.rbCompo.velocity.normalized * _player.movementCompo.dashPower, ForceMode2D.Impulse);
             _player.GetCompo<AgentVFX>().ToggleAfterImage(true);
             _player.WaitCoroutine(_player.movementCompo.ropeAfterImageTime, () => _player.GetCompo<AgentVFX>().ToggleAfterImage(false));
             _isDash = true;

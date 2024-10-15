@@ -67,7 +67,6 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
         }
-
         if (launchToPoint && _grappleRope.isGrappling)
         {
             if (launchType == LaunchType.Transform_Launch)
@@ -159,7 +158,10 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
                     break;
             }
         }
-        _player.rbCompo.AddForce(_player.rbCompo.velocity*0.3f, ForceMode2D.Impulse);
+        _player.GrappleEvent?.Invoke();
+        if (_player.jointCompo.distance > _player.movementCompo.maxDistance)
+            _player.jointCompo.distance = _player.movementCompo.maxDistance;
+        _player.rbCompo.AddForce(_player.rbCompo.velocity.normalized*_springJoint2D.distance, ForceMode2D.Impulse);
     }
 
     private void OnDrawGizmosSelected()
