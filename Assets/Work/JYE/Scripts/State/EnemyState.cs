@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyState : MonoBehaviour
+public class EnemyState
 {
     protected Enemy _enemy;
     protected EnemyStateMachine _stateMachine;
@@ -35,5 +35,5 @@ public class EnemyState : MonoBehaviour
 
 public enum EnemyStateType
 {
-    Stop, Move, Die,Look
+    Stop, Move, MoveIdle, Die, Look
 }

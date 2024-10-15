@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MoveEnemy : Enemy
 {
-    private void Update()
+    protected override void Update()
     {
-        print("d)");
+        base.Update();
     }
 
     protected override void Type()

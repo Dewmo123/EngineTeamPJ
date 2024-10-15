@@ -9,6 +9,6 @@ public class DieEnemyState : EnemyState
     }
     public override void Exit()
     {
-
+        base.Exit();
     }
 }

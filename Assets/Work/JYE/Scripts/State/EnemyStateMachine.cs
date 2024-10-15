@@ -16,7 +16,9 @@ public class EnemyStateMachine
     public void ChangeState(EnemyStateType type)
     {
         if (currentState != null)
+        {
             currentState.Exit();
+        }
         currentState = stateDictionary[type];
         currentState.Enter();
     }

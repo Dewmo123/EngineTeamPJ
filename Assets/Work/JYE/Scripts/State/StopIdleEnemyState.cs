@@ -9,6 +9,6 @@ public class StopIdleEnemyState : EnemyState
     }
     public override void Exit()
     {
-
+        base.Exit();
     }
 }

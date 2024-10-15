@@ -9,6 +9,6 @@ public class LookIdleEnemyState : EnemyState
     }
     public override void Exit()
     {
-
+        base.Exit();
     }
 }
