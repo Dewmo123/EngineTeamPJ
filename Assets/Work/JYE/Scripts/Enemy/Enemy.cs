@@ -25,10 +25,10 @@ public class Enemy : MonoBehaviour
         animCompo = GetComponent<Animator>();
 
         _stateMachine = new EnemyStateMachine();
-        _stateMachine.AddState(EnemyStateType.Stop, new EnemyState(_stateMachine,"EnemyIdle",this));
-        _stateMachine.AddState(EnemyStateType.Look, new EnemyState(_stateMachine,"EnemyIdle",this));
-        _stateMachine.AddState(EnemyStateType.Move, new EnemyState(_stateMachine,"EnemyWalk",this));
-        _stateMachine.AddState(EnemyStateType.Die, new EnemyState(_stateMachine,"EnemyDeath",this));
+        _stateMachine.AddState(EnemyStateType.Stop, new StopIdleEnemyState(_stateMachine,"Idle",this));
+        _stateMachine.AddState(EnemyStateType.Look, new LookIdleEnemyState(_stateMachine,"Idle",this));
+        _stateMachine.AddState(EnemyStateType.Move, new WalkEnemyState(_stateMachine,"Move",this));
+        _stateMachine.AddState(EnemyStateType.Die, new DieEnemyState(_stateMachine,"Die",this));
         Setting();
     }
 
