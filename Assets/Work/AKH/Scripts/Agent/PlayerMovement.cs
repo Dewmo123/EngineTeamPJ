@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     public float extraGravity = 30f;
     public float gravityDelay = 0.15f;
     public float knockbackTime = 0.2f;
+    public float afterImageTime = 0.2f;
+    public float ropeAfterImageTime = 0.5f;
+    public float maxDistance = 10;
 
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private Vector2 _groundCheckerSize;
