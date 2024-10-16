@@ -36,6 +36,20 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Update()
     {
         _stateMachine.currentState.UpdateState();
+        if (Input.GetKeyDown(KeyCode.P)) //죽는 조건 알아서 바꾸기
+        {
+            DieEnemy();
+        }
+    }
+
+    private void DieEnemy()
+    {
+        _stateMachine.ChangeState(EnemyStateType.Die);
+    }
+
+    public virtual void EnemyDie()
+    {
+        Destroy(gameObject); //바꿀 때 MoveEnemy의 EnemyDie도 같이
     }
 
     private void Setting() //적 기본 세팅하기

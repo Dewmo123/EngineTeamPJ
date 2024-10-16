@@ -9,6 +9,11 @@ public class MoveEnemy : Enemy
         base.Update();
     }
 
+    public override void EnemyDie()
+    {
+        Destroy(gameObject.transform.parent); //위치들도 지우려고
+    }
+
     protected override void Type()
     {
         _stateMachine.ChangeState(EnemyStateType.Move);
