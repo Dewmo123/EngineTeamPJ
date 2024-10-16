@@ -32,25 +32,34 @@ public class CCTV : MonoBehaviour
     [SerializeField] private LayerMask _obstacleMask;
     [SerializeField] private float _enemyFindDelay = 0.3f;
     [SerializeField] private int _maxCheckCount = 10;
-    [Range(0.05f, 2f)] [SerializeField] private float _meshResolution; //메시의 해상도
+    [Range(0.05f, 2f)][SerializeField] private float _meshResolution; //메시의 해상도
     [SerializeField] private int _edgeIterationCount = 4; //몇번 반복해서 이분할 탐색할지
     [SerializeField] private float _edgeThreshold; //임계지점
+
+    [Header("Angle Info")]
+    [SerializeField] private float _startAngle;
+    [SerializeField] private float _endAngle;
+    [SerializeField] private float _oneTickAngle;
 
     [SerializeField] private Light2D _fovLight;
 
     public event Action<float> OnWeaponHolderRotate;
 
-    public List<Transform> visibleTargets = new List<Transform>();
     private Collider2D[] _enemiesInView;
 
     private MeshFilter _meshFilter;
     private Mesh _viewMesh;
 
     private Transform _viewVisual;
+    private float _curAngle;
+    private bool _angleFlag = false;
+
 
     public void Initialize()
     {
         _enemiesInView = new Collider2D[_maxCheckCount];
+
+        _curAngle = _startAngle;
 
         _viewVisual = transform.Find("ViewVisual");
         _meshFilter = _viewVisual.GetComponent<MeshFilter>();
@@ -59,7 +68,6 @@ public class CCTV : MonoBehaviour
         _meshFilter.mesh = _viewMesh;
 
         MeshRenderer renderer = _viewVisual.GetComponent<MeshRenderer>();
-        renderer.sortingLayerName = "Agent";
         renderer.sortingOrder = 20;
     }
 
@@ -91,7 +99,6 @@ public class CCTV : MonoBehaviour
 
     private void FindVisibleEnemies()
     {
-        visibleTargets.Clear();
 
         int cnt = Physics2D.OverlapCircle(HolderPosition, viewRadius, _enemyFilter, _enemiesInView);
 
@@ -105,7 +112,7 @@ public class CCTV : MonoBehaviour
             {
                 if (!Physics2D.Raycast(HolderPosition, direction.normalized, direction.magnitude, _obstacleMask))
                 {
-                    visibleTargets.Add(enemy);
+                    //플레이어 발견
                 }
             }
         }
@@ -245,12 +252,14 @@ public class CCTV : MonoBehaviour
         }
 
     }
-    float a;
     private void UpdateAim()
     {
-        Vector3 worldPos = new Vector3(Mathf.Cos(a*Mathf.Deg2Rad),Mathf.Sin(a*Mathf.Deg2Rad),0);
-        a += 3;
-        if (a >= 360) a = 0;
+        Vector3 worldPos = new Vector3(Mathf.Cos(_curAngle * Mathf.Deg2Rad), Mathf.Sin(_curAngle * Mathf.Deg2Rad), 0);
+        _curAngle += _angleFlag ? -_oneTickAngle : _oneTickAngle;
+
+        if (_curAngle >= _endAngle || _curAngle <= _startAngle)
+            _angleFlag = !_angleFlag;
+
         _weaponHolder.right = worldPos.normalized;
 
         OnWeaponHolderRotate?.Invoke(_weaponHolder.eulerAngles.z);

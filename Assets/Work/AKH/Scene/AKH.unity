@@ -2072,10 +2072,10 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 80.7
-  m_PointLightOuterAngle: 80.7
-  m_PointLightInnerRadius: 1
-  m_PointLightOuterRadius: 5
+  m_PointLightInnerAngle: 36
+  m_PointLightOuterAngle: 45
+  m_PointLightInnerRadius: 11
+  m_PointLightOuterRadius: 12
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -2494,8 +2494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponHolder: {fileID: 2031059950}
-  viewAngle: 65
-  viewRadius: 5
+  viewAngle: 45
+  viewRadius: 12
   _enemyFilter:
     useTriggers: 0
     useLayerMask: 1
@@ -2518,8 +2518,10 @@ MonoBehaviour:
   _meshResolution: 0.2
   _edgeIterationCount: 4
   _edgeThreshold: 0.5
+  _startAngle: 0
+  _endAngle: 0
+  _oneTickAngle: 0
   _fovLight: {fileID: 1340597851}
-  visibleTargets: []
 --- !u!212 &1813825377
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2581,8 +2583,8 @@ Transform:
   m_GameObject: {fileID: 1813825375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.0825, y: 6.2, z: 0}
-  m_LocalScale: {x: 3.285, y: 1, z: 1}
+  m_LocalPosition: {x: 11.92, y: 3.7, z: 0}
+  m_LocalScale: {x: 0.572708, y: 0.6137, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1340597852}
