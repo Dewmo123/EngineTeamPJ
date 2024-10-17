@@ -8,12 +8,15 @@ public class Switch : MonoBehaviour
 {
     [SerializeField] private GameObject _door;
     [SerializeField] private Sprite _openSpr;
-    [SerializeField] private PlayerDoor _playerDoor;
     public bool _canOpen;
+    private AudioSource _audioSource;
+    public AudioClip _switchSound, _doorSound;
+    private MainGimicScript _gimic;
 
     private void OnEnable()
     {
-        _playerDoor._Open += Open;
+        _gimic = GetComponent<MainGimicScript>();
+        _gimic.OnActive_door += Open;
     }
 
     private void Start()
@@ -25,11 +28,13 @@ public class Switch : MonoBehaviour
     {
         _door.GetComponent<BoxCollider2D>().isTrigger = true;
         _door.GetComponent<SpriteRenderer>().sprite = _openSpr;
-        _playerDoor._Open -= Open;
+        _gimic.OnActive_door -= Open;
+        _audioSource.GetComponent<AudioSource>().PlayOneShot(_switchSound);
+        _door.GetComponent<AudioSource>().PlayOneShot(_doorSound);
     }
 
     private void OnDisable()
     {
-        _playerDoor._Open -= Open;
+        _gimic.OnActive_door -= Open;
     }
 }

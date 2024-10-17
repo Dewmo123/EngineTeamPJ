@@ -5,14 +5,8 @@ using UnityEngine.Events;
 
 public class BeCalledPoint : MonoBehaviour
 {
-    private bool Calling = false;
-    public UnityEvent callEvent;
-
-    private void Update()
+    public void Call()
     {
-        if (Calling)
-        {
-            callEvent?.Invoke();
-        }
+
     }
 }
