@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TargetMove
   m_EditorClassIdentifier: 
   target: 1
+  boom: 0
   color: {r: 1, g: 0.98290783, b: 0, a: 1}
   speed: 2
   size: 1.1
