@@ -25,7 +25,7 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
 
     [Header("Rotation:")]
     [SerializeField] private bool rotateOverTime = true;
-    [Range(0, 60)] [SerializeField] private float rotationSpeed = 4;
+    [Range(0, 60)][SerializeField] private float rotationSpeed = 4;
 
     [Header("Distance:")]
     [SerializeField] private bool hasMaxDistance = false;
@@ -103,20 +103,16 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
     public void SetGrapplePoint()
     {
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
-        if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, 1000, _canRopeLayer);
+        if (hit)
         {
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized,1000,_canRopeLayer);
-            if (!_hit) return;
-            if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
+            if (Vector2.Distance(hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
             {
-                if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
-                {
-                    grapplePoint = _hit.point;
-                    _player.movementCompo.isRope = true;
-                    launchToPoint = false;
-                    grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
-                    _grappleRope.enabled = true;
-                }
+                grapplePoint = hit.point;
+                _player.movementCompo.isRope = true;
+                launchToPoint = false;
+                grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                _grappleRope.enabled = true;
             }
         }
     }
@@ -159,9 +155,11 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
             }
         }
         _player.GrappleEvent?.Invoke();
-        if (_player.jointCompo.distance > _player.movementCompo.maxDistance)
-            _player.jointCompo.distance = _player.movementCompo.maxDistance;
-        _player.rbCompo.AddForce(_player.rbCompo.velocity.normalized*_springJoint2D.distance, ForceMode2D.Impulse);
+        if (_springJoint2D.distance > _player.movementCompo.maxDistance)
+        {
+            _springJoint2D.distance = _player.movementCompo.maxDistance;
+        }
+        //_player.rbCompo.AddForce(_player.rbCompo.velocity.normalized*_springJoint2D.distance, ForceMode2D.Impulse);
     }
 
     private void OnDrawGizmosSelected()
