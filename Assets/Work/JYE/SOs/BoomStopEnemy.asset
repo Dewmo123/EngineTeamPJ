@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3620920e2e65a8429b14253c97edfad, type: 3}
-  m_Name: BoomEnemy
+  m_Name: BoomStopEnemy
   m_EditorClassIdentifier: 
   target: 0
+  boom: 1
   color: {r: 1, g: 0, b: 0.10993576, a: 1}
   speed: 0
   size: 1

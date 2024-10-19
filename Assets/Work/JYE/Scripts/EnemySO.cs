@@ -7,6 +7,8 @@ public class EnemySO : ScriptableObject
 {
     public bool target; //鸥百 备喊
 
+    public bool boom; //磊气 利 备喊
+
     public Color color; //祸
 
     public float speed; //加档

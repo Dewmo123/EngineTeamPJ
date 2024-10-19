@@ -186,6 +186,10 @@ MonoBehaviour:
   enemyType: {fileID: 11400000, guid: 5646d39d8b478c04f96486ec16ef1ecd, type: 2}
   enemySR: {fileID: 0}
   target: 0
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerDie: 0
   speed: 0
   waitTime: 0
   movePoint1: {fileID: 0}

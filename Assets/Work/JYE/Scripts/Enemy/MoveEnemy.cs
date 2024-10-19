@@ -11,7 +11,7 @@ public class MoveEnemy : Enemy
 
     public override void EnemyDie()
     {
-        Destroy(gameObject.transform.parent); //위치들도 지우려고
+        Destroy(gameObject.transform.parent.gameObject); //위치들도 지우려고
     }
 
     protected override void Type()
