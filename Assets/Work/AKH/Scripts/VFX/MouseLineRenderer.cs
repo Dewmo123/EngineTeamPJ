@@ -14,7 +14,8 @@ public class MouseLineRenderer : MonoBehaviour, IPlayerComponent
 
     private void Update()
     {
-        Vector3[] positions = new Vector3[2] { transform.position, Camera.main.ScreenToWorldPoint(_input.Mouse) };
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(_input.Mouse);
+        Vector3[] positions = new Vector3[2] { transform.position,  (Vector3)mousePos};
         _lineRenderer.SetPositions(positions);
     }
     public void Initialize(Player player)
