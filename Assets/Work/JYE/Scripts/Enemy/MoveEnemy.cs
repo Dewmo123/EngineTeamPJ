@@ -7,6 +7,8 @@ public class MoveEnemy : Enemy
     protected override void Update()
     {
         base.Update();
+        movePoint1.position = new Vector3(movePoint1.position.x, transform.position.y);
+        movePoint2.position = new Vector3(movePoint2.position.x, transform.position.y);
     }
 
     public override void EnemyDie()
