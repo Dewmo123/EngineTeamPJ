@@ -22,10 +22,13 @@ public abstract class Enemy : MonoBehaviour
     public Transform movePoint1; // 도착 / 출발 지점
     public Transform movePoint2; //1이 오른쪽, 2가 왼쪽
 
+    public CCTV view;
+
     protected virtual void Awake()
     {
         enemySR = GetComponent<SpriteRenderer>();
         animCompo = GetComponent<Animator>();
+        view = GetComponentInChildren<CCTV>();
 
         _stateMachine = new EnemyStateMachine();
         _stateMachine.AddState(EnemyStateType.Stop, new StopIdleEnemyState(_stateMachine,"Idle",this));
@@ -72,7 +75,23 @@ public abstract class Enemy : MonoBehaviour
             EnemyDie();
         }
     }
+    public bool IsFacingRight()
+    {
+        return Mathf.Approximately(transform.eulerAngles.y, 0);
+    }
+    public void HandleSpriteFlip(Vector3 targetPosition)
+    {
+        bool isRight = IsFacingRight();
+        if (targetPosition.x < transform.position.x && isRight)
+        {
+            transform.eulerAngles = new Vector3(0, -180F, 0);
+        }
+        else if (targetPosition.x > transform.position.x && !isRight)
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
 
+    }
     private void OnDrawGizmos()
     {
         if (boom) //자폭 가능이라면
