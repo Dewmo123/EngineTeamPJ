@@ -8,8 +8,6 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
 
 
     [Header("Layers Settings:")]
-    [SerializeField] private bool grappleToAll = false;
-    [SerializeField] private int grappableLayerNumber = 9;
     [SerializeField] private LayerMask _canRopeLayer;
 
     [Header("Main Camera:")]

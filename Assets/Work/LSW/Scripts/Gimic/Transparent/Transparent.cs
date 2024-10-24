@@ -1,31 +1,56 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Transparent : MonoBehaviour
+public class Transparent : MonoBehaviour, IPlayerComponent
 {
-    [SerializeField] private MainGimicScript _mainGimicScript;
-    [SerializeField] private GameObject _enemy_View;
-    [SerializeField] private LayerMask _enemyLayer ,_groundLayer;
-    public float _usingTime;
+    [SerializeField] private int _ignoreLayer;
+    [SerializeField] private int _playerLayer;
+    public bool isActive { get; private set; }
+    private NotifyValue<Vector2> _movement = new NotifyValue<Vector2>();
+    private Player _player;
+    public event Action HideEvent;
 
-    private void OnEnable()
+    public void Enable()
     {
-        _mainGimicScript.OnActive_Trans += OnTransparent;
+        isActive = true;
+        _movement.OnValueChanged += HandleMoveChanged;
     }
 
-    private void OnTransparent()
+    private void HandleMoveChanged(Vector2 prev, Vector2 next)
     {
-        float time = Time.deltaTime / _usingTime;
-        while(time != 1)
+        if (next.x == 0)
         {
-            Physics.IgnoreLayerCollision(_enemy_View.layer, (int)_groundLayer, false);      
-            Physics.IgnoreLayerCollision(_enemy_View.layer, (int)_enemyLayer, true);    //발각을 어떻게 하냐에 따라 달라짐
+            _player.gameObject.layer = _ignoreLayer;
+            HideEvent?.Invoke();
+        }
+        else
+        {
+            _player.gameObject.layer = _playerLayer;
         }
     }
 
-    private void OnDisable()
+    private void Update()
     {
-        _mainGimicScript.OnActive_Trans -= OnTransparent;
+        if (isActive)
+            _movement.Value = _player.GetCompo<InputReader>().Movement;
+    }
+
+    public void Disable()
+    {
+        isActive = false;
+        _movement.OnValueChanged -= HandleMoveChanged;
+    }
+    private void OnDestroy()
+    {
+        if (isActive)
+            Disable();
+    }
+
+    public void Initialize(Player player)
+    {
+        _player = player;
+        _playerLayer = _player.gameObject.layer;
     }
 }

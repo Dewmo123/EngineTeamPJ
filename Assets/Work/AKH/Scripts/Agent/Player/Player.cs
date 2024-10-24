@@ -36,6 +36,7 @@ public class Player : Agent
         _stateMachine.AddState(PlayerEnum.AirRoll, new PlayerAirRollState(_stateMachine, "AirRoll", this));
         _stateMachine.Init(PlayerEnum.Idle,this);
         #endregion
+        GetCompo<Transparent>().Enable();
     }
 
 

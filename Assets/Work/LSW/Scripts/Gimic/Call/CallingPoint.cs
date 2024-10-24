@@ -11,7 +11,6 @@ public class CallingPoint : MonoBehaviour
     [SerializeField] private LayerMask _enemyLayer;
 
     private AudioSource _audioSource;
-    [SerializeField] private AudioClip _callSound;
 
     private void OnEnable()
     {
