@@ -8,6 +8,7 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
 
 
     [Header("Layers Settings:")]
+    [SerializeField] private int _enemyLayer;
     [SerializeField] private LayerMask _canRopeLayer;
 
     [Header("Main Camera:")]
@@ -111,6 +112,7 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
                 launchToPoint = false;
                 grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                 _grappleRope.enabled = true;
+                if (hit.collider.gameObject.layer == _enemyLayer) launchToPoint = true;
             }
         }
     }

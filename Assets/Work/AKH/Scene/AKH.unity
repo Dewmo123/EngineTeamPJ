@@ -2662,9 +2662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877e5d7d69aa6944c933ef54900a4aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyLayer: 8
   _canRopeLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   m_camera: {fileID: 1004107438}
   gunHolder: {fileID: 2088927588}
   gunPivot: {fileID: 1691519807}
