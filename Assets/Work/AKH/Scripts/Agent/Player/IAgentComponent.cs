@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPlayerComponent
+public interface IAgentComponent
 {
-    public void Initialize(Player player);
+    public void Initialize(Player agent);
 }

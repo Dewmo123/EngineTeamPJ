@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ImpulseFeedback : Feedback,IPlayerComponent
+public class ImpulseFeedback : Feedback
 {
-    private Player _player;
     private CinemachineImpulseSource _source;
-    [SerializeField] private float _multiplier;
+    [SerializeField] private float _value;
 
     private void Awake()
     {
@@ -15,15 +14,10 @@ public class ImpulseFeedback : Feedback,IPlayerComponent
     }
     public override void PlayFeedback()
     {
-        _source.GenerateImpulse(_player.jointCompo.distance* _multiplier);
+        _source.GenerateImpulse(_value);
     }
 
     public override void StopFeedback()
     {
-    }
-
-    public void Initialize(Player player)
-    {
-        _player = player;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationEndTrigger : MonoBehaviour, IPlayerComponent
+public class AnimationEndTrigger : MonoBehaviour, IAgentComponent
 {
     private Player _player;
     public void EndTriggerCall()
