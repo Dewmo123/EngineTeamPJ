@@ -20,7 +20,7 @@ public class Transparent : MonoBehaviour, IPlayerComponent
 
     private void HandleMoveChanged(Vector2 prev, Vector2 next)
     {
-        if (next.x == 0)
+        if (next == Vector2.zero)
         {
             _player.gameObject.layer = _ignoreLayer;
             HideEvent?.Invoke();
@@ -34,7 +34,9 @@ public class Transparent : MonoBehaviour, IPlayerComponent
     private void Update()
     {
         if (isActive)
-            _movement.Value = _player.GetCompo<InputReader>().Movement;
+        {
+            _movement.Value = _player.rbCompo.velocity;
+        }
     }
 
     public void Disable()

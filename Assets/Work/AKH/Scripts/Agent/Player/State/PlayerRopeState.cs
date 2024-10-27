@@ -36,8 +36,6 @@ public class PlayerRopeState : PlayerMoveState
             _rb.AddForce(Vector2.down * Mathf.Abs(_rb.velocity.y), ForceMode2D.Force);
         }
 
-        if (_player.movementCompo.isGround.Value)
-            HandleRopeCancel();
     }
     public override void Exit()
     {

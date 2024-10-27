@@ -18,3 +18,4 @@ MonoBehaviour:
   speed: 0
   size: 1.1
   waitTime: 0
+  myType: 4

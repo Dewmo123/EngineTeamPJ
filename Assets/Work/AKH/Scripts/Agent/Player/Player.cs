@@ -15,6 +15,7 @@ public class Player : Agent
     public UnityEvent GrappleEvent;
     
     private Dictionary<Type, IPlayerComponent> _components;
+    public PlayerEnum currentState => _stateMachine.GetCurType();
     protected override void Awake()
     {
         base.Awake();

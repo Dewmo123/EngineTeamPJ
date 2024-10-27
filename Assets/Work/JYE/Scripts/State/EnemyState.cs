@@ -35,5 +35,5 @@ public class EnemyState
 
 public enum EnemyStateType
 {
-    Stop, Move, MoveIdle, Die, Look
+    Stop, Move, MoveIdle, Die, Look, Hit
 }

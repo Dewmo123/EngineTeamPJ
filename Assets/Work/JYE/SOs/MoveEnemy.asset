@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: MoveEnemy
   m_EditorClassIdentifier: 
   target: 0
+  boom: 0
   color: {r: 0.6080961, g: 0, b: 1, a: 1}
   speed: 2
   size: 1
   waitTime: 1
+  myType: 1

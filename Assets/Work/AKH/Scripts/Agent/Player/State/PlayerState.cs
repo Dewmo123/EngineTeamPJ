@@ -12,7 +12,8 @@ public enum PlayerEnum
     AirRoll,
     Dead,
     Attack,
-    Dash
+    Dash,
+    None
 }
 public abstract class PlayerState
 {

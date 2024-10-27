@@ -6,6 +6,6 @@ public class LookEnemy : Enemy
 {
     protected override void Type()
     {
-        _stateMachine.ChangeState(EnemyStateType.Look);
+        _stateMachine.ChangeState(enemyType.myType);
     }
 }

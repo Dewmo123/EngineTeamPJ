@@ -17,5 +17,7 @@ public class EnemySO : ScriptableObject
 
     public float waitTime; //다시 움직이기 위해 기다릴 시간
 
+    public EnemyStateType myType;
+
     //각도 추가할 것
 }

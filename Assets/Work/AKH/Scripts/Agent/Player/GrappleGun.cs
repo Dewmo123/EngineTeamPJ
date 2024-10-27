@@ -112,7 +112,11 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
                 launchToPoint = false;
                 grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                 _grappleRope.enabled = true;
-                if (hit.collider.gameObject.layer == _enemyLayer) launchToPoint = true;
+                if (hit.collider.gameObject.layer == _enemyLayer)
+                {
+                    hit.collider.GetComponent<Enemy>().Hit();
+                    launchToPoint = true;
+                }
             }
         }
     }

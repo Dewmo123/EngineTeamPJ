@@ -18,7 +18,7 @@ public class MoveEnemy : Enemy
 
     protected override void Type()
     {
-        _stateMachine.ChangeState(EnemyStateType.Move);
+        _stateMachine.ChangeState(enemyType.myType);
 
         speed = enemyType.speed; //¼Óµµ
 

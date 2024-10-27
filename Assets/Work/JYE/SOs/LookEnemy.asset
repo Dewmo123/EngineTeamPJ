@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: LookEnemy
   m_EditorClassIdentifier: 
   target: 0
-  type: 0
+  boom: 0
   color: {r: 0, g: 0.14121675, b: 1, a: 1}
   speed: 0
   size: 1
   waitTime: 0
-  movePoint1: {fileID: 0}
-  movePoint2: {fileID: 0}
+  myType: 4

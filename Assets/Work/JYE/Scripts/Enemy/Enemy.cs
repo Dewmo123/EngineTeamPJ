@@ -36,6 +36,7 @@ public abstract class Enemy : MonoBehaviour
         _stateMachine.AddState(EnemyStateType.Move, new WalkEnemyState(_stateMachine,"Move",this));
         _stateMachine.AddState(EnemyStateType.MoveIdle, new WalkIdleEnemyState(_stateMachine,"Idle",this));
         _stateMachine.AddState(EnemyStateType.Die, new DieEnemyState(_stateMachine,"Die",this));
+        _stateMachine.AddState(EnemyStateType.Hit, new HitEnemyState(_stateMachine,"Hit",this));
         _stateMachine.Init(EnemyStateType.Stop, this);
         Setting();
     }
@@ -49,12 +50,18 @@ public abstract class Enemy : MonoBehaviour
         }
         Boom();
     }
-
+    public void EndTriggerCalled()
+    {
+        _stateMachine.currentState.AnimationEndTrigger();
+    }
     private void DieEnemy()
     {
         _stateMachine.ChangeState(EnemyStateType.Die);
     }
-
+    public void Hit()
+    {
+        _stateMachine.ChangeState(EnemyStateType.Hit);
+    }
     public virtual void EnemyDie()
     {
         Destroy(gameObject); //바꿀 때 MoveEnemy의 EnemyDie도 같이
