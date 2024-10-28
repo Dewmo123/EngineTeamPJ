@@ -1,47 +1,60 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class BeCalledPoint : MonoBehaviour
 {
-    public float gatherSpeed;
-    [SerializeField] private GameObject _callingPoint;
-    private CallingPoint _callingPointScr;
-    private bool notCall = true;
+    [SerializeField] private MainGimicScript _mainGimicScript;
 
-    private void Awake()
+    private Vector3 originPos;
+    private bool moveToTarget = false;
+    private bool moveToBack = false;
+
+    [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private GameObject[] _enemy;
+    [SerializeField] private Transform[] _backPos;
+    [SerializeField] private EnemySO enemySO;
+
+    private void OnEnable()
     {
-        _callingPointScr = GetComponentInChildren<CallingPoint>();
+        _mainGimicScript.OnActive_Call += Call;
     }
 
-    public void Call()
+    private void Call()
     {
-        //base._audioSource.Play(_callSound);
-        notCall = false;
-        if(!notCall)
-            StartCoroutine(enemyGather());
+        moveToTarget = true;
     }
 
-    private IEnumerator enemyGather()
+    void Update()
     {
-        foreach(GameObject enemy in _callingPointScr._enemies)
+        if (moveToTarget)
         {
-            enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, transform.position, gatherSpeed);
+            for(int i = 0; i < _enemy.Length; i++)
+            {
+                _enemy[i].transform.position = Vector2.MoveTowards(_enemy[i].transform.position, transform.position, enemySO.speed * Time.deltaTime);
+            }
         }
-        yield return null;
+
+        if(moveToBack && !moveToTarget)
+        {
+            for (int i = 0; i < _enemy.Length; i++)
+            {
+                _enemy[i].transform.position = Vector2.MoveTowards(_enemy[i].transform.position, _backPos[i].transform.position, enemySO.speed * Time.deltaTime);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        foreach (GameObject enemy in _callingPointScr._enemies)
+        if (_enemyLayer == (_enemyLayer | (1 << collision.gameObject.layer)))
         {
-            if(collision.gameObject == enemy)
-            {
-                notCall = false;
-            }
+            moveToTarget = false;
+            moveToBack = true;
         }
-        //base._audioSource.Pause(_callSound);
+    }
+
+    private void OnDisable()
+    {
+        _mainGimicScript.OnActive_Call -= Call;
     }
 }
