@@ -30,7 +30,7 @@ public abstract class PlayerMoveState : PlayerState
     {
         Vector2 move = new Vector2(_input.Movement.x * _player.movementCompo.moveSpeed, _player.rbCompo.velocity.y);
         _player.Move(move);
-        if (_player.rbCompo.velocity.y < 0)
+        if (!_player.movementCompo.isGround.Value&&_player.rbCompo.velocity.y<0.01f)
             _stateMachine.ChangeState(PlayerEnum.Fall);
     }
     protected abstract void HandleDashEvent();
