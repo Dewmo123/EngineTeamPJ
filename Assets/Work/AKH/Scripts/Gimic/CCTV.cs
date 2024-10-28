@@ -127,7 +127,7 @@ public class CCTV : MonoBehaviour
 
     private void LateUpdate()
     {
-        //DrawFieldOfView();
+        DrawFieldOfView();
     }
 
     private void DrawFieldOfView()
