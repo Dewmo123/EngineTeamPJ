@@ -6,6 +6,6 @@ public class StopEnemy : Enemy
 {
     protected override void Type()
     {
-        _stateMachine.ChangeState(EnemyStateType.Stop);
+        _stateMachine.ChangeState(enemyType.myType);
     }
 }

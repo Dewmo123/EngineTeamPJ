@@ -80,6 +80,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseGimic"",
+                    ""type"": ""Button"",
+                    ""id"": ""79899ece-4263-4151-994a-4f0709bd4af3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -170,6 +179,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c12a0d71-345c-4eb3-bb32-b1e43b643b12"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseGimic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -184,6 +204,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Action_MousePosition = m_Action.FindAction("MousePosition", throwIfNotFound: true);
         m_Action_Rope = m_Action.FindAction("Rope", throwIfNotFound: true);
         m_Action_Dash = m_Action.FindAction("Dash", throwIfNotFound: true);
+        m_Action_UseGimic = m_Action.FindAction("UseGimic", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Action_MousePosition;
     private readonly InputAction m_Action_Rope;
     private readonly InputAction m_Action_Dash;
+    private readonly InputAction m_Action_UseGimic;
     public struct ActionActions
     {
         private @PlayerInput m_Wrapper;
@@ -261,6 +283,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @MousePosition => m_Wrapper.m_Action_MousePosition;
         public InputAction @Rope => m_Wrapper.m_Action_Rope;
         public InputAction @Dash => m_Wrapper.m_Action_Dash;
+        public InputAction @UseGimic => m_Wrapper.m_Action_UseGimic;
         public InputActionMap Get() { return m_Wrapper.m_Action; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -288,6 +311,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @UseGimic.started += instance.OnUseGimic;
+            @UseGimic.performed += instance.OnUseGimic;
+            @UseGimic.canceled += instance.OnUseGimic;
         }
 
         private void UnregisterCallbacks(IActionActions instance)
@@ -310,6 +336,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @UseGimic.started -= instance.OnUseGimic;
+            @UseGimic.performed -= instance.OnUseGimic;
+            @UseGimic.canceled -= instance.OnUseGimic;
         }
 
         public void RemoveCallbacks(IActionActions instance)
@@ -335,5 +364,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnMousePosition(InputAction.CallbackContext context);
         void OnRope(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnUseGimic(InputAction.CallbackContext context);
     }
 }

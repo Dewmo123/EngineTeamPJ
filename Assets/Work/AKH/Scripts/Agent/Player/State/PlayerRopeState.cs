@@ -31,13 +31,11 @@ public class PlayerRopeState : PlayerMoveState
         {
             _player.rbCompo.AddForce(move, ForceMode2D.Force);
         }
-        if(_player.transform.position.y>= _gun.grapplePoint.y)
+        if(_player.transform.position.y>= _gun.grapplePoint.y*0.8f)
         {
-            _rb.AddForce(Vector2.down * Mathf.Abs(_rb.velocity.y*0.6F), ForceMode2D.Force);
+            _rb.AddForce(Vector2.down * Mathf.Abs(_rb.velocity.y), ForceMode2D.Force);
         }
 
-        if (_player.movementCompo.isGround.Value)
-            HandleRopeCancel();
     }
     public override void Exit()
     {

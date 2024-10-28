@@ -15,6 +15,7 @@ public class Player : Agent
     public UnityEvent GrappleEvent;
     
     private Dictionary<Type, IPlayerComponent> _components;
+    public PlayerEnum currentState => _stateMachine.GetCurType();
     protected override void Awake()
     {
         base.Awake();
@@ -36,6 +37,7 @@ public class Player : Agent
         _stateMachine.AddState(PlayerEnum.AirRoll, new PlayerAirRollState(_stateMachine, "AirRoll", this));
         _stateMachine.Init(PlayerEnum.Idle,this);
         #endregion
+        GetCompo<Transparent>().Enable();
     }
 
 

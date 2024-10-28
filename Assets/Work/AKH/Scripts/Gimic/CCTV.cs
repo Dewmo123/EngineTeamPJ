@@ -113,6 +113,7 @@ public class CCTV : MonoBehaviour
                 if (!Physics2D.Raycast(HolderPosition, direction.normalized, direction.magnitude, _obstacleMask))
                 {
                     //플레이어 발견
+                    gameObject.SetActive(false);
                 }
             }
         }
@@ -126,7 +127,7 @@ public class CCTV : MonoBehaviour
 
     private void LateUpdate()
     {
-        DrawFieldOfView();
+        //DrawFieldOfView();
     }
 
     private void DrawFieldOfView()

@@ -13,6 +13,15 @@ public class PlayerStateMachine
         ChangeState(start);
         _player = player;
     }
+    public PlayerEnum GetCurType()
+    {
+        foreach(var value in stateDictionary)
+        {
+            if (value.Value == currentState)
+                return value.Key;
+        }
+        return PlayerEnum.None;
+    }
     public void ChangeState(PlayerEnum type)
     {
         if (currentState != null)
