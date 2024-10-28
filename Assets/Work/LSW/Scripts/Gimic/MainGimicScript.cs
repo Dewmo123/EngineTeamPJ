@@ -6,12 +6,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem.iOS;
 
-public enum MyGimic { Door, Call, Light, Trans }
+public enum MyGimic { Door, Call, Light }
 public class MainGimicScript : MonoBehaviour
 {
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] MonoBehaviour _myGimicScript;
-    public Action OnActive_door, OnActive_Call, OnActive_Light, OnActive_Trans;
+    public Action OnActive_door, OnActive_Call, OnActive_Light;
     public MyGimic myGimic;
     [SerializeField] private Player_UseGimic _playerUseGimic;
 
@@ -31,10 +31,6 @@ public class MainGimicScript : MonoBehaviour
 
                 case MyGimic.Light:
                     OnActive_Light?.Invoke();
-                    break;
-
-                case MyGimic.Trans:
-                    OnActive_Trans?.Invoke();
                     break;
             }
         }

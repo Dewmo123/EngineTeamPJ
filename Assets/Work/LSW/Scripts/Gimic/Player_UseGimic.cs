@@ -5,24 +5,32 @@ using UnityEngine.Events;
 
 public class Player_UseGimic : MonoBehaviour
 {
-    [SerializeField] private InputReader _inputReader;
     public LayerMask _gimicLayer;
-    public bool canGimic = false;
-    public UnityEvent OnGimic;
+    public bool canGimic;
+    private GameObject _nowGimic;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.layer & (1 << _gimicLayer)) != 0)
+        if (_gimicLayer == (_gimicLayer | (1 << collision.gameObject.layer)))
         {
-            _inputReader.GimicEvent += collision.GetComponent<MainGimicScript>().UseGimic;
+            canGimic = true;
+            _nowGimic = collision.gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if ((collision.gameObject.layer & (1 << _gimicLayer)) != 0)
+        if (_gimicLayer == (_gimicLayer | (1 << collision.gameObject.layer)))
         {
-            _inputReader.GimicEvent -= collision.GetComponent<MainGimicScript>().UseGimic;
+            canGimic = false;
+        }
+    }
+
+    private void Update()
+    {
+        if(canGimic && Input.GetKeyDown(KeyCode.F))
+        {
+            _nowGimic.GetComponent<MainGimicScript>().UseGimic();
         }
     }
 }
