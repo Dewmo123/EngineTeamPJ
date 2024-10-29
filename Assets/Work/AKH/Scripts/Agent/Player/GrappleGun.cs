@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GrappleGun : MonoBehaviour, IPlayerComponent
+public class GrappleGun : MonoBehaviour, IAgentComponent
 {
     private Player _player;
 

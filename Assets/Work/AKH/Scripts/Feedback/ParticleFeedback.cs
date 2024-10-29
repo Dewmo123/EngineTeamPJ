@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleFeedback : Feedback,IPlayerComponent
+public class ParticleFeedback : Feedback,IAgentComponent
 {
     [SerializeField] private PoolTypeSO _particleType;
     [SerializeField] private PoolManagerSO _pool;

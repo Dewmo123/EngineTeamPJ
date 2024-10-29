@@ -14,15 +14,15 @@ public class Player : Agent
 
     public UnityEvent GrappleEvent;
     
-    private Dictionary<Type, IPlayerComponent> _components;
+    private Dictionary<Type, IAgentComponent> _components;
     public PlayerEnum currentState => _stateMachine.GetCurType();
     protected override void Awake()
     {
         base.Awake();
         jointCompo = GetComponent<SpringJoint2D>();
         #region SetIPlayerCompo
-        _components = new Dictionary<Type, IPlayerComponent>();
-        GetComponentsInChildren<IPlayerComponent>().ToList().ForEach(x => _components.Add(x.GetType(), x));
+        _components = new Dictionary<Type, IAgentComponent>();
+        GetComponentsInChildren<IAgentComponent>().ToList().ForEach(x => _components.Add(x.GetType(), x));
         _components.Add(_inputReader.GetType(), _inputReader);
         _components.Values.ToList().ForEach(compo => compo.Initialize(this));
         #endregion
@@ -68,7 +68,7 @@ public class Player : Agent
     public T GetCompo<T>() where T : class
     {
         Type t = typeof(T);
-        if(_components.TryGetValue(t,out IPlayerComponent compo))
+        if(_components.TryGetValue(t,out IAgentComponent compo))
         {
             return compo as T;
         }

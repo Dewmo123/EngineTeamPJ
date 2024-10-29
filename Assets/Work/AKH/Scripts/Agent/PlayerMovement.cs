@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IPlayerComponent
+public class PlayerMovement : MonoBehaviour, IAgentComponent
 {
     private Player _player;
 

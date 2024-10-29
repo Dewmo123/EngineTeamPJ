@@ -8,7 +8,7 @@ using UnityEngine.InputSystem.Interactions;
 
 [CreateAssetMenu(menuName = "SO/PlayerInput")]
 
-public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
+public class InputReader : ScriptableObject, IActionActions, IAgentComponent
 {
     private PlayerInput _playerInput;
 
