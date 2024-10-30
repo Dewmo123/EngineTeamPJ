@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BeCalledPoint : MonoBehaviour
 {
     [SerializeField] private MainGimicScript _mainGimicScript;
 
-    private Vector3 originPos;
     private bool moveToTarget = false;
-    private bool moveToBack = false;
 
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private GameObject[] _enemy;
-    [SerializeField] private Transform[] _backPos;
     [SerializeField] private EnemySO enemySO;
+    [SerializeField] private float _disableTime;
+
+    private Transform[] OriginmovePoint;
 
     private void OnEnable()
     {
@@ -23,34 +24,36 @@ public class BeCalledPoint : MonoBehaviour
     private void Call()
     {
         moveToTarget = true;
+        if (moveToTarget)
+        {
+            for (int i = 0; i < _enemy.Length; i++)
+            {
+                OriginmovePoint[i] = _enemy[i].transform;
+                _enemy[i].transform.position = Vector2.Lerp(_enemy[i].transform.position, transform.position, enemySO.speed);
+            }
+            Invoke("Disable", _disableTime);
+        }
     }
 
     void Update()
     {
         if (moveToTarget)
         {
-            for(int i = 0; i < _enemy.Length; i++)
-            {
-                _enemy[i].transform.position = Vector2.MoveTowards(_enemy[i].transform.position, transform.position, enemySO.speed * Time.deltaTime);
-            }
-        }
-
-        if(moveToBack && !moveToTarget)
-        {
             for (int i = 0; i < _enemy.Length; i++)
             {
-                _enemy[i].transform.position = Vector2.MoveTowards(_enemy[i].transform.position, _backPos[i].transform.position, enemySO.speed * Time.deltaTime);
+                _enemy[i].transform.position = Vector2.Lerp(_enemy[i].transform.position, transform.position, enemySO.speed);
             }
+            Invoke("Disable", _disableTime);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Disable()
     {
-        if (_enemyLayer == (_enemyLayer | (1 << collision.gameObject.layer)))
+        for (int i = 0; i < _enemy.Length; i++)
         {
-            moveToTarget = false;
-            moveToBack = true;
+            _enemy[i].transform.position = Vector2.Lerp(_enemy[i].transform.position, _enemy[i].transform.position, enemySO.speed);
         }
+        moveToTarget = false;
     }
 
     private void OnDisable()
