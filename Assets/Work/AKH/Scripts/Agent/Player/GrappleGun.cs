@@ -11,8 +11,7 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
     [SerializeField] private int _enemyLayer;
     [SerializeField] private LayerMask _canRopeLayer;
 
-    [Header("Main Camera:")]
-    public Camera m_camera;
+    private Camera m_camera;
 
     [Header("Transform Ref:")]
     public Transform gunHolder;
@@ -52,6 +51,7 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
     {
         _grappleRope.enabled = false;
         _springJoint2D.enabled = false;
+        m_camera = Camera.main;
     }
 
 

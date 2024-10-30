@@ -212,10 +212,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: View
       objectReference: {fileID: 0}
-    - target: {fileID: 3530120986934604148, guid: 8c63e7a94de1cdf40b449663b8d7faf2, type: 3}
-      propertyPath: viewRadius
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3584625075852239861, guid: 8c63e7a94de1cdf40b449663b8d7faf2, type: 3}
       propertyPath: m_LocalScale.x
       value: 0

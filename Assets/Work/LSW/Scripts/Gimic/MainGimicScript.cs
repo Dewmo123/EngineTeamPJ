@@ -9,15 +9,18 @@ using UnityEngine.InputSystem.iOS;
 public enum MyGimic { Door, Call, Light }
 public class MainGimicScript : MonoBehaviour
 {
-    public Action OnActive_Door, OnActive_Call, OnActive_Light;
+    [SerializeField] private LayerMask _playerLayer;
+    [SerializeField] MonoBehaviour _myGimicScript;
+    public Action OnActive_door, OnActive_Call, OnActive_Light;
     public MyGimic myGimic;
+    [SerializeField] private Player_UseGimic _playerUseGimic;
 
     public void UseGimic()
     {
         switch (myGimic)
         {
             case MyGimic.Door:
-                OnActive_Door?.Invoke();
+                OnActive_door?.Invoke();
                 break;
 
             case MyGimic.Call:

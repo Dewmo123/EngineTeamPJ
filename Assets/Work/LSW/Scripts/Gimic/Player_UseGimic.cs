@@ -1,36 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player_UseGimic : MonoBehaviour
+public class Player_UseGimic : MonoBehaviour,IAgentComponent
 {
+    private Player _player;
     public LayerMask _gimicLayer;
-    public bool canGimic;
-    private GameObject _nowGimic;
+    [SerializeField] private float _length;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void HandleInteraction()
     {
-        if (_gimicLayer == (_gimicLayer | (1 << collision.gameObject.layer)))
-        {
-            canGimic = true;
-            _nowGimic = collision.gameObject;
-        }
+        Collider2D gimic = Physics2D.OverlapCircle(transform.position, _length, _gimicLayer);
+        if(gimic)
+            gimic.GetComponent<MainGimicScript>().UseGimic();
+    }
+    public void Initialize(Player agent)
+    {
+        _player = agent;
+        _player.GetCompo<InputReader>().GimicEvent += HandleInteraction;
+    }
+    private void OnDestroy()
+    {
+        _player.GetCompo<InputReader>().GimicEvent -= HandleInteraction;
+    }
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, _length);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (_gimicLayer == (_gimicLayer | (1 << collision.gameObject.layer)))
-        {
-            canGimic = false;
-        }
-    }
-
-    private void Update()
-    {
-        if(canGimic && Input.GetKeyDown(KeyCode.F))
-        {
-            _nowGimic.GetComponent<MainGimicScript>().UseGimic();
-        }
-    }
+#endif
 }

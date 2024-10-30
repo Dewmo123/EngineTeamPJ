@@ -45,7 +45,7 @@ public class CCTV : MonoBehaviour
 
     public event Action<float> OnWeaponHolderRotate;
 
-    private Collider2D[] _enemiesInView;
+    [SerializeField]private Collider2D[] _enemiesInView;
 
     private MeshFilter _meshFilter;
     private Mesh _viewMesh;
@@ -106,7 +106,6 @@ public class CCTV : MonoBehaviour
         {
             Transform enemy = _enemiesInView[i].transform;
             Vector3 direction = enemy.position - HolderPosition;
-
             //시야범위안에 있다.
             if (Vector2.Angle(_weaponHolder.right, direction.normalized) < viewAngle * 0.5f)
             {
@@ -188,7 +187,6 @@ public class CCTV : MonoBehaviour
                 triangles[tIndex + 2] = i + 2;
             }
         }
-
         _viewMesh.Clear();
         _viewMesh.vertices = vertices;
         _viewMesh.triangles = triangles;
