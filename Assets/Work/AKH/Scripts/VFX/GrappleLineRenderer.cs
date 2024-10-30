@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrappleLineRenderer : MonoBehaviour, IPlayerComponent
+public class GrappleLineRenderer : MonoBehaviour, IAgentComponent
 {
     private LineRenderer _lineRenderer;
     private Player _player;

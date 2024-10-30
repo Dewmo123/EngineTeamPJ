@@ -10,7 +10,7 @@ public class HitEnemyState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        _enemy.view.enabled = false;
+        _enemy.view.gameObject.SetActive(false);
     }
 
     public override void UpdateState()
@@ -22,6 +22,6 @@ public class HitEnemyState : EnemyState
     public override void Exit()
     {
         base.Exit();
-        _enemy.view.enabled = true;
+        _enemy.view.gameObject.SetActive(true);
     }
 }

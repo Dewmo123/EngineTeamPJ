@@ -1,7 +1,7 @@
 using GGMPool;
 using UnityEngine;
 
-public class AgentVFX : MonoBehaviour, IPlayerComponent
+public class AgentVFX : MonoBehaviour, IAgentComponent
 {
     [SerializeField] private bool _canGenerateAfterImage;
     [SerializeField] private float _generateTerm;
