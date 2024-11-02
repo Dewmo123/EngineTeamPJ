@@ -37,6 +37,7 @@ public abstract class Enemy : MonoBehaviour
         _stateMachine.AddState(EnemyStateType.MoveIdle, new WalkIdleEnemyState(_stateMachine,"Idle",this));
         _stateMachine.AddState(EnemyStateType.Die, new DieEnemyState(_stateMachine,"Die",this));
         _stateMachine.AddState(EnemyStateType.Hit, new HitEnemyState(_stateMachine,"Hit",this));
+        _stateMachine.AddState(EnemyStateType.GoToPoint, new GoPointEnemyState(_stateMachine, "Move", this));
         _stateMachine.Init(EnemyStateType.Stop, this);
         Setting();
     }
@@ -66,7 +67,14 @@ public abstract class Enemy : MonoBehaviour
     {
         Destroy(gameObject); //바꿀 때 MoveEnemy의 EnemyDie도 같이
     }
-
+    public void GoToPoint(Transform point)
+    {
+        Debug.Log(point.position);
+        Debug.Log(transform.position);
+        movePoint1 = transform;
+        movePoint2 = point;
+        _stateMachine.ChangeState(EnemyStateType.GoToPoint);
+    }
     private IEnumerator Boom() //죽을 때
     {
         if (boom) //자폭일 때 플레이어가 1.5초 지나고도 자폭 범위안에 있는지
