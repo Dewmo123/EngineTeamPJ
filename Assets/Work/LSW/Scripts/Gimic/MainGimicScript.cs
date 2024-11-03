@@ -17,22 +17,19 @@ public class MainGimicScript : MonoBehaviour
 
     public void UseGimic()
     {
-        if(_playerUseGimic.canGimic)
+        switch (myGimic)
         {
-            switch (myGimic)
-            {
-                case MyGimic.Door:
-                    OnActive_door?.Invoke();
-                    break;
+            case MyGimic.Door:
+                OnActive_door?.Invoke();
+                break;
 
-                case MyGimic.Call:
-                    OnActive_Call?.Invoke();
-                    break;
+            case MyGimic.Call:
+                OnActive_Call?.Invoke();
+                break;
 
-                case MyGimic.Light:
-                    OnActive_Light?.Invoke();
-                    break;
-            }
+            case MyGimic.Light:
+                OnActive_Light?.Invoke();
+                break;
         }
 
     }

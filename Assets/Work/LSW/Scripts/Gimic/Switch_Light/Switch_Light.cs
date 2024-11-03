@@ -21,13 +21,15 @@ public class Switch_Light : MonoBehaviour
         {
             _dark.SetActive(true);
             _onDark = true;
-            _player.layer = _playerTransLayer;
+            _player.layer = (int)Mathf.Log(_playerTransLayer.value, 2);
+            
         }
-        else
+        else if(_onDark)
         {
             _dark.SetActive(false);
             _onDark = false;
-            _player.layer = _playerOriginLayer;
+            _player.layer = (int)Mathf.Log(_playerOriginLayer.value, 2);
+
         }
     }
 

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,14 +10,19 @@ public class Door_Gimic : MonoBehaviour
     [SerializeField] private MainGimicScript _mainGimicScript;
 
     [SerializeField] private GameObject _door;
-    [SerializeField] private float _doorSpeed, _IsclosingTime;
+    [SerializeField] private float _time;
     [SerializeField] private Transform _goalPos;
+    private Vector2 _origin;
     private Vector2 originPos;
 
     //private AudioSource _audioSource;
     //public AudioClip _switchSound, _doorOpenSound, _doorCloseSound;
 
     private bool IsOpen;
+    private void Awake()
+    {
+        _origin = _door.transform.position;
+    }
 
     private void OnEnable()
     {
@@ -32,34 +38,25 @@ public class Door_Gimic : MonoBehaviour
     private void TryOpen()
     {
         if(!IsOpen)
-            StartCoroutine(Open());
+            Open();
         else
-            StartCoroutine(Close());
+            Close();
     }
 
-    private IEnumerator Open()
+    private void Open()
     {
         //_audioSource.PlayOneShot(_switchSound);
         //_audioSource.PlayOneShot(_doorOpenSound);
 
-        float time = Time.deltaTime / _doorSpeed;
-        while(time >= 1)
-            _door.transform.position = Vector2.Lerp(originPos, _goalPos.position, time);
-
+        _door.transform.DOMove(_goalPos.position,_time);
         IsOpen = true;
-        yield return new WaitForSeconds(_IsclosingTime);
     }
 
-    private IEnumerator Close()
+    private void Close()
     {
         //_audioSource.PlayOneShot(_doorCloseSound);
-
-        float time = Time.deltaTime / _doorSpeed;
-        while (time >= 1)
-            _door.transform.position = Vector2.Lerp(_goalPos.position, originPos, time);
-
+        _door.transform.DOMove(_origin, _time);
         IsOpen = false;
-        yield return null;
     }
 
     private void OnDisable()
