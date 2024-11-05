@@ -12,7 +12,7 @@ public class Switch_Light : MonoBehaviour
 
     private void OnEnable()
     {
-        _mainGimicScript.OnActive_Light += OnDarkLight;
+        _mainGimicScript.AddListener(OnDarkLight);
     }
 
     private void OnDarkLight()
@@ -35,6 +35,6 @@ public class Switch_Light : MonoBehaviour
 
     private void OnDisable()
     {
-        _mainGimicScript.OnActive_Light -= OnDarkLight;
+        _mainGimicScript.RemoveListener(OnDarkLight);
     }
 }

@@ -16,7 +16,7 @@ public class BeCalledPoint : MonoBehaviour
 
     private void OnEnable()
     {
-        _mainGimicScript.OnActive_Call += Call;
+        _mainGimicScript.AddListener(Call);
     }
 
     private void Call()
@@ -27,14 +27,14 @@ public class BeCalledPoint : MonoBehaviour
 
     private IEnumerator WaitArrive()
     {
-        _mainGimicScript.OnActive_Call -= Call;
+        _mainGimicScript.RemoveListener(Call);
         yield return new WaitForSeconds(_enemy.moveDuraion * 2.5f);
-        _mainGimicScript.OnActive_Call += Call;
+        _mainGimicScript.AddListener(Call);
     }
 
     private void OnDisable()
     {
-        if (_mainGimicScript.OnActive_Call != null)
-            _mainGimicScript.OnActive_Call -= Call;
+        if (_mainGimicScript.useGimicEvent != null)
+            _mainGimicScript.RemoveListener(Call);
     }
 }
