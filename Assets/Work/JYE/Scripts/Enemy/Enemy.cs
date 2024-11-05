@@ -15,12 +15,14 @@ public abstract class Enemy : MonoBehaviour
     private bool boom; //자폭 구별
     private float radius = 1.5f; //자폭 반지름
     [SerializeField] private LayerMask PlayerLayer; //플레이어 레이어 (자폭)
+    public float moveDuraion;
     public bool playerDie = false; //플레이어 사망 (자폭) (true일 때 플레이어 사망 해야함)
 
     public float speed; //속도
     public float waitTime; //다시 움직이기 위해 기다릴 시간
     public Transform movePoint1; // 도착 / 출발 지점
     public Transform movePoint2; //1이 오른쪽, 2가 왼쪽
+    public Vector3 originPos;
 
     public CCTV view;
 
@@ -37,6 +39,7 @@ public abstract class Enemy : MonoBehaviour
         _stateMachine.AddState(EnemyStateType.MoveIdle, new WalkIdleEnemyState(_stateMachine,"Idle",this));
         _stateMachine.AddState(EnemyStateType.Die, new DieEnemyState(_stateMachine,"Die",this));
         _stateMachine.AddState(EnemyStateType.Hit, new HitEnemyState(_stateMachine,"Hit",this));
+        _stateMachine.AddState(EnemyStateType.GoToPoint, new GoPointEnemyState(_stateMachine, "Move", this));
         _stateMachine.Init(EnemyStateType.Stop, this);
         Setting();
     }
@@ -66,7 +69,18 @@ public abstract class Enemy : MonoBehaviour
     {
         Destroy(gameObject); //바꿀 때 MoveEnemy의 EnemyDie도 같이
     }
-
+    public void GoToPoint(Transform point)
+    {
+        originPos = transform.position;
+        movePoint2 = point;
+        StartCoroutine(Wait());
+    }
+    private IEnumerator Wait()
+    {
+        _stateMachine.ChangeState(EnemyStateType.GoToPoint);
+        yield return new WaitForSeconds(15);
+        _stateMachine.ChangeState(EnemyStateType.GoToPoint);
+    }
     private IEnumerator Boom() //죽을 때
     {
         if (boom) //자폭일 때 플레이어가 1.5초 지나고도 자폭 범위안에 있는지

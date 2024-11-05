@@ -21,7 +21,7 @@ public class GrappleLineRenderer : MonoBehaviour, IAgentComponent
     private void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(_input.Mouse);
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, (Vector3)mousePos - transform.position, 1000, _canRopeLayer);
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, (Vector3)mousePos - transform.position, 9, _canRopeLayer);
         if (ray)
         {
             _lineRenderer.enabled = true;

@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 3893483582694214653}
   - component: {fileID: 6295040942185780547}
   - component: {fileID: 1157014631591422322}
+  - component: {fileID: 9018572130521701326}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -525,7 +526,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3951222272390919962}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 54289904ffc514341b118a607c075056, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -567,7 +568,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 54289904ffc514341b118a607c075056, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -596,7 +597,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: -4.52, y: -0.26}
   m_AutoConfigureDistance: 1
-  m_Distance: 30.62
+  m_Distance: 1.0119289
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!114 &1157014631591422322
@@ -612,7 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ignoreLayer: 9
-  _playerLayer: 0
+  _playerLayer: 6
   HideEvent:
     m_PersistentCalls:
       m_Calls:
@@ -643,6 +644,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9018572130521701326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3951222272390919962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2cad6f737b856438c3cc1edfc53d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gimicLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  _length: 2
 --- !u!1 &5258010140648024928
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50820be2e8c0f654799e705b69f414e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _alpha: 0
+  _alpha: 0.2
 --- !u!1 &6328753777363745715
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,14 +935,13 @@ MonoBehaviour:
   _canRopeLayer:
     serializedVersion: 2
     m_Bits: 384
-  m_camera: {fileID: 0}
   gunHolder: {fileID: 8826105192454134164}
   gunPivot: {fileID: 192237468451265630}
   firePoint: {fileID: 7731448067068220061}
   rotateOverTime: 1
   rotationSpeed: 20.6
   hasMaxDistance: 1
-  maxDistnace: 20
+  maxDistnace: 9
   launchToPoint: 0
   launchType: 0
   launchSpeed: 5

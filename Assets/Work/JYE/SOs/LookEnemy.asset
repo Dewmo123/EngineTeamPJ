@@ -15,7 +15,7 @@ MonoBehaviour:
   target: 0
   boom: 0
   color: {r: 0, g: 0.14121675, b: 1, a: 1}
-  speed: 0
+  speed: 2
   size: 1
   waitTime: 0
   myType: 4
