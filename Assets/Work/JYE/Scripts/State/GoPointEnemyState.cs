@@ -52,12 +52,10 @@ public class GoPointEnemyState : EnemyState
     }
     private void StartMv1() //1위치에서 출발 할 때
     {
-        Debug.Log("StartMv1");
         _enemy.transform.DOMoveX(_enemy.movePoint2.position.x,_enemy.moveDuraion).SetEase(Ease.Linear);
     }
     private void StartMv2() //2위치에서 출발 할 때
     {
-        Debug.Log("StartMv2");
         _enemy.transform.DOMoveX(_enemy.originPos.x,_enemy.moveDuraion).SetEase(Ease.Linear);
     }
 }
