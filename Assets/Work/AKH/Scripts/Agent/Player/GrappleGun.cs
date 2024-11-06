@@ -47,6 +47,7 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
 
     [HideInInspector] public Vector2 grapplePoint;
     [HideInInspector] public Vector2 grappleDistanceVector;
+    private Collider2D _connectedCol;
     private void Start()
     {
         _grappleRope.enabled = false;
@@ -98,7 +99,12 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
             gunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
-
+    public void GoToPoint()
+    {
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, (grapplePoint-(Vector2)transform.position).normalized, 1000, _canRopeLayer);
+        SetGrapplePoint(ray);
+        launchToPoint = true;
+    }
     public void SetGrapplePoint()
     {
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
@@ -112,12 +118,27 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
                 launchToPoint = false;
                 grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                 _grappleRope.enabled = true;
+                _connectedCol = hit.collider;
                 if (hit.collider.gameObject.layer == _enemyLayer)
                 {
                     hit.collider.GetComponent<Enemy>().Hit();
                     launchToPoint = true;
                 }
             }
+        }
+    }
+    public void SetGrapplePoint(RaycastHit2D ray)
+    {
+        grapplePoint = ray.point;
+        _player.movementCompo.isRope = true;
+        launchToPoint = false;
+        grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+        _grappleRope.enabled = true;
+        _connectedCol = ray.collider;
+        if (ray.collider.gameObject.layer == _enemyLayer)
+        {
+            ray.collider.GetComponent<Enemy>().Hit();
+            launchToPoint = true;
         }
     }
 

@@ -53,7 +53,7 @@ public class PlayerRopeState : PlayerMoveState
 
     protected override void HandleJumpEvent()
     {
-        _player.GetCompo<GrappleGun>().launchToPoint = true;
+        _player.GetCompo<GrappleGun>().GoToPoint();
     }
 
     protected override void HandleDashEvent()

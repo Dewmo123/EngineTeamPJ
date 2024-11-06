@@ -5,6 +5,7 @@ using UnityEngine;
 public class GrappleLineRenderer : MonoBehaviour, IAgentComponent
 {
     private LineRenderer _lineRenderer;
+    private Renderer rend;
     private Player _player;
     private InputReader _input;
     [SerializeField] private LayerMask _canRopeLayer;
