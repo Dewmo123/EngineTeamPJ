@@ -1,16 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class Agent : MonoBehaviour
+public abstract class Player : MonoBehaviour
 {
     #region Components
     public Rigidbody2D rbCompo { get; private set; }
     public Animator animCompo { get; private set; }
     public PlayerMovement movementCompo { get; private set; }
     public SpriteRenderer rendererCompo { get; private set; }
+    public SpringJoint2D jointCompo { get; private set; }
+    protected Dictionary<Type, IPlayerComponent> _components;
+    [field: SerializeField] protected InputReader _inputReader;
     #endregion
+
+    public UnityEvent GrappleEvent;
 
     public event Action OnFlipEvent;
 
@@ -19,7 +26,23 @@ public abstract class Agent : MonoBehaviour
         rbCompo = GetComponent<Rigidbody2D>();
         animCompo = GetComponentInChildren<Animator>();
         rendererCompo = GetComponentInChildren<SpriteRenderer>();
-        movementCompo = GetComponent<PlayerMovement>();  
+        movementCompo = GetComponent<PlayerMovement>();
+        jointCompo = GetComponent<SpringJoint2D>();
+        #region SetIPlayerCompo
+        _components = new Dictionary<Type, IPlayerComponent>();
+        GetComponentsInChildren<IPlayerComponent>().ToList().ForEach(x => _components.Add(x.GetType(), x));
+        _components.Add(_inputReader.GetType(), _inputReader);
+        _components.Values.ToList().ForEach(compo => compo.Initialize(this));
+        #endregion
+    }
+    public T GetCompo<T>() where T : class
+    {
+        Type t = typeof(T);
+        if(_components.TryGetValue(t,out IPlayerComponent compo))
+        {
+            return compo as T;
+        }
+        return default;
     }
     #region Flip Charater
     public bool IsFacingRight()

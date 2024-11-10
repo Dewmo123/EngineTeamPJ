@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Transparent : MonoBehaviour, IAgentComponent
+public class Transparent : MonoBehaviour, IPlayerComponent
 {
     [SerializeField] private int _ignoreLayer;
     [SerializeField] private int _playerLayer;

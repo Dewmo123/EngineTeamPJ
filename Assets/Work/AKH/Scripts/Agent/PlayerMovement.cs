@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IAgentComponent
+public class PlayerMovement : MonoBehaviour, IPlayerComponent
 {
     private Player _player;
 
@@ -87,6 +87,11 @@ public class PlayerMovement : MonoBehaviour, IAgentComponent
     public void ShootRope()
     {
         _player.GetCompo<GrappleGun>().SetGrapplePoint();
+    }
+    public void ShootRope(Vector2 direction)
+    {
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, direction.normalized,100);
+        _player.GetCompo<GrappleGun>().SetGrapplePoint(ray);
     }
     public void EscapeRope()
     {

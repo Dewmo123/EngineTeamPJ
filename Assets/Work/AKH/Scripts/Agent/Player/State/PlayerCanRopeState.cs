@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCanRopeState : PlayerMoveState
 {
-    public PlayerCanRopeState(PlayerStateMachine stateMachine, string animName, Player player) : base(stateMachine, animName, player)
+    public PlayerCanRopeState(PlayerStateMachine stateMachine, string animName, GamePlayer player) : base(stateMachine, animName, player)
     {
     }
     public override void Enter()

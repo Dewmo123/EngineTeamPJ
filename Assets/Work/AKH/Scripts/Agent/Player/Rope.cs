@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Rope : MonoBehaviour, IAgentComponent
+public class Rope : MonoBehaviour, IPlayerComponent
 {
     [SerializeField] private GrappleGun grapplingGun;
     [SerializeField] private LineRenderer _lineRenderer;
@@ -109,5 +109,6 @@ public class Rope : MonoBehaviour, IAgentComponent
     public void Initialize(Player player)
     {
         _player = player;
+        this.enabled = false;
     }
 }

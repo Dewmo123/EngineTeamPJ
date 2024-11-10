@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerMoveState
 {
-    public PlayerIdleState(PlayerStateMachine stateMachine, string animName, Player player) : base(stateMachine, animName, player)
+    public PlayerIdleState(PlayerStateMachine stateMachine, string animName, GamePlayer player) : base(stateMachine, animName, player)
     {
     }
     public override void UpdateState()

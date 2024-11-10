@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GrappleGun : MonoBehaviour, IAgentComponent
+public class GrappleGun : MonoBehaviour, IPlayerComponent
 {
     private Player _player;
 
@@ -50,7 +50,6 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
     private Collider2D _connectedCol;
     private void Start()
     {
-        _grappleRope.enabled = false;
         _springJoint2D.enabled = false;
         m_camera = Camera.main;
     }

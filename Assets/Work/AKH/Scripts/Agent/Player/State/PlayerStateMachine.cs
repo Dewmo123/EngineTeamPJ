@@ -8,7 +8,7 @@ public class PlayerStateMachine
     public PlayerState currentState;
 
     private Player _player;
-    public void Init(PlayerEnum start, Player player)
+    public void Init(PlayerEnum start, GamePlayer player)
     {
         ChangeState(start);
         _player = player;
