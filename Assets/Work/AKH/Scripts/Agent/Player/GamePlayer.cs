@@ -5,27 +5,16 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : Agent
+public class GamePlayer : Player
 {
-    public SpringJoint2D jointCompo { get; private set; }
 
-    [field: SerializeField] private InputReader _inputReader;
     private PlayerStateMachine _stateMachine;
-
-    public UnityEvent GrappleEvent;
     
-    private Dictionary<Type, IAgentComponent> _components;
     public PlayerEnum currentState => _stateMachine.GetCurType();
     protected override void Awake()
     {
         base.Awake();
-        jointCompo = GetComponent<SpringJoint2D>();
-        #region SetIPlayerCompo
-        _components = new Dictionary<Type, IAgentComponent>();
-        GetComponentsInChildren<IAgentComponent>().ToList().ForEach(x => _components.Add(x.GetType(), x));
-        _components.Add(_inputReader.GetType(), _inputReader);
-        _components.Values.ToList().ForEach(compo => compo.Initialize(this));
-        #endregion
+
         #region SetState
         _stateMachine = new PlayerStateMachine();
         _stateMachine.AddState(PlayerEnum.Idle, new PlayerIdleState(_stateMachine, "Idle", this));
@@ -63,15 +52,5 @@ public class Player : Agent
     {
         yield return new WaitForSeconds(time);
         callback.Invoke();
-    }
-
-    public T GetCompo<T>() where T : class
-    {
-        Type t = typeof(T);
-        if(_components.TryGetValue(t,out IAgentComponent compo))
-        {
-            return compo as T;
-        }
-        return default;
     }
 }

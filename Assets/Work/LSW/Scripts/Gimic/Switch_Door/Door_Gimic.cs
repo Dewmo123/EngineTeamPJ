@@ -26,7 +26,7 @@ public class Door_Gimic : MonoBehaviour
 
     private void OnEnable()
     {
-        _mainGimicScript.OnActive_door += TryOpen;
+        _mainGimicScript.AddListener(TryOpen);
     }
 
     private void Start()
@@ -61,6 +61,6 @@ public class Door_Gimic : MonoBehaviour
 
     private void OnDisable()
     {
-        _mainGimicScript.OnActive_door -= TryOpen;
+        _mainGimicScript.RemoveListener(TryOpen);
     }
 }

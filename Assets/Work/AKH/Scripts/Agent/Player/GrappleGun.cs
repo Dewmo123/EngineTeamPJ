@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GrappleGun : MonoBehaviour, IAgentComponent
+public class GrappleGun : MonoBehaviour, IPlayerComponent
 {
     private Player _player;
 
@@ -47,10 +47,9 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
 
     [HideInInspector] public Vector2 grapplePoint;
     [HideInInspector] public Vector2 grappleDistanceVector;
+    private Collider2D _connectedCol;
     private void Start()
     {
-        _grappleRope.enabled = false;
-        _springJoint2D.enabled = false;
         m_camera = Camera.main;
     }
 
@@ -98,7 +97,12 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
             gunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
-
+    public void GoToPoint()
+    {
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, (grapplePoint-(Vector2)transform.position).normalized, 1000, _canRopeLayer);
+        SetGrapplePoint(ray);
+        launchToPoint = true;
+    }
     public void SetGrapplePoint()
     {
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
@@ -112,12 +116,27 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
                 launchToPoint = false;
                 grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                 _grappleRope.enabled = true;
+                _connectedCol = hit.collider;
                 if (hit.collider.gameObject.layer == _enemyLayer)
                 {
                     hit.collider.GetComponent<Enemy>().Hit();
                     launchToPoint = true;
                 }
             }
+        }
+    }
+    public void SetGrapplePoint(RaycastHit2D ray)
+    {
+        grapplePoint = ray.point;
+        _player.movementCompo.isRope = true;
+        launchToPoint = false;
+        grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+        _grappleRope.enabled = true;
+        _connectedCol = ray.collider;
+        if (ray.collider.gameObject.layer == _enemyLayer)
+        {
+            ray.collider.GetComponent<Enemy>().Hit();
+            launchToPoint = true;
         }
     }
 
@@ -136,6 +155,7 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
                 _springJoint2D.autoConfigureDistance = true;
                 _springJoint2D.frequency = 0;
             }
+            Debug.Log("ASD");
             _springJoint2D.connectedAnchor = grapplePoint;
             _springJoint2D.enabled = true;
         }
@@ -181,5 +201,6 @@ public class GrappleGun : MonoBehaviour, IAgentComponent
         _grappleRope = _player.GetCompo<Rope>();
         _rigidbody = _player.rbCompo;
         _springJoint2D = _player.jointCompo;
+        _springJoint2D.enabled = false;
     }
 }

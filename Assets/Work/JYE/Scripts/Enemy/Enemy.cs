@@ -78,7 +78,7 @@ public abstract class Enemy : MonoBehaviour
     private IEnumerator Wait()
     {
         _stateMachine.ChangeState(EnemyStateType.GoToPoint);
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(moveDuraion*1.5f);
         _stateMachine.ChangeState(EnemyStateType.GoToPoint);
     }
     private IEnumerator Boom() //Á×À» ¶§

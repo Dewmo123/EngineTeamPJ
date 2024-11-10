@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,57 +9,32 @@ public class BeCalledPoint : MonoBehaviour
 {
     [SerializeField] private MainGimicScript _mainGimicScript;
 
-    private bool moveToTarget = false;
-
     [SerializeField] private LayerMask _enemyLayer;
-    [SerializeField] private GameObject[] _enemy;
+    [SerializeField] private Enemy _enemy;
     [SerializeField] private EnemySO enemySO;
     [SerializeField] private float _disableTime;
 
-    private Transform[] OriginmovePoint;
-
     private void OnEnable()
     {
-        _mainGimicScript.OnActive_Call += Call;
-        OriginmovePoint = new Transform[_enemy.Length];
+        _mainGimicScript.AddListener(Call);
     }
 
     private void Call()
     {
-        moveToTarget = true;
-        if (moveToTarget)
-        {
-            for (int i = 0; i < _enemy.Length; i++)
-            {
-                OriginmovePoint[i] = _enemy[i].transform;
-                _enemy[i].GetComponent<Enemy>().GoToPoint(transform);
-            }
-        }
+        _enemy.GoToPoint(transform);
+        StartCoroutine(WaitArrive());
     }
 
-    //void Update()
-    //{
-    //    if (moveToTarget)
-    //    {
-    //        for (int i = 0; i < _enemy.Length; i++)
-    //        {
-    //            _enemy[i].transform.position = Vector2.Lerp(_enemy[i].transform.position, transform.position, enemySO.speed);
-    //        }
-    //        Invoke("Disable", _disableTime);
-    //    }
-    //}
-
-    private void Disable()
+    private IEnumerator WaitArrive()
     {
-        //for (int i = 0; i < _enemy.Length; i++)
-        //{
-        //    _enemy[i].transform.position = Vector2.Lerp(_enemy[i].transform.position, _enemy[i].transform.position, enemySO.speed);
-        //}
-        moveToTarget = false;
+        _mainGimicScript.RemoveListener(Call);
+        yield return new WaitForSeconds(_enemy.moveDuraion * 2.5f);
+        _mainGimicScript.AddListener(Call);
     }
 
     private void OnDisable()
     {
-        _mainGimicScript.OnActive_Call -= Call;
+        if (_mainGimicScript.useGimicEvent != null)
+            _mainGimicScript.RemoveListener(Call);
     }
 }

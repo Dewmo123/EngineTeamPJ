@@ -6,32 +6,25 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem.iOS;
 
-public enum MyGimic { Door, Call, Light }
-public class MainGimicScript : MonoBehaviour
+public class MainGimicScript : MonoBehaviour, IGimic
 {
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] MonoBehaviour _myGimicScript;
-    public Action OnActive_door, OnActive_Call, OnActive_Light;
-    public MyGimic myGimic;
+    private Action useGimic;
     [SerializeField] private Player_UseGimic _playerUseGimic;
+
+    public Action useGimicEvent => useGimic;
 
     public void UseGimic()
     {
-        switch (myGimic)
-        {
-            case MyGimic.Door:
-                OnActive_door?.Invoke();
-                break;
-
-            case MyGimic.Call:
-                OnActive_Call?.Invoke();
-                break;
-
-            case MyGimic.Light:
-                OnActive_Light?.Invoke();
-                break;
-        }
-
+        useGimic?.Invoke();
     }
-
+    public void AddListener(Action action)
+    {
+        useGimic += action;
+    }
+    public void RemoveListener(Action action)
+    {
+        useGimic -= action;
+    }
 }

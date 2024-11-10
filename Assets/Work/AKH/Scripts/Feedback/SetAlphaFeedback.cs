@@ -5,10 +5,10 @@ using UnityEngine;
 public class SetAlphaFeedback : Feedback
 {
     [SerializeField] private float _alpha;
-    private Agent _agent;
+    private Player _agent;
     private void Awake()
     {
-        _agent = GetComponentInParent<Agent>();
+        _agent = GetComponentInParent<Player>();
     }
     public override void PlayFeedback()
     {

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public abstract class PlayerMoveState : PlayerState
 {
     protected InputReader _input;
-    public PlayerMoveState(PlayerStateMachine stateMachine, string animName, Player player) : base(stateMachine, animName, player)
+    public PlayerMoveState(PlayerStateMachine stateMachine, string animName, GamePlayer player) : base(stateMachine, animName, player)
     {
     }
     public override void Enter()

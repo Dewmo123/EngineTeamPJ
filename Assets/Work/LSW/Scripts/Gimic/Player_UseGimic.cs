@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player_UseGimic : MonoBehaviour,IAgentComponent
+public class Player_UseGimic : MonoBehaviour,IPlayerComponent
 {
     private Player _player;
     public LayerMask _gimicLayer;

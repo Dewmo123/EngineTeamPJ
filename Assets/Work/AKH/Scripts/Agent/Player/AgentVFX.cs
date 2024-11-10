@@ -1,7 +1,7 @@
 using GGMPool;
 using UnityEngine;
 
-public class AgentVFX : MonoBehaviour, IAgentComponent
+public class AgentVFX : MonoBehaviour, IPlayerComponent
 {
     [SerializeField] private bool _canGenerateAfterImage;
     [SerializeField] private float _generateTerm;
@@ -9,7 +9,7 @@ public class AgentVFX : MonoBehaviour, IAgentComponent
     [SerializeField] private PoolTypeSO _afterImage;
 
     private float _currentTime;
-    private Agent _player;
+    private Player _player;
 
     public void Initialize(Player player)
     {

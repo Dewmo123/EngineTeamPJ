@@ -17,11 +17,11 @@ public enum PlayerEnum
 }
 public abstract class PlayerState
 {
-    protected Player _player;
+    protected GamePlayer _player;
     protected PlayerStateMachine _stateMachine;
     protected int _animBoolHash;
     protected bool _endTriggerCalled;
-    public PlayerState(PlayerStateMachine stateMachine,string animName, Player player)
+    public PlayerState(PlayerStateMachine stateMachine,string animName, GamePlayer player)
     {
         _stateMachine = stateMachine;
         _animBoolHash = Animator.StringToHash(animName);    

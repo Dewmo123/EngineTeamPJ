@@ -5,7 +5,7 @@ public class PlayerRopeState : PlayerMoveState
     private bool _isDash;
     private GrappleGun _gun;
     private Rigidbody2D _rb;
-    public PlayerRopeState(PlayerStateMachine stateMachine, string animName, Player player) : base(stateMachine, animName, player)
+    public PlayerRopeState(PlayerStateMachine stateMachine, string animName, GamePlayer player) : base(stateMachine, animName, player)
     {
     }
     public override void Enter()
@@ -53,7 +53,7 @@ public class PlayerRopeState : PlayerMoveState
 
     protected override void HandleJumpEvent()
     {
-        _player.GetCompo<GrappleGun>().launchToPoint = true;
+        _player.GetCompo<GrappleGun>().GoToPoint();
     }
 
     protected override void HandleDashEvent()
