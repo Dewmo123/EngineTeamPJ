@@ -50,7 +50,6 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
     private Collider2D _connectedCol;
     private void Start()
     {
-        _springJoint2D.enabled = false;
         m_camera = Camera.main;
     }
 
@@ -156,6 +155,7 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
                 _springJoint2D.autoConfigureDistance = true;
                 _springJoint2D.frequency = 0;
             }
+            Debug.Log("ASD");
             _springJoint2D.connectedAnchor = grapplePoint;
             _springJoint2D.enabled = true;
         }
@@ -201,5 +201,6 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
         _grappleRope = _player.GetCompo<Rope>();
         _rigidbody = _player.rbCompo;
         _springJoint2D = _player.jointCompo;
+        _springJoint2D.enabled = false;
     }
 }
