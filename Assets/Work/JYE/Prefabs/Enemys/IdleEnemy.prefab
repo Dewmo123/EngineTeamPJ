@@ -190,11 +190,13 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
+  moveDuraion: 0
   playerDie: 0
   speed: 0
   waitTime: 0
   movePoint1: {fileID: 0}
   movePoint2: {fileID: 0}
+  originPos: {x: 0, y: 0, z: 0}
   view: {fileID: 0}
 --- !u!1001 &7555653647976076206
 PrefabInstance:

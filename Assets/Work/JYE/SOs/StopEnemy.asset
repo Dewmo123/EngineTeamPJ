@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 0
   boom: 0
-  color: {r: 0, g: 1, b: 0.29823518, a: 1}
+  color: {r: 0.030047894, g: 1, b: 0, a: 1}
   speed: 2
   size: 1
   waitTime: 0

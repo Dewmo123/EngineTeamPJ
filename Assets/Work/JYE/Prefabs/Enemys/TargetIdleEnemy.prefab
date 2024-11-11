@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5243917345311969360}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.7425036, y: 2.4460325, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -190,11 +190,13 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
+  moveDuraion: 0
   playerDie: 0
   speed: 0
   waitTime: 0
   movePoint1: {fileID: 0}
   movePoint2: {fileID: 0}
+  originPos: {x: 0, y: 0, z: 0}
   view: {fileID: 0}
 --- !u!1001 &7743137327491827269
 PrefabInstance:
