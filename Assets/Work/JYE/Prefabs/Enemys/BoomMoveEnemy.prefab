@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 2225739877364098238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23321295, y: -1.6373423, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -224,11 +224,13 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
+  moveDuraion: 0
   playerDie: 0
   speed: 2
   waitTime: 1
   movePoint1: {fileID: 7034711448514827579}
   movePoint2: {fileID: 9122406342015823513}
+  originPos: {x: 0, y: 0, z: 0}
   view: {fileID: 0}
 --- !u!70 &6344342756856657938
 CapsuleCollider2D:
