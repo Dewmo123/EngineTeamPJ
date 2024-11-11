@@ -193,11 +193,13 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
+  moveDuraion: 0
   playerDie: 0
   speed: 2
   waitTime: 1
   movePoint1: {fileID: 8337378432431971547}
   movePoint2: {fileID: 8755414056922647517}
+  originPos: {x: 0, y: 0, z: 0}
   view: {fileID: 0}
 --- !u!70 &7230387113232618640
 CapsuleCollider2D:

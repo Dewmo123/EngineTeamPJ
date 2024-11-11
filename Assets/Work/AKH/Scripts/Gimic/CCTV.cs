@@ -24,7 +24,7 @@ public class CCTV : MonoBehaviour
 
     [Header("Sight info")]
     [Range(0, 360f)] public float viewAngle;
-    [Range(1, 12f)] public float viewRadius;
+    [Range(1, 30f)] public float viewRadius;
     public Vector3 HolderPosition => _weaponHolder.position;
 
     [Header("RayCast info")]

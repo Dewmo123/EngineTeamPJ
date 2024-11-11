@@ -11,7 +11,6 @@ public class BeCalledPoint : MonoBehaviour
 
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private Enemy _enemy;
-    [SerializeField] private EnemySO enemySO;
     [SerializeField] private float _disableTime;
 
     private void OnEnable()
