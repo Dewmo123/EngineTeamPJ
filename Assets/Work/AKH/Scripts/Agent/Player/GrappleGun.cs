@@ -155,7 +155,6 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
                 _springJoint2D.autoConfigureDistance = true;
                 _springJoint2D.frequency = 0;
             }
-            Debug.Log("ASD");
             _springJoint2D.connectedAnchor = grapplePoint;
             _springJoint2D.enabled = true;
         }

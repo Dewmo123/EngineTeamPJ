@@ -18,9 +18,9 @@ public class PushButtonGimmick : MonoBehaviour
     private void HandleColliderChanged(Collider2D prev, Collider2D next)
     {
         if (next == null)
-            _doorObj.SetActive(false);
-        else
             _doorObj.SetActive(true);
+        else
+            _doorObj.SetActive(false);
     }
 
     private void Update()
