@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &49254548 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8762591596853916363, guid: f2a491b3455ab2348a9324e78393ef59, type: 3}
+  m_PrefabInstance: {fileID: 1615617431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &59065316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56542,6 +56547,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5528520308898382927, guid: f2a491b3455ab2348a9324e78393ef59, type: 3}
+      propertyPath: weaponHolder
+      value: 
+      objectReference: {fileID: 49254548}
     - target: {fileID: 5936280517142919220, guid: f2a491b3455ab2348a9324e78393ef59, type: 3}
       propertyPath: moveDuraion
       value: 8

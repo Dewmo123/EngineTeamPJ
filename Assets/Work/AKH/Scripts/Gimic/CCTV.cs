@@ -20,12 +20,12 @@ public struct EdgeInfo
 
 public class CCTV : MonoBehaviour
 {
-    [SerializeField] private Transform _weaponHolder;
+    public Transform weaponHolder;
 
     [Header("Sight info")]
     [Range(0, 360f)] public float viewAngle;
     [Range(1, 30f)] public float viewRadius;
-    public Vector3 HolderPosition => _weaponHolder.position;
+    public Vector3 HolderPosition => weaponHolder.position;
 
     [Header("RayCast info")]
     [SerializeField] private ContactFilter2D _enemyFilter;
@@ -53,6 +53,7 @@ public class CCTV : MonoBehaviour
     private Transform _viewVisual;
     private float _curAngle;
     private bool _angleFlag = false;
+    [SerializeField] private bool _rotate;
 
 
     public void Initialize()
@@ -85,7 +86,9 @@ public class CCTV : MonoBehaviour
         Initialize();
         StartCoroutine(FindEnemyWithDelay());
     }
-
+    public void FlipWeaponHolder(bool right)
+    {
+    }
     #region FindEnemy Region
     private IEnumerator FindEnemyWithDelay()
     {
@@ -107,7 +110,7 @@ public class CCTV : MonoBehaviour
             Transform enemy = _enemiesInView[i].transform;
             Vector3 direction = enemy.position - HolderPosition;
             //시야범위안에 있다.
-            if (Vector2.Angle(_weaponHolder.right, direction.normalized) < viewAngle * 0.5f)
+            if (Vector2.Angle(weaponHolder.right, direction.normalized) < viewAngle * 0.5f)
             {
                 if (!Physics2D.Raycast(HolderPosition, direction.normalized, direction.magnitude, _obstacleMask))
                 {
@@ -121,14 +124,18 @@ public class CCTV : MonoBehaviour
 
     private void Update()
     {
-        UpdateAim();
+        if (_rotate)
+            UpdateAim();
     }
 
     private void LateUpdate()
     {
-        DrawFieldOfView();
+        //DrawFieldOfView();
     }
-
+    public void FlipWeaponHolder()
+    {
+        _curAngle = _curAngle;
+    }
     private void DrawFieldOfView()
     {
         int stepCount = Mathf.RoundToInt(viewAngle * _meshResolution);
@@ -140,7 +147,7 @@ public class CCTV : MonoBehaviour
 
         for (int i = 0; i <= stepCount; i++)
         {
-            float angle = _weaponHolder.eulerAngles.z + viewAngle * 0.5f - stepAngleSize * i;
+            float angle = weaponHolder.eulerAngles.z + viewAngle * 0.5f - stepAngleSize * i;
 
             ViewCastInfo castInfo = ViewCast(angle);
 
@@ -226,7 +233,6 @@ public class CCTV : MonoBehaviour
     private ViewCastInfo ViewCast(float globalAngle)
     {
         Vector3 direction = DirectionFromAngle(globalAngle, true);
-
         var hitInfo = Physics2D.Raycast(HolderPosition, direction, viewRadius, _obstacleMask);
 
         if (hitInfo.collider != null)
@@ -259,16 +265,16 @@ public class CCTV : MonoBehaviour
         if (_curAngle >= _endAngle || _curAngle <= _startAngle)
             _angleFlag = !_angleFlag;
 
-        _weaponHolder.right = worldPos.normalized;
+        weaponHolder.right = worldPos.normalized;
 
-        OnWeaponHolderRotate?.Invoke(_weaponHolder.eulerAngles.z);
+        OnWeaponHolderRotate?.Invoke(weaponHolder.eulerAngles.z);
     }
 
     public Vector3 DirectionFromAngle(float degree, bool isGlobalAngle)
     {
         if (!isGlobalAngle)
         {
-            degree += _weaponHolder.eulerAngles.z;
+            degree += weaponHolder.eulerAngles.z;
             //만약 글로벌 앵글이 아니면 내 회전치를 추가해서 글로벌 앵글로 만들어준다.
         }
 

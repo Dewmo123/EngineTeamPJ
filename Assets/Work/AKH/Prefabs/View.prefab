@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb19949fc27b54469b4f392ff714682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponHolder: {fileID: 422853591934715888}
+  weaponHolder: {fileID: 422853591934715888}
   viewAngle: 45
   viewRadius: 12
   _enemyFilter:

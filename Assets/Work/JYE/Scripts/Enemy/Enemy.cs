@@ -33,17 +33,19 @@ public abstract class Enemy : MonoBehaviour
         view = GetComponentInChildren<CCTV>();
 
         _stateMachine = new EnemyStateMachine();
-        _stateMachine.AddState(EnemyStateType.Stop, new StopIdleEnemyState(_stateMachine,"Idle",this));
-        _stateMachine.AddState(EnemyStateType.Look, new LookIdleEnemyState(_stateMachine,"Idle",this));
-        _stateMachine.AddState(EnemyStateType.Move, new WalkEnemyState(_stateMachine,"Move",this));
-        _stateMachine.AddState(EnemyStateType.MoveIdle, new WalkIdleEnemyState(_stateMachine,"Idle",this));
-        _stateMachine.AddState(EnemyStateType.Die, new DieEnemyState(_stateMachine,"Die",this));
-        _stateMachine.AddState(EnemyStateType.Hit, new HitEnemyState(_stateMachine,"Hit",this));
+        _stateMachine.AddState(EnemyStateType.Stop, new StopIdleEnemyState(_stateMachine, "Idle", this));
+        _stateMachine.AddState(EnemyStateType.Look, new LookIdleEnemyState(_stateMachine, "Idle", this));
+        _stateMachine.AddState(EnemyStateType.Move, new WalkEnemyState(_stateMachine, "Move", this));
+        _stateMachine.AddState(EnemyStateType.MoveIdle, new WalkIdleEnemyState(_stateMachine, "Idle", this));
+        _stateMachine.AddState(EnemyStateType.Die, new DieEnemyState(_stateMachine, "Die", this));
+        _stateMachine.AddState(EnemyStateType.Hit, new HitEnemyState(_stateMachine, "Hit", this));
         _stateMachine.AddState(EnemyStateType.GoToPoint, new GoPointEnemyState(_stateMachine, "Move", this));
         _stateMachine.Init(EnemyStateType.Stop, this);
         Setting();
     }
-
+    private void Start()
+    {
+    }
     protected virtual void Update()
     {
         _stateMachine.currentState.UpdateState();
@@ -78,7 +80,7 @@ public abstract class Enemy : MonoBehaviour
     private IEnumerator Wait()
     {
         _stateMachine.ChangeState(EnemyStateType.GoToPoint);
-        yield return new WaitForSeconds(moveDuraion*1.5f);
+        yield return new WaitForSeconds(moveDuraion * 1.5f);
         _stateMachine.ChangeState(EnemyStateType.GoToPoint);
     }
     private IEnumerator Boom() //Á×À» ¶§
@@ -87,7 +89,7 @@ public abstract class Enemy : MonoBehaviour
         {
             animCompo.StopPlayback();
             yield return new WaitForSeconds(1.5f);
-            Collider2D collider = Physics2D.OverlapCircle(gameObject.transform.position, radius,PlayerLayer);
+            Collider2D collider = Physics2D.OverlapCircle(gameObject.transform.position, radius, PlayerLayer);
             playerDie = collider != null;
             EnemyDie();
         }
@@ -111,7 +113,7 @@ public abstract class Enemy : MonoBehaviour
         {
             transform.eulerAngles = Vector3.zero;
         }
-
+        view.FlipWeaponHolder();
     }
     private void OnDrawGizmos()
     {
