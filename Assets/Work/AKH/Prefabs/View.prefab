@@ -125,7 +125,7 @@ MonoBehaviour:
   _meshResolution: 0.2
   _edgeIterationCount: 4
   _edgeThreshold: 0.5
-  _startAngle: 0
+  _startAngle: 30
   _endAngle: 0
   _oneTickAngle: 0
   _fovLight: {fileID: 107258132672900300}
@@ -157,7 +157,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3584625075852239861}

@@ -45,7 +45,7 @@ public class CCTV : MonoBehaviour
 
     public event Action<float> OnWeaponHolderRotate;
 
-    [SerializeField]private Collider2D[] _enemiesInView;
+    [SerializeField] private Collider2D[] _enemiesInView;
 
     private MeshFilter _meshFilter;
     private Mesh _viewMesh;
