@@ -128,6 +128,10 @@ public abstract class Enemy : MonoBehaviour
 
         boom = enemyType.boom; //자폭 구별
 
+        float size = enemyType.size;
+        gameObject.transform.localScale = Vector3.one * size; //크기
+        radius = radius * size; //자폭 범위
+
         enemySR.color = enemyType.color; //색
 
         Type();

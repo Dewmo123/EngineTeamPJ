@@ -13,6 +13,8 @@ public class EnemySO : ScriptableObject
 
     public float speed; //속도
 
+    public float size; //크기
+
     public float waitTime; //다시 움직이기 위해 기다릴 시간
 
     public EnemyStateType myType;
