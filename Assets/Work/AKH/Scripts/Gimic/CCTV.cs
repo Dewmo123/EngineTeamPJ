@@ -132,10 +132,6 @@ public class CCTV : MonoBehaviour
     {
         //DrawFieldOfView();
     }
-    public void FlipWeaponHolder()
-    {
-        _curAngle = _curAngle;
-    }
     private void DrawFieldOfView()
     {
         int stepCount = Mathf.RoundToInt(viewAngle * _meshResolution);

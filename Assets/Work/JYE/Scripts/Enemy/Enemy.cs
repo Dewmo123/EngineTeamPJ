@@ -113,7 +113,6 @@ public abstract class Enemy : MonoBehaviour
         {
             transform.eulerAngles = Vector3.zero;
         }
-        view.FlipWeaponHolder();
     }
     private void OnDrawGizmos()
     {

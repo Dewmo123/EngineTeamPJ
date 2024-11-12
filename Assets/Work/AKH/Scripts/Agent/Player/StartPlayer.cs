@@ -14,6 +14,8 @@ public class StartPlayer : Player
     private void Update()
     {
         if (movementCompo.isRope)
+        {
             GetCompo<GrappleGun>().Roping();
+        }
     }
 }
