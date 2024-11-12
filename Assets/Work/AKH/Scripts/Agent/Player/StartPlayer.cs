@@ -6,16 +6,27 @@ using UnityEngine;
 
 public class StartPlayer : Player
 {
-    [SerializeField] private Vector2 direction;
+    [SerializeField] private Vector2 _direction;
+    [SerializeField] private float _removeTime;
     private void Start()
     {
-        movementCompo.ShootRope(direction);
+        movementCompo.ShootRope(_direction);
+        StartCoroutine(Remove());
     }
+
+    private IEnumerator Remove()
+    {
+        yield return new WaitForSeconds(_removeTime);
+        Destroy(gameObject);
+    }
+
     private void Update()
     {
         if (movementCompo.isRope)
-        {
             GetCompo<GrappleGun>().Roping();
-        }
+    }
+    public void AddForce()
+    {
+        rbCompo.AddForce(rbCompo.velocity*2, ForceMode2D.Impulse);
     }
 }

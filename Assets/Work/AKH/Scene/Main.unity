@@ -1019,7 +1019,7 @@ Transform:
   m_GameObject: {fileID: 109110743}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.06, y: -1.62, z: 0.031388298}
+  m_LocalPosition: {x: -8.2, y: 1.6, z: 0.031388298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1045,7 +1045,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 2.620687
+  m_Distance: 8.354639
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!50 &109110747
@@ -1117,8 +1117,21 @@ MonoBehaviour:
   _inputReader: {fileID: 11400000, guid: aa3e4570bf5ab8746998a4678fa33561, type: 2}
   GrappleEvent:
     m_PersistentCalls:
-      m_Calls: []
-  direction: {x: 0.5, y: 1}
+      m_Calls:
+      - m_Target: {fileID: 109110749}
+        m_TargetAssemblyTypeName: StartPlayer, Assembly-CSharp
+        m_MethodName: AddForce
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _direction: {x: 4, y: 1}
+  _removeTime: 3
 --- !u!1 &394346542
 GameObject:
   m_ObjectHideFlags: 0
