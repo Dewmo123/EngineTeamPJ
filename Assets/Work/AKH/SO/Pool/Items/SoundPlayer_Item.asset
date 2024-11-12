@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7fa4c2dd4977cf46b219f4e990276d2, type: 3}
-  m_Name: RopeShoot
+  m_Script: {fileID: 11500000, guid: 1486e263e7016b643b78c6fb1c6caafd, type: 3}
+  m_Name: SoundPlayer_Item
   m_EditorClassIdentifier: 
-  audioType: 0
-  clip: {fileID: 8300000, guid: f33bb9971db067443b35d01c3c5ba498, type: 3}
-  loop: 0
-  randomizePitch: 1
-  randomPitchModifier: 0.1
-  volume: 1
-  basePitch: 1
+  poolType: {fileID: 11400000, guid: e891cb35343391d479510b336b59a7fa, type: 2}
+  prefab: {fileID: 2644331502268530515, guid: 58b20b50b10750043a24b4682fa9b3c5, type: 3}
+  initCount: 10

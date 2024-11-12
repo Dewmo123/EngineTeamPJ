@@ -21,7 +21,6 @@ namespace GGMPool
             {
                 IPoolable poolable = item.prefab.GetComponent<IPoolable>();
                 Debug.Assert(poolable != null, $"Poolitem does not have IPoolable {item.prefab.name}");
-
                 Pool pool = new Pool(poolable, _rootTrm, item.initCount);
                 _pools.Add(item.poolType, pool);
             }
