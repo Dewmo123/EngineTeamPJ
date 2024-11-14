@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 49387214}
   m_Layer: 0
-  m_Name: Enemys
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14643,7 +14643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1012271034}
   m_Layer: 0
-  m_Name: Boxs
+  m_Name: Gimmick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
