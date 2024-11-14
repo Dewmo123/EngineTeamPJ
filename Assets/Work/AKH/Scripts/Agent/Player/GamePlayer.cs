@@ -10,6 +10,7 @@ public class GamePlayer : Player
 
     private PlayerStateMachine _stateMachine;
     public UnityEvent playerDeadEvent;
+    public UnityEvent playerRopeSwingEvent;
     public PlayerEnum currentState => _stateMachine.GetCurType();
     protected override void Awake()
     {

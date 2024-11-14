@@ -60,6 +60,7 @@ public class PlayerRopeState : PlayerMoveState
     {
         if (!_isDash)
         {
+            _player.playerRopeSwingEvent?.Invoke();
             _rb.AddForce(_rb.velocity.normalized * _player.movementCompo.dashPower, ForceMode2D.Impulse);
             _player.GetCompo<AgentVFX>().ToggleAfterImage(true);
             _player.WaitCoroutine(_player.movementCompo.ropeAfterImageTime, () => _player.GetCompo<AgentVFX>().ToggleAfterImage(false));
