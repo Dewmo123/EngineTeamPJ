@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class GrappleGun : MonoBehaviour, IPlayerComponent
@@ -29,15 +30,7 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
     [SerializeField] private bool hasMaxDistance = false;
     [SerializeField] private float maxDistnace = 20;
 
-    private enum LaunchType
-    {
-        Transform_Launch,
-        Physics_Launch
-    }
-
     [Header("Launching:")]
-    public bool launchToPoint = true;
-    [SerializeField] private LaunchType launchType = LaunchType.Physics_Launch;
     [SerializeField] private float launchSpeed = 1;
 
     [Header("No Launch To Point")]
@@ -65,17 +58,18 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
         }
-        if (launchToPoint && _grappleRope.isGrappling)
+
+    }
+    public void Launch()
+    {
+        if (_grappleRope.isGrappling)
         {
-            if (launchType == LaunchType.Transform_Launch)
-            {
-                Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
-                Vector2 targetPos = grapplePoint - firePointDistnace;
-                gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
-            }
+            Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
+            Vector2 targetPos = grapplePoint - firePointDistnace;
+            if (targetPos.y < transform.position.y) targetPos += Vector2.up;
+            gunHolder.transform.DOMove(targetPos,0.5f);
         }
     }
-
     public void EscapeGrapple()
     {
         _grappleRope.enabled = false;
@@ -99,9 +93,9 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
     }
     public void GoToPoint()
     {
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, (grapplePoint-(Vector2)transform.position).normalized, 1000, _canRopeLayer);
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, (grapplePoint - (Vector2)transform.position).normalized, 1000, _canRopeLayer);
         SetGrapplePoint(ray);
-        launchToPoint = true;
+        Launch();
     }
     public void SetGrapplePoint()
     {
@@ -113,14 +107,13 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
             {
                 grapplePoint = hit.point;
                 _player.movementCompo.isRope = true;
-                launchToPoint = false;
                 grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                 _grappleRope.enabled = true;
                 _connectedCol = hit.collider;
                 if (hit.collider.gameObject.layer == _enemyLayer)
                 {
                     hit.collider.GetComponent<Enemy>().Hit();
-                    launchToPoint = true;
+                    Launch();
                 }
             }
         }
@@ -129,27 +122,24 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
     {
         grapplePoint = ray.point;
         _player.movementCompo.isRope = true;
-        launchToPoint = false;
         grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
         _grappleRope.enabled = true;
         _connectedCol = ray.collider;
         if (ray.collider.gameObject.layer == _enemyLayer)
         {
             ray.collider.GetComponent<Enemy>().Hit();
-            launchToPoint = true;
+            Launch();
         }
     }
 
     public void Grapple()
     {
         _springJoint2D.autoConfigureDistance = false;
-        if (!launchToPoint && !autoConfigureDistance)
+        if (!autoConfigureDistance)
         {
             _springJoint2D.distance = targetDistance;
             _springJoint2D.frequency = targetFrequncy;
         }
-        if (!launchToPoint)
-        {
             if (autoConfigureDistance)
             {
                 _springJoint2D.autoConfigureDistance = true;
@@ -157,26 +147,6 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
             }
             _springJoint2D.connectedAnchor = grapplePoint;
             _springJoint2D.enabled = true;
-        }
-        else
-        {
-            switch (launchType)
-            {
-                case LaunchType.Physics_Launch:
-                    _springJoint2D.connectedAnchor = grapplePoint;
-
-                    Vector2 distanceVector = firePoint.position - gunHolder.position;
-
-                    _springJoint2D.distance = distanceVector.magnitude;
-                    _springJoint2D.frequency = launchSpeed;
-                    _springJoint2D.enabled = true;
-                    break;
-                case LaunchType.Transform_Launch:
-                    _rigidbody.gravityScale = 0;
-                    _rigidbody.velocity = Vector2.zero;
-                    break;
-            }
-        }
         _player.GrappleEvent?.Invoke();
         if (_springJoint2D.distance > _player.movementCompo.maxDistance)
         {
