@@ -602,7 +602,7 @@ MonoBehaviour:
   maxDistance: 10
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 2176
   _groundCheckerSize: {x: 1, y: 0.3}
   isRope: 0
   landEvent:

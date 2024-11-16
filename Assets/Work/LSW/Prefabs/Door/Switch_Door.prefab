@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 487823754851872017}
   - component: {fileID: 361404590163870356}
   - component: {fileID: 8559704061648854867}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Switch_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 163409395738847782}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1293226398, guid: 68338efc301c8b9449352d0dae386ec8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,18 +121,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.002711147, y: 0.0013555437}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 0.59090906}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7234654, y: 0.5906205}
   m_EdgeRadius: 0
 --- !u!114 &361404590163870356
 MonoBehaviour:
@@ -150,7 +150,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _myGimicScript: {fileID: 8559704061648854867}
-  myGimic: 0
   _playerUseGimic: {fileID: 0}
 --- !u!114 &8559704061648854867
 MonoBehaviour:
@@ -166,8 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainGimicScript: {fileID: 361404590163870356}
   _door: {fileID: 3686594810619290593}
-  _doorSpeed: 2
-  _IsclosingTime: 5
+  _time: 0
   _goalPos: {fileID: 395554369968923102}
 --- !u!1 &3686594810619290593
 GameObject:
@@ -180,7 +178,7 @@ GameObject:
   - component: {fileID: 163409395738847782}
   - component: {fileID: 3565500230056281012}
   - component: {fileID: 2713792021587649918}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +195,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.09, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 2.048, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 254819514023459397}
