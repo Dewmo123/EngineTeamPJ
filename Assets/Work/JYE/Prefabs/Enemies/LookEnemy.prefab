@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb19949fc27b54469b4f392ff714682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponHolder: {fileID: 9125979498885189652}
+  weaponHolder: {fileID: 9125979498885189652}
   viewAngle: 45
   viewRadius: 12
   _enemyFilter:
@@ -441,6 +441,7 @@ MonoBehaviour:
   _oneTickAngle: 0
   _fovLight: {fileID: 5940688520953989323}
   _enemiesInView: []
+  _rotate: 0
 --- !u!1 &6838786583114009616
 GameObject:
   m_ObjectHideFlags: 0
