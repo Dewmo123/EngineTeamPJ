@@ -1,3 +1,4 @@
+using GGMPool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -43,6 +44,12 @@ public abstract class Player : MonoBehaviour
             return compo as T;
         }
         return default;
+    }
+    public void PlaySound(string name)
+    {
+        PoolTypeSO type = GameManager.Instance.poolItemDic["SoundPlayer"].poolType;
+        var soundPlayer = GameManager.Instance.poolManager.Pop(type) as SoundPlayer;
+        soundPlayer.PlaySound(GameManager.Instance._soundDic[name]);
     }
     #region Flip Charater
     public bool IsFacingRight()

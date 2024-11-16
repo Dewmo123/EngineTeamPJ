@@ -1,3 +1,4 @@
+using GGMPool;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class PlayerJumpState : PlayerCanRopeState
     {
         base.Enter();
         _player.rbCompo.AddForce(Vector2.up * _player.movementCompo.jumpPower, ForceMode2D.Impulse);
+        _player.PlaySound("Jump");
     }
     protected override void HandleJumpEvent()
     {

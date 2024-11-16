@@ -19,25 +19,28 @@ public class GameManager : MonoBehaviour
     #endregion
     [field: SerializeField] public PoolManagerSO poolManager { get; private set; }
     public Dictionary<string, PoolingItemSO> poolItemDic { get; private set; }
+    [SerializeField] private List<SoundSO> _sounds;
+    public Dictionary<string, SoundSO> _soundDic;
     private void Awake()
     {
         if (_instance == null)
             _instance = this;
         poolItemDic = new Dictionary<string, PoolingItemSO>();
+        _soundDic = new Dictionary<string, SoundSO>();
     }
     private void Start()
     {
-        InitPoolItemDic();
+        InitDic();
     }
     public void ReStart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    private void InitPoolItemDic()
+    private void InitDic()
     {
         poolManager.poolingItemList.ForEach((item) => {
             poolItemDic.Add(item.prefab.name, item);
-            Debug.Log(item.prefab.name);
         });
+        _sounds.ForEach(item => _soundDic.Add(item.name, item));
     }
 }
