@@ -24,14 +24,21 @@ public class Transparent : MonoBehaviour, IPlayerComponent
     {
         if (next == Vector2.zero)
         {
-            _player.gameObject.layer = _ignoreLayer;
-            HideEvent?.Invoke();
+            StartCoroutine(Hide());
         }
         else
         {
+            StopAllCoroutines();
             _player.gameObject.layer = _playerLayer;
             ShowEvent?.Invoke();
         }
+    }
+
+    private IEnumerator Hide()
+    {
+        yield return new WaitForSeconds(0.1f);
+        _player.gameObject.layer = _ignoreLayer;
+        HideEvent?.Invoke();
     }
 
     private void Update()

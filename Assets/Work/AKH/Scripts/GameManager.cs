@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,7 +29,10 @@ public class GameManager : MonoBehaviour
     {
         InitPoolItemDic();
     }
-
+    public void ReStart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     private void InitPoolItemDic()
     {
         poolManager.poolingItemList.ForEach((item) => {

@@ -114,8 +114,8 @@ public class CCTV : MonoBehaviour
             {
                 if (!Physics2D.Raycast(HolderPosition, direction.normalized, direction.magnitude, _obstacleMask))
                 {
-                    Debug.Log("Find");
                     //플레이어 발견
+                    enemy.GetComponent<GamePlayer>().SetDeadState();
                 }
             }
         }
