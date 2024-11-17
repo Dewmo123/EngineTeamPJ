@@ -9,7 +9,6 @@ public class SoundFeedback : Feedback
     
     public override void PlayFeedback()
     {
-        Debug.Log(GameManager.Instance);
         PoolingItemSO item = GameManager.Instance.poolItemDic["SoundPlayer"];
         PoolManagerSO poolManager = GameManager.Instance.poolManager;
         SoundPlayer soundPlayer = poolManager.Pop(item.poolType) as SoundPlayer;

@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     private float _timeInAir;
     protected bool _canMove = true;
     protected bool _isDash = false;
-
     private void Awake()
     {
         isGround.OnValueChanged += HandleGrounded;
@@ -40,7 +39,9 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     private void HandleGrounded(bool prev, bool next)
     {
         if (next)
+        {
             landEvent?.Invoke();
+        }
     }
 
     public void AcceptMovement(Vector2 move)
@@ -101,7 +102,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     #region Rope
     public void ShootRope()
     {
-        _player.GetCompo<GrappleGun>().SetGrapplePoint();
+        _player.GetCompo<GrappleGun>()?.SetGrapplePoint();
     }
     public void ShootRope(Vector2 direction)
     {
