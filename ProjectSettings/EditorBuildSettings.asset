@@ -8,5 +8,35 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Work/JYE/Scenes/Stage1.unity
+    guid: b51d2a138003f194ba848ac7c9b5bbea
+  - enabled: 1
+    path: Assets/Work/JYE/Scenes/Stage2.unity
+    guid: 38026a09bb5890145bd710a80c32fb26
+  - enabled: 1
+    path: Assets/Work/JYE/Scenes/Stage3.unity
+    guid: f64dc1aec3e542f498fdb6e566794cf1
+  - enabled: 1
+    path: Assets/Work/JYE/Scenes/Stage4.unity
+    guid: f62d24d5d75bdc846afe7604675e4a3e
+  - enabled: 1
+    path: Assets/Work/JYE/Scenes/Stage5.unity
+    guid: 2ba511886c410ef489b57824d63a4560
+  - enabled: 1
+    path: Assets/Work/JYE/Scenes/Stage6.unity
+    guid: 349fb64168031544b8e73c9fd638c3e2
+  - enabled: 1
+    path: Assets/Work/JYE/Scenes/Stage7.unity
+    guid: a17a480cad2d46f4f935853f5da1beaf
+  - enabled: 1
+    path: Assets/Work/JYE/Scenes/Stage8.unity
+    guid: cbdc104a1f397f84abb36baee163676f
+  - enabled: 1
+    path: Assets/Work/JYE/Scenes/Stage9.unity
+    guid: 992ef674dad94b848a13920b04660e17
+  - enabled: 1
+    path: Assets/Work/JYE/Scenes/Stage10.unity
+    guid: 2bef62232defb234ea994791934acde5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bcbb56de6ebc3b5469a196dc83bd2b03, type: 2}

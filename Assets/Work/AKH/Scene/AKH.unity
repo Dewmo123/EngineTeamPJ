@@ -2253,6 +2253,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <poolManager>k__BackingField: {fileID: 11400000, guid: d22882c65f2c0704fad136b06c9a4cd0, type: 2}
+  _sounds:
+  - {fileID: 11400000, guid: b7b8509aaee4de8458ffb13302cdc010, type: 2}
+  - {fileID: 11400000, guid: cdf96194ae8b84141a0dbddd5b074503, type: 2}
+  - {fileID: 11400000, guid: eeff596e07aa7a245b496e06d661d08b, type: 2}
+  - {fileID: 11400000, guid: dc22b93d7d87b864e9e987e8186d39fb, type: 2}
+  - {fileID: 11400000, guid: b3db10d5c81cd32488eab48d01a04cfe, type: 2}
+  - {fileID: 11400000, guid: 28ace5c2b834eb64ab08e97a5951f403, type: 2}
 --- !u!1 &1520577616
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,10 +3420,10 @@ SceneRoots:
   - {fileID: 472240064}
   - {fileID: 5420896141608261683}
   - {fileID: 1113746613}
-  - {fileID: 803206192}
   - {fileID: 4087145217615227909}
   - {fileID: 2121770674}
   - {fileID: 183662800}
   - {fileID: 109158766}
   - {fileID: 620509419}
   - {fileID: 1241052828}
+  - {fileID: 803206192}
