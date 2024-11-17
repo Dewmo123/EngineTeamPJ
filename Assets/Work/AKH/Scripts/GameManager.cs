@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<string, SoundSO> _soundDic;
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (_instance == null)
             _instance = this;
         poolItemDic = new Dictionary<string, PoolingItemSO>();

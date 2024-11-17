@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     #region Rope
     public void ShootRope()
     {
-        _player.GetCompo<GrappleGun>().SetGrapplePoint();
+        _player.GetCompo<GrappleGun>()?.SetGrapplePoint();
     }
     public void ShootRope(Vector2 direction)
     {
