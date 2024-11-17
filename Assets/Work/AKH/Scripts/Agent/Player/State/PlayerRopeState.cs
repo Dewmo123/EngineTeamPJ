@@ -45,7 +45,7 @@ public class PlayerRopeState : PlayerMoveState
     }
     private void HandleRopeCancel()
     {
-        if (_gun.launchToPoint || _player.movementCompo.isGround.Value)
+        if (_player.movementCompo.isGround.Value)
             _stateMachine.ChangeState(PlayerEnum.Idle);
         else
             _stateMachine.ChangeState(PlayerEnum.AirRoll);
@@ -60,6 +60,7 @@ public class PlayerRopeState : PlayerMoveState
     {
         if (!_isDash)
         {
+            _player.PlaySound("RopeSwing");
             _rb.AddForce(_rb.velocity.normalized * _player.movementCompo.dashPower, ForceMode2D.Impulse);
             _player.GetCompo<AgentVFX>().ToggleAfterImage(true);
             _player.WaitCoroutine(_player.movementCompo.ropeAfterImageTime, () => _player.GetCompo<AgentVFX>().ToggleAfterImage(false));

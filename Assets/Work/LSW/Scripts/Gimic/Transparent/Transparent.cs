@@ -14,6 +14,8 @@ public class Transparent : MonoBehaviour, IPlayerComponent
     public UnityEvent HideEvent;
     public UnityEvent ShowEvent;
 
+    private Coroutine _hide;
+
     public void Enable()
     {
         isActive = true;
@@ -22,16 +24,25 @@ public class Transparent : MonoBehaviour, IPlayerComponent
 
     private void HandleMoveChanged(Vector2 prev, Vector2 next)
     {
-        if (next == Vector2.zero)
+        if (next == Vector2.zero&&_player.movementCompo.isGround.Value)
         {
-            _player.gameObject.layer = _ignoreLayer;
-            HideEvent?.Invoke();
+            if(_hide==null)
+            _hide = StartCoroutine(Hide());
         }
         else
         {
+            StopAllCoroutines();
+            _hide = null;
             _player.gameObject.layer = _playerLayer;
             ShowEvent?.Invoke();
         }
+    }
+
+    private IEnumerator Hide()
+    {
+        yield return new WaitForSeconds(0.1f);
+        _player.gameObject.layer = _ignoreLayer;
+        HideEvent?.Invoke();
     }
 
     private void Update()

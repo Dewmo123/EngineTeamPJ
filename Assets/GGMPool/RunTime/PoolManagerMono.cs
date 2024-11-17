@@ -8,6 +8,7 @@ namespace GGMPool
 
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             _poolManager.InitializePool(transform);
         }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour, IPlayerComponent
 {
@@ -25,9 +26,24 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     public NotifyValue<bool> isGround = new NotifyValue<bool>();
     public bool isRope = false;
 
+    public UnityEvent landEvent;
+
     private float _timeInAir;
     protected bool _canMove = true;
     protected bool _isDash = false;
+    private void Awake()
+    {
+        isGround.OnValueChanged += HandleGrounded;
+    }
+
+    private void HandleGrounded(bool prev, bool next)
+    {
+        if (next)
+        {
+            landEvent?.Invoke();
+        }
+    }
+
     public void AcceptMovement(Vector2 move)
     {
         _player.rbCompo.velocity = move;
@@ -86,7 +102,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     #region Rope
     public void ShootRope()
     {
-        _player.GetCompo<GrappleGun>().SetGrapplePoint();
+        _player.GetCompo<GrappleGun>()?.SetGrapplePoint();
     }
     public void ShootRope(Vector2 direction)
     {

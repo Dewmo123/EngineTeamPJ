@@ -11,6 +11,7 @@ public class PlayerAirRollState : PlayerCanRopeState
     {
         base.Enter();
         _player.rbCompo.AddForce(Vector2.up * _player.movementCompo.jumpPower, ForceMode2D.Impulse);
+        _player.PlaySound("Jump");
     }
     public override void UpdateState()
     {

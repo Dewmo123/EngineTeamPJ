@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7fa4c2dd4977cf46b219f4e990276d2, type: 3}
-  m_Name: Hide
+  m_Name: Walk
   m_EditorClassIdentifier: 
   audioType: 0
-  clip: {fileID: 8300000, guid: cf1880bf7bf07524f94e3ac66f886594, type: 3}
+  clip: {fileID: 8300000, guid: a2c46fcb5b8425c46b92ca7b5208de7f, type: 3}
   loop: 0
   randomizePitch: 1
   randomPitchModifier: 0.1
-  volume: 1
+  volume: 0.999145
   basePitch: 1
