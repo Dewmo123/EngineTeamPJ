@@ -15,19 +15,20 @@ public class StartScene : MonoBehaviour
     }
     public void StartGame()
     {
+        _managers["ErrorUI"].MoveOriginPos(true);
         _managers["ChooseSceneUI"].MoveTargetPos(true);
         _managers["StartSceneUI"].MoveOriginPos(true);
-        using (StreamWriter sw = new StreamWriter(File.Open("asd.txt", FileMode.OpenOrCreate)))
-        {
-            sw.Write("asd");
-        }
+        StageManager.Instance.SaveStageData(1);
+        StageManager.Instance.LoadStageData();
     }
     public void Continue()
     {
-        string s;
-        using (StreamReader sr = new StreamReader(File.Open("asd.txt", FileMode.Open)))
+        if (!StageManager.Instance.LoadStageData())
+            _managers["ErrorUI"].MoveTargetPos();
+        else
         {
-            s = sr.ReadLine();
+            _managers["ChooseSceneUI"].MoveTargetPos(true);
+            _managers["StartSceneUI"].MoveOriginPos(true);
         }
     }
 }

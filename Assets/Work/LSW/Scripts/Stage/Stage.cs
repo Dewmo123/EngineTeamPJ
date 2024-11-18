@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Stage : MonoBehaviour
 {
     [SerializeField] private int _sceneNum;
-    public NotifyValue<bool> _isUnlock = new NotifyValue<bool>(true);
+    public NotifyValue<bool> _isUnlock = new NotifyValue<bool>(false);
     public event Action<int> _onEnter;
     private Image _image;
     [SerializeField] private Sprite _unlockImage, _lockImage;
