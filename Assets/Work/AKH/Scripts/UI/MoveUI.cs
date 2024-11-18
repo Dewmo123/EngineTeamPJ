@@ -21,7 +21,6 @@ public class MoveUI : MonoBehaviour
         else
             rTransform.DOAnchorPos(targetPos, _duration);
     }
-
     private IEnumerator Wait(Vector2 targetPos,WaitForSeconds wait)
     {
         yield return wait;

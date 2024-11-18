@@ -126,7 +126,7 @@ MonoBehaviour:
   _edgeThreshold: 0.5
   _startAngle: -120
   _endAngle: -60
-  _oneTickAngle: 0.08
+  _oneTickAngle: 0.4
   _fovLight: {fileID: 107258132672900300}
   _enemiesInView: []
   _rotate: 1

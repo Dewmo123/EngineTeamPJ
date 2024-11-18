@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -24,6 +26,8 @@ public abstract class Enemy : MonoBehaviour
     public Transform movePoint2; //1이 오른쪽, 2가 왼쪽
     public Vector3 originPos;
 
+    public UnityEvent onEnemyDead;
+
     public CCTV view;
 
     protected virtual void Awake()
@@ -43,9 +47,6 @@ public abstract class Enemy : MonoBehaviour
         _stateMachine.Init(EnemyStateType.Stop, this);
         Setting();
     }
-    private void Start()
-    {
-    }
     protected virtual void Update()
     {
         _stateMachine.currentState.UpdateState();
@@ -54,6 +55,10 @@ public abstract class Enemy : MonoBehaviour
             DieEnemy();
         }
         Boom();
+    }
+    public void SetDead()
+    {
+        _stateMachine.ChangeState(EnemyStateType.Die);
     }
     public void EndTriggerCalled()
     {
