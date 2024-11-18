@@ -14,16 +14,12 @@ public struct MoveUIElement
 public class MoveUIManager : MonoBehaviour
 {
     public List<MoveUIElement> StartUIElements = new List<MoveUIElement>();
-    private void Start()
+    public void MoveTargetPos(bool noTime = false)
     {
-        MoveTargetPos();
+        StartUIElements.ToList().ForEach((item) => item.text.Move(item.targetPos, noTime ? null : new WaitForSeconds(item.wait)));
     }
-    public void MoveTargetPos()
+    public void MoveOriginPos(bool noTime = false)
     {
-        StartUIElements.ToList().ForEach((item) => item.text.Move(item.targetPos, new WaitForSeconds(item.wait)));
-    }
-    public void MoveOriginPos()
-    {
-        StartUIElements.ToList().ForEach((item) => item.text.Move(item.originPos, new WaitForSeconds(item.wait)));
+        StartUIElements.ToList().ForEach((item) => item.text.Move(item.originPos, noTime ? null : new WaitForSeconds(item.wait)));
     }
 }

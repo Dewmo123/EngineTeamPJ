@@ -17,7 +17,7 @@ public class HitEnemyState : EnemyState
     {
         base.UpdateState();
         if (_endTriggerCalled)
-            _stateMachine.ChangeState(_enemy.enemyType.myType);
+            _enemy.SetDead();
     }
     public override void Exit()
     {

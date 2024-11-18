@@ -1,22 +1,34 @@
 using System;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Stage : MonoBehaviour
 {
     [SerializeField] private int _sceneNum;
-    public bool _isUnlock;
+    public NotifyValue<bool> _isUnlock = new NotifyValue<bool>(false);
     public event Action<int> _onEnter;
+    private Image _image;
     [SerializeField] private Sprite _unlockImage, _lockImage;
+    private void Awake()
+    {
+        _image = GetComponent<Image>();
+    }
 
     private void Start()
     {
-        gameObject.GetComponent<Image>().sprite = _isUnlock ? _unlockImage : _lockImage;
+        _image.sprite = _isUnlock.Value ? _unlockImage : _lockImage;
+        _isUnlock.OnValueChanged += HandleStageLock;
+    }
+
+    private void HandleStageLock(bool prev, bool next)
+    {
+        if (next)
+            _image.sprite = _unlockImage;
     }
 
     public void OnClick()
     {
-        if (_isUnlock == true)
+        if (_isUnlock.Value == true)
             _onEnter?.Invoke(_sceneNum);
     }
 

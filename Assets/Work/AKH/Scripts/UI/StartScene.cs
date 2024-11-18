@@ -2,23 +2,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class StartScene : MonoBehaviour
 {
+    private Dictionary<string, MoveUIManager> _managers = new Dictionary<string, MoveUIManager>();
+    private void Awake()
+    {
+        GetComponentsInChildren<MoveUIManager>().ToList().ForEach(item => _managers.Add(item.gameObject.name, item));
+        _managers["StartSceneUI"].MoveTargetPos();
+    }
     public void StartGame()
     {
-        using (StreamWriter sw = new StreamWriter(File.Open("asd.txt", FileMode.OpenOrCreate)))
-        {
-            sw.Write("asd");
-        }
+        _managers["ErrorUI"].MoveOriginPos(true);
+        _managers["ChooseSceneUI"].MoveTargetPos(true);
+        _managers["StartSceneUI"].MoveOriginPos(true);
+        StageManager.Instance.SaveStageData(1);
+        StageManager.Instance.LoadStageData();
     }
     public void Continue()
     {
-        string s;
-        using (StreamReader sr = new StreamReader(File.Open("asd.txt", FileMode.Open)))
+        if (!StageManager.Instance.LoadStageData())
+            _managers["ErrorUI"].MoveTargetPos();
+        else
         {
-            s = sr.ReadLine();
+            _managers["ChooseSceneUI"].MoveTargetPos(true);
+            _managers["StartSceneUI"].MoveOriginPos(true);
         }
     }
 }

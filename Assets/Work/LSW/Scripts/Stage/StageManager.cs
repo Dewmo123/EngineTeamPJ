@@ -1,18 +1,20 @@
 using System;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
-    private static StageManager StageData { get; set; }
-    [SerializeField] private GameObject[] stageInfo;
+    public static StageManager Instance { get; set; }
+    [SerializeField] private Stage[] stageInfo;
+    public int _curStageCnt;
 
     private void Awake()
     {
-        if (StageData == null)
+        if (Instance == null)
         {
-            StageData = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -24,39 +26,46 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         for (int i = 0; i < stageInfo.Length; i++)
+            stageInfo[i]._onEnter += EnterStage;
+    }
+
+    public void SaveStageData(int stageCnt)
+    {
+        using (StreamWriter sw = new StreamWriter(File.Open("asd.txt", FileMode.OpenOrCreate)))
         {
-            stageInfo[i].GetComponent<Stage>()._onEnter += EnterStage;
+            sw.Write(stageCnt);
+        }
+    }
+    public bool LoadStageData()
+    {
+        try
+        {
+            using (StreamReader sr = new StreamReader(File.Open("asd.txt", FileMode.Open)))
+            {
+                int cnt = int.Parse(sr.ReadLine());
+                for (int i = 0; i < cnt; i++)
+                    stageInfo[i]._isUnlock.Value = true;
+                for (int i = cnt; i < stageInfo.Length; i++)
+                    stageInfo[i]._isUnlock.Value = false;
+                return true;
+            }
+        }
+        catch
+        {
+            return false;
         }
     }
 
-    public void SaveStageData()
+    public void CompleteStage()      //클리어하면 호출할 것!!
     {
-        for (int i = 0; i < stageInfo.Length; i++)
-        {
-            PlayerPrefs.SetInt($"Stage_Unlock{i}", stageInfo[i].GetComponent<Stage>()._isUnlock ? 1 : 0);
-        }
-        PlayerPrefs.Save();
-    }
-
-    public void LoadStageData()
-    {
-        for (int i = 0; i < stageInfo.Length; i++)
-        {
-            stageInfo[i].GetComponent<Stage>()._isUnlock = PlayerPrefs.GetInt($"Stage_Unlock{i}") == 1;
-        }
-    }
-
-    public void CompleteStage(int stageNumber)      //클리어하면 호출할 것!!
-    {
-        PlayerPrefs.SetInt($"Stage_Unlock{stageNumber++}", 1);
-        SaveStageData();
-        LoadStageData();
+        if (_curStageCnt == 9) return;
+        SaveStageData(++_curStageCnt);
     }
 
     private void EnterStage(int sta)
     {
         SceneManager.LoadScene(sta);
         for (int i = 0; i < stageInfo.Length; i++)
-            stageInfo[i].GetComponent<Stage>().ClearAllListener();
+            stageInfo[i].ClearAllListener();
     }
 }
