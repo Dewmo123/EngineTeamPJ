@@ -89,6 +89,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""b9464df4-d650-44e6-9995-664997fecc8d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -190,6 +199,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""UseGimic"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57b6e727-5407-45d4-b9f7-3bec8290fde1"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -205,6 +225,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Action_Rope = m_Action.FindAction("Rope", throwIfNotFound: true);
         m_Action_Dash = m_Action.FindAction("Dash", throwIfNotFound: true);
         m_Action_UseGimic = m_Action.FindAction("UseGimic", throwIfNotFound: true);
+        m_Action_Esc = m_Action.FindAction("Esc", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +294,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Action_Rope;
     private readonly InputAction m_Action_Dash;
     private readonly InputAction m_Action_UseGimic;
+    private readonly InputAction m_Action_Esc;
     public struct ActionActions
     {
         private @PlayerInput m_Wrapper;
@@ -284,6 +306,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Rope => m_Wrapper.m_Action_Rope;
         public InputAction @Dash => m_Wrapper.m_Action_Dash;
         public InputAction @UseGimic => m_Wrapper.m_Action_UseGimic;
+        public InputAction @Esc => m_Wrapper.m_Action_Esc;
         public InputActionMap Get() { return m_Wrapper.m_Action; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -314,6 +337,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @UseGimic.started += instance.OnUseGimic;
             @UseGimic.performed += instance.OnUseGimic;
             @UseGimic.canceled += instance.OnUseGimic;
+            @Esc.started += instance.OnEsc;
+            @Esc.performed += instance.OnEsc;
+            @Esc.canceled += instance.OnEsc;
         }
 
         private void UnregisterCallbacks(IActionActions instance)
@@ -339,6 +365,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @UseGimic.started -= instance.OnUseGimic;
             @UseGimic.performed -= instance.OnUseGimic;
             @UseGimic.canceled -= instance.OnUseGimic;
+            @Esc.started -= instance.OnEsc;
+            @Esc.performed -= instance.OnEsc;
+            @Esc.canceled -= instance.OnEsc;
         }
 
         public void RemoveCallbacks(IActionActions instance)
@@ -365,5 +394,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnRope(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnUseGimic(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
 }
