@@ -580,21 +580,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  playerRopeSwingEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1346677944788564319}
-        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
-        m_MethodName: PlayFeedbacks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5709398961308325201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +702,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: -4.52, y: -0.26}
   m_AutoConfigureDistance: 1
-  m_Distance: 13.362906
+  m_Distance: 30.62
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!114 &1157014631591422322
@@ -1196,10 +1181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877e5d7d69aa6944c933ef54900a4aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyLayer: 8
+  _enemyLayer: 12
   _canRopeLayer:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 4224
   gunHolder: {fileID: 8826105192454134164}
   gunPivot: {fileID: 192237468451265630}
   firePoint: {fileID: 7731448067068220061}
@@ -1207,8 +1192,6 @@ MonoBehaviour:
   rotationSpeed: 20.6
   hasMaxDistance: 1
   maxDistnace: 9
-  launchToPoint: 0
-  launchType: 0
   launchSpeed: 5
   autoConfigureDistance: 1
   targetDistance: 3
