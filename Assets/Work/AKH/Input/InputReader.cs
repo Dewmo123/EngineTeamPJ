@@ -18,6 +18,7 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
     public event Action RopeCancelEvent;
     public event Action AttackEvent;
     public event Action GimicEvent;
+    public event Action EscEvent;
 
     public Vector2 Movement { get; private set; }
     public Vector2 Mouse { get; private set; }
@@ -74,5 +75,11 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
     {
         if (context.performed)
             GimicEvent?.Invoke();
+    }
+
+    public void OnEsc(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            EscEvent?.Invoke();
     }
 }
