@@ -7,6 +7,12 @@ public class DieEnemyState : EnemyState
     public DieEnemyState(EnemyStateMachine stateMachine, string animName, Enemy enemy) : base(stateMachine, animName, enemy)
     {
     }
+    public override void UpdateState()
+    {
+        base.UpdateState();
+        if (_endTriggerCalled)
+            _enemy.onEnemyDead?.Invoke();
+    }
     public override void Exit()
     {
         base.Exit();

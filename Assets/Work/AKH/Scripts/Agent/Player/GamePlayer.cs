@@ -30,7 +30,10 @@ public class GamePlayer : Player
         GetCompo<Transparent>().Enable();
     }
 
-
+    private void Start()
+    {
+        playerDeadEvent.AddListener(GameManager.Instance.ReStart);
+    }
     public void Move(Vector2 vector)
     {
         movementCompo.AcceptMovement(vector);

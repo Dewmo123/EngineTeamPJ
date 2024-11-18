@@ -122,7 +122,7 @@ public class CCTV : MonoBehaviour
     }
     #endregion
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_rotate)
             UpdateAim();
