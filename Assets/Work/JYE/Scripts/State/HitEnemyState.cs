@@ -17,7 +17,7 @@ public class HitEnemyState : EnemyState
     {
         base.UpdateState();
         if (_endTriggerCalled)
-            _enemy.SetDead();
+            _enemy.SetDeadState();
     }
     public override void Exit()
     {

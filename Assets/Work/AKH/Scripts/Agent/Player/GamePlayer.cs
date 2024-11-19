@@ -60,4 +60,8 @@ public class GamePlayer : Player
         yield return new WaitForSeconds(time);
         callback.Invoke();
     }
+    private void OnDestroy()
+    {
+        _stateMachine.currentState.Exit();
+    }
 }

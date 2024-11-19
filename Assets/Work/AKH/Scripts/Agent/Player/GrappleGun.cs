@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 public class GrappleGun : MonoBehaviour, IPlayerComponent
 {
@@ -64,11 +65,16 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
     {
         if (_grappleRope.isGrappling)
         {
+            StopLaunch();
             Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
             Vector2 targetPos = grapplePoint - firePointDistnace;
             if (targetPos.y < transform.position.y) targetPos += Vector2.up;
             gunHolder.transform.DOMove(targetPos,0.5f);
         }
+    }
+    public void StopLaunch()
+    {
+        gunHolder.transform.DOKill();
     }
     public void EscapeGrapple()
     {

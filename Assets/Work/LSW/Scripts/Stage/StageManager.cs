@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,28 +8,33 @@ using UnityEngine.SceneManagement;
 public class StageManager : MonoBehaviour
 {
     public static StageManager Instance { get; set; }
-    [SerializeField] private Stage[] stageInfo;
-    public int _curStageCnt;
-
+    public int curStageCnt;
+    private int _targetCnt = 0;
+    private int _finCnt = 0;
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+        if (!LoadStageData()) Debug.LogWarning("Cant Save Load Data");
+        SetTargetEnemy();
     }
 
-    private void Start()
+    private void AddDeadCount()
     {
-        for (int i = 0; i < stageInfo.Length; i++)
-            stageInfo[i]._onEnter += EnterStage;
+        Debug.Log("addFin");
+        _finCnt++;
+        if (_targetCnt == _finCnt)
+        {
+            Debug.Log("Complete");
+            CompleteStage();
+        }
     }
-
     public void SaveStageData(int stageCnt)
     {
         using (StreamWriter sw = new StreamWriter(File.Open("asd.txt", FileMode.OpenOrCreate)))
@@ -43,29 +49,36 @@ public class StageManager : MonoBehaviour
             using (StreamReader sr = new StreamReader(File.Open("asd.txt", FileMode.Open)))
             {
                 int cnt = int.Parse(sr.ReadLine());
-                for (int i = 0; i < cnt; i++)
-                    stageInfo[i]._isUnlock.Value = true;
-                for (int i = cnt; i < stageInfo.Length; i++)
-                    stageInfo[i]._isUnlock.Value = false;
+                curStageCnt = cnt;
                 return true;
             }
         }
-        catch
+        catch (Exception e)
         {
+            Debug.LogWarning(e.ToString());
             return false;
         }
     }
 
+
+
     public void CompleteStage()      //클리어하면 호출할 것!!
     {
-        if (_curStageCnt == 9) return;
-        SaveStageData(++_curStageCnt);
+        if (curStageCnt == 9) return;
+        SaveStageData(++curStageCnt);
+        EnterStage(curStageCnt);
     }
 
-    private void EnterStage(int sta)
+    public void EnterStage(int sta)
     {
         SceneManager.LoadScene(sta);
-        for (int i = 0; i < stageInfo.Length; i++)
-            stageInfo[i].ClearAllListener();
+    }
+
+    private void SetTargetEnemy()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("TargetEnemy");
+        _targetCnt = targets.Length;
+        Debug.Log(_targetCnt);
+        targets.ToList().ForEach(item => item.GetComponent<Enemy>().onEnemyDead += AddDeadCount);
     }
 }

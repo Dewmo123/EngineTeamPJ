@@ -45,6 +45,7 @@ public class PlayerRopeState : PlayerMoveState
     }
     private void HandleRopeCancel()
     {
+        _player.GetCompo<GrappleGun>().StopLaunch();
         if (_player.movementCompo.isGround.Value)
             _stateMachine.ChangeState(PlayerEnum.Idle);
         else

@@ -219,6 +219,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1709932470}
+        m_TargetAssemblyTypeName: StageBtnManager, Assembly-CSharp
+        m_MethodName: SetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &31567311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,17 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b070891375fab44a8fdc285e541472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageInfo:
-  - {fileID: 1281331791}
-  - {fileID: 1216493616}
-  - {fileID: 2090056179}
-  - {fileID: 435065897}
-  - {fileID: 2044849579}
-  - {fileID: 800038737}
-  - {fileID: 1852155310}
-  - {fileID: 1655161352}
-  - {fileID: 475972572}
-  _curStageCnt: 0
+  curStageCnt: 0
 --- !u!4 &156202571
 Transform:
   m_ObjectHideFlags: 0
@@ -2923,8 +2925,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0, g: 0, b: 0, a: 1}
+      key1: {r: 0, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2948,7 +2950,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 1
@@ -3451,6 +3453,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1709932470}
+        m_TargetAssemblyTypeName: StageBtnManager, Assembly-CSharp
+        m_MethodName: SetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1534444483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3921,6 +3935,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1709932468}
   - component: {fileID: 1709932469}
+  - component: {fileID: 1709932470}
   m_Layer: 5
   m_Name: ChooseSceneUI
   m_TagString: Untagged
@@ -3965,6 +3980,28 @@ MonoBehaviour:
     originPos: {x: 1966, y: 0}
     targetPos: {x: 0, y: 0}
     wait: 1
+--- !u!114 &1709932470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709932467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ba28871b33d304cb02cdeb7a7a8896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageInfo:
+  - {fileID: 1281331791}
+  - {fileID: 1216493616}
+  - {fileID: 2090056179}
+  - {fileID: 435065897}
+  - {fileID: 2044849579}
+  - {fileID: 800038737}
+  - {fileID: 1852155310}
+  - {fileID: 1655161352}
+  - {fileID: 475972572}
 --- !u!1001 &1852155308
 PrefabInstance:
   m_ObjectHideFlags: 0
