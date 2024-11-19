@@ -581,6 +581,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  _attackRadius: 1.5
 --- !u!114 &5709398961308325201
 MonoBehaviour:
   m_ObjectHideFlags: 0

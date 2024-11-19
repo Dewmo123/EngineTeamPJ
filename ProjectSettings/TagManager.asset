@@ -45,6 +45,9 @@ TagManager:
   - name: Background
     uniqueID: 3832908325
     locked: 0
+  - name: Obj
+    uniqueID: 3095885975
+    locked: 0
   - name: Entity
     uniqueID: 1681609887
     locked: 0

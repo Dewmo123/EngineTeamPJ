@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class StageManager : MonoBehaviour
 {
     public static StageManager Instance { get; set; }
-    public int curStageCnt;
+    public int curStageCnt = 0;
+    public int unlockStageCnt = 0;
     private int _targetCnt = 0;
     private int _finCnt = 0;
     private void Awake()
@@ -49,7 +50,7 @@ public class StageManager : MonoBehaviour
             using (StreamReader sr = new StreamReader(File.Open("asd.txt", FileMode.Open)))
             {
                 int cnt = int.Parse(sr.ReadLine());
-                curStageCnt = cnt;
+                unlockStageCnt = cnt;
                 return true;
             }
         }
@@ -64,7 +65,7 @@ public class StageManager : MonoBehaviour
 
     public void CompleteStage()      //클리어하면 호출할 것!!
     {
-        if (curStageCnt == 9) return;
+        if (curStageCnt == 10) return;
         SaveStageData(++curStageCnt);
         EnterStage(curStageCnt);
     }

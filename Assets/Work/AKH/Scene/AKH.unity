@@ -651,8 +651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b070891375fab44a8fdc285e541472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageInfo: []
-  _curStageCnt: 0
+  curStageCnt: 0
+  unlockStageCnt: 0
 --- !u!4 &421262961
 Transform:
   m_ObjectHideFlags: 0
@@ -3408,6 +3408,14 @@ PrefabInstance:
     - target: {fileID: 3951222272390919962, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295040942185780547, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
+      propertyPath: m_Distance
+      value: 13.362906
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090544301888932376, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
+      propertyPath: playerDeadEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8090544301888932376, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
       propertyPath: playerDeadEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target

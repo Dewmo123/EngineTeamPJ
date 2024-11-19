@@ -10,6 +10,8 @@ public class GamePlayer : Player
 
     private PlayerStateMachine _stateMachine;
     public UnityEvent playerDeadEvent;
+    [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private float _attackRadius;
     public PlayerEnum currentState => _stateMachine.GetCurType();
     protected override void Awake()
     {
@@ -24,6 +26,7 @@ public class GamePlayer : Player
         _stateMachine.AddState(PlayerEnum.Rope, new PlayerRopeState(_stateMachine, "Rope", this));
         _stateMachine.AddState(PlayerEnum.Dash, new PlayerDashState(_stateMachine, "Dash", this));
         _stateMachine.AddState(PlayerEnum.Dead, new PlayerDeadState(_stateMachine, "Dead", this));
+        _stateMachine.AddState(PlayerEnum.Attack, new PlayerAttackState(_stateMachine, "Attack", this));
         _stateMachine.AddState(PlayerEnum.AirRoll, new PlayerAirRollState(_stateMachine, "AirRoll", this));
         _stateMachine.Init(PlayerEnum.Idle,this);
         #endregion
@@ -36,6 +39,7 @@ public class GamePlayer : Player
     }
     private void OnDestroy()
     {
+        _stateMachine.currentState.Exit();
         playerDeadEvent.RemoveListener(GameManager.Instance.ReStart);
     }
     public void Move(Vector2 vector)
@@ -55,6 +59,16 @@ public class GamePlayer : Player
     {
         StartCoroutine(Wait(time, callback));
     }
+    public void Attack()
+    {
+        Enemy enemy;
+        Collider2D col = Physics2D.OverlapCircle(transform.position + (IsFacingRight() ? Vector3.right : Vector3.left), _attackRadius, _enemyLayer);
+        if (col == null) return;
+        if(col.TryGetComponent(out enemy))
+        {
+            enemy.SetDeadState();
+        }
+    }
     public void SetDeadState()
     {
         _stateMachine.ChangeState(PlayerEnum.Dead);
@@ -64,8 +78,11 @@ public class GamePlayer : Player
         yield return new WaitForSeconds(time);
         callback.Invoke();
     }
-    private void OnDestroy()
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
     {
-        _stateMachine.currentState.Exit();
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position + (IsFacingRight() ? Vector3.right : Vector3.left), _attackRadius);
     }
+#endif
 }

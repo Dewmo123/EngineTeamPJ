@@ -11,6 +11,10 @@ public class AnimationEndTrigger : MonoBehaviour, IPlayerComponent
     {
         _player.EndTriggerCalled();
     }
+    public void AttackTrigger()
+    {
+        _player.Attack();
+    }
     public void PlayWalkSound()
     {
         onWalkEvent?.Invoke();

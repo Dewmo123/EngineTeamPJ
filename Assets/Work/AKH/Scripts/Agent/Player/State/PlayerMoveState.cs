@@ -17,8 +17,6 @@ public abstract class PlayerMoveState : PlayerState
         _input.JumpEvent += HandleJumpEvent;
         _input.DashEvent += HandleDashEvent;
     }
-
-
     public override void Exit()
     {
         base.Exit();
