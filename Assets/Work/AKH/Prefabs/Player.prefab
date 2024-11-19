@@ -510,6 +510,7 @@ GameObject:
   - component: {fileID: 6295040942185780547}
   - component: {fileID: 1157014631591422322}
   - component: {fileID: 9018572130521701326}
+  - component: {fileID: 8067270318244094854}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -571,21 +572,6 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ReStart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  playerRopeSwingEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1346677944788564319}
-        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
-        m_MethodName: PlayFeedbacks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -717,7 +703,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: -4.52, y: -0.26}
   m_AutoConfigureDistance: 1
-  m_Distance: 13.362906
+  m_Distance: 30.62
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!114 &1157014631591422322
@@ -780,6 +766,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   _length: 2
+--- !u!114 &8067270318244094854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3951222272390919962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5041227a70c9da84b9029d8f0183c98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _escUI: {fileID: 0}
 --- !u!1 &4304597716290855420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,8 +1206,6 @@ MonoBehaviour:
   rotationSpeed: 20.6
   hasMaxDistance: 1
   maxDistnace: 9
-  launchToPoint: 0
-  launchType: 0
   launchSpeed: 5
   autoConfigureDistance: 1
   targetDistance: 3
