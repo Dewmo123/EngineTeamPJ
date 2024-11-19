@@ -11,7 +11,10 @@ public class DieEnemyState : EnemyState
     {
         base.UpdateState();
         if (_endTriggerCalled)
-            _enemy.onEnemyDead?.Invoke();
+        {
+            Debug.Log("asd");
+            _enemy.SetDead();
+        }
     }
     public override void Exit()
     {

@@ -21,10 +21,10 @@ public abstract class PlayerState
     protected PlayerStateMachine _stateMachine;
     protected int _animBoolHash;
     protected bool _endTriggerCalled;
-    public PlayerState(PlayerStateMachine stateMachine,string animName, GamePlayer player)
+    public PlayerState(PlayerStateMachine stateMachine, string animName, GamePlayer player)
     {
         _stateMachine = stateMachine;
-        _animBoolHash = Animator.StringToHash(animName);    
+        _animBoolHash = Animator.StringToHash(animName);
         _player = player;
     }
 

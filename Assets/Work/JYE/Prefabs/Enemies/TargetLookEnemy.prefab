@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2935478899488988686}
   - component: {fileID: 3898587954742032686}
   - component: {fileID: 1703741979129534169}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: TargetLookEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,6 +197,9 @@ MonoBehaviour:
   movePoint1: {fileID: 0}
   movePoint2: {fileID: 0}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!1001 &839853282349773448
 PrefabInstance:

@@ -26,15 +26,22 @@ public abstract class Enemy : MonoBehaviour
     public Transform movePoint2; //1이 오른쪽, 2가 왼쪽
     public Vector3 originPos;
 
-    public UnityEvent onEnemyDead;
+    public event Action onEnemyDead;
 
     public CCTV view;
 
     protected virtual void Awake()
     {
-        enemySR = GetComponent<SpriteRenderer>();
-        animCompo = GetComponent<Animator>();
-        view = GetComponentInChildren<CCTV>();
+        try
+        {
+            enemySR = GetComponent<SpriteRenderer>();
+            animCompo = GetComponent<Animator>();
+            view = GetComponentInChildren<CCTV>();
+        }
+        catch
+        {
+            Debug.LogWarning("Component does not exist");
+        }
 
         _stateMachine = new EnemyStateMachine();
         _stateMachine.AddState(EnemyStateType.Stop, new StopIdleEnemyState(_stateMachine, "Idle", this));
@@ -50,23 +57,18 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Update()
     {
         _stateMachine.currentState.UpdateState();
-        if (Input.GetKeyDown(KeyCode.P)) //죽는 조건 알아서 바꾸기
-        {
-            DieEnemy();
-        }
-        Boom();
+    }
+    public void SetDeadState()
+    {
+        _stateMachine.ChangeState(EnemyStateType.Die);
     }
     public void SetDead()
     {
-        _stateMachine.ChangeState(EnemyStateType.Die);
+        onEnemyDead?.Invoke();
     }
     public void EndTriggerCalled()
     {
         _stateMachine.currentState.AnimationEndTrigger();
-    }
-    private void DieEnemy()
-    {
-        _stateMachine.ChangeState(EnemyStateType.Die);
     }
     public void Hit()
     {
@@ -87,21 +89,6 @@ public abstract class Enemy : MonoBehaviour
         _stateMachine.ChangeState(EnemyStateType.GoToPoint);
         yield return new WaitForSeconds(moveDuraion * 1.5f);
         _stateMachine.ChangeState(EnemyStateType.GoToPoint);
-    }
-    private IEnumerator Boom() //죽을 때
-    {
-        if (boom) //자폭일 때 플레이어가 1.5초 지나고도 자폭 범위안에 있는지
-        {
-            animCompo.StopPlayback();
-            yield return new WaitForSeconds(1.5f);
-            Collider2D collider = Physics2D.OverlapCircle(gameObject.transform.position, radius, PlayerLayer);
-            playerDie = collider != null;
-            EnemyDie();
-        }
-        else
-        {
-            EnemyDie();
-        }
     }
     public bool IsFacingRight()
     {
