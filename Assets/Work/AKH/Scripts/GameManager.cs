@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<string, PoolingItemSO> poolItemDic { get; private set; }
     [SerializeField] private List<SoundSO> _sounds;
     public Dictionary<string, SoundSO> _soundDic;
+    private List<Player> _players;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);

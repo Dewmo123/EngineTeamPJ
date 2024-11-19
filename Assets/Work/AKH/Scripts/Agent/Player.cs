@@ -24,6 +24,7 @@ public abstract class Player : MonoBehaviour
 
     protected virtual void Awake()
     {
+        Debug.Log(gameObject.name);
         rbCompo = GetComponent<Rigidbody2D>();
         animCompo = GetComponentInChildren<Animator>();
         rendererCompo = GetComponentInChildren<SpriteRenderer>();
