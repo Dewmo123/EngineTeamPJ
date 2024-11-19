@@ -247,6 +247,9 @@ MonoBehaviour:
   movePoint1: {fileID: 1021587146}
   movePoint2: {fileID: 202884516}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!95 &9037100
 Animator:
@@ -710,6 +713,7 @@ GameObject:
   - component: {fileID: 123686614}
   - component: {fileID: 123686616}
   - component: {fileID: 123686617}
+  - component: {fileID: 123686618}
   m_Layer: 5
   m_Name: Esc
   m_TagString: Untagged
@@ -791,7 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6c2743614595345a7ffd789c365fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 1
+  _duration: 0.3
 --- !u!114 &123686617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,6 +813,18 @@ MonoBehaviour:
     originPos: {x: 0, y: 1140}
     targetPos: {x: 0, y: 0}
     wait: 0
+--- !u!114 &123686618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123686612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f71a8c2b34eddfa4dbf8f2932047e338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &158927553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1254,9 @@ MonoBehaviour:
   movePoint1: {fileID: 1979317218}
   movePoint2: {fileID: 781363629}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!95 &388199857
 Animator:
@@ -2320,7 +2339,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 504263831}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 123686618}
+        m_TargetAssemblyTypeName: EscButtons, Assembly-CSharp
+        m_MethodName: ResetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &504263831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3070,6 +3101,10 @@ PrefabInstance:
       propertyPath: m_Distance
       value: 9.953893
       objectReference: {fileID: 0}
+    - target: {fileID: 8067270318244094854, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
+      propertyPath: _escUI
+      value: 
+      objectReference: {fileID: 123686617}
     - target: {fileID: 8826105192454134164, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.16
@@ -3113,34 +3148,24 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3951222272390919962, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 637023499}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
 --- !u!4 &637023497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8826105192454134164, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
   m_PrefabInstance: {fileID: 637023496}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &637023498 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3951222272390919962, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
+--- !u!114 &637023507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8067270318244094854, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
   m_PrefabInstance: {fileID: 637023496}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &637023499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637023498}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5041227a70c9da84b9029d8f0183c98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _escUI: {fileID: 123686617}
 --- !u!4 &645453094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6857166120806810991, guid: e638ca183e2d4334bb4cd694a3942206, type: 3}
@@ -3359,6 +3384,9 @@ MonoBehaviour:
   movePoint1: {fileID: 1213216699}
   movePoint2: {fileID: 434662385}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!95 &691066782
 Animator:
@@ -4273,7 +4301,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 766215410}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 123686618}
+        m_TargetAssemblyTypeName: EscButtons, Assembly-CSharp
+        m_MethodName: Lobby
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &766215410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4390,7 +4430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &786151335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4508,7 +4548,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 817264063}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 123686618}
+        m_TargetAssemblyTypeName: EscButtons, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &817264063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6150,7 +6202,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1304242539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 637023507}
+        m_TargetAssemblyTypeName: Esc, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1304242539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6690,6 +6754,9 @@ MonoBehaviour:
   movePoint1: {fileID: 448964884}
   movePoint2: {fileID: 1969588720}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!95 &1394782460
 Animator:
@@ -7314,6 +7381,9 @@ MonoBehaviour:
   movePoint1: {fileID: 0}
   movePoint2: {fileID: 0}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!50 &1550021149
 Rigidbody2D:
@@ -7897,7 +7967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1712729998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9066,6 +9136,9 @@ MonoBehaviour:
   movePoint1: {fileID: 1158109957}
   movePoint2: {fileID: 1260007634}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!95 &1919229292
 Animator:
@@ -28271,6 +28344,9 @@ MonoBehaviour:
   movePoint1: {fileID: 2626607569620103715}
   movePoint2: {fileID: 3334562149539554597}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!4 &1371201476819864637
 Transform:
@@ -28531,6 +28607,9 @@ MonoBehaviour:
   movePoint1: {fileID: 7280619104336485698}
   movePoint2: {fileID: 4202187318467716034}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!4 &1865262931042701921
 Transform:
@@ -29127,6 +29206,9 @@ MonoBehaviour:
   movePoint1: {fileID: 0}
   movePoint2: {fileID: 0}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!33 &3655608554393540501
 MeshFilter:
@@ -30088,6 +30170,9 @@ MonoBehaviour:
   movePoint1: {fileID: 0}
   movePoint2: {fileID: 0}
   originPos: {x: 0, y: 0, z: 0}
+  onEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   view: {fileID: 0}
 --- !u!33 &5963629013184904515
 MeshFilter:
