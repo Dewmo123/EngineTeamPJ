@@ -34,6 +34,10 @@ public class GamePlayer : Player
     {
         playerDeadEvent.AddListener(GameManager.Instance.ReStart);
     }
+    private void OnDestroy()
+    {
+        playerDeadEvent.RemoveListener(GameManager.Instance.ReStart);
+    }
     public void Move(Vector2 vector)
     {
         movementCompo.AcceptMovement(vector);
