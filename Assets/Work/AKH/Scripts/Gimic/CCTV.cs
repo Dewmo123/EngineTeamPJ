@@ -53,7 +53,7 @@ public class CCTV : MonoBehaviour
     private Transform _viewVisual;
     private float _curAngle;
     private bool _angleFlag = false;
-    [SerializeField] private bool _rotate;
+    public bool rotate;
 
 
     public void Initialize()
@@ -124,13 +124,13 @@ public class CCTV : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_rotate)
+        if (rotate)
             UpdateAim();
     }
 
     private void LateUpdate()
     {
-        DrawFieldOfView();
+        //DrawFieldOfView();
     }
     private void DrawFieldOfView()
     {

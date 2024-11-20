@@ -65,8 +65,10 @@ public class StageManager : MonoBehaviour
 
     public void CompleteStage()      //클리어하면 호출할 것!!
     {
-        if (curStageCnt == 10) return;
-        SaveStageData(++curStageCnt);
+        if (++curStageCnt > unlockStageCnt)
+            unlockStageCnt = curStageCnt;
+        if (curStageCnt == 11) return;
+        SaveStageData(unlockStageCnt);
         EnterStage(curStageCnt);
     }
 
@@ -79,7 +81,9 @@ public class StageManager : MonoBehaviour
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("TargetEnemy");
         _targetCnt = targets.Length;
-        Debug.Log(_targetCnt);
-        targets.ToList().ForEach(item => item.GetComponent<Enemy>().onEnemyDead += AddDeadCount);
+        targets.ToList().ForEach(item =>
+        {
+            item.GetComponent<Enemy>().onEnemyDead += AddDeadCount;
+        });
     }
 }

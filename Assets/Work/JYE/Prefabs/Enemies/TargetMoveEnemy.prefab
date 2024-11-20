@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 8733718514301093010}
   - component: {fileID: 1743010451054600671}
   - component: {fileID: 7835410586333884091}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: MoveEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,9 +200,6 @@ MonoBehaviour:
   movePoint1: {fileID: 300597117055969460}
   movePoint2: {fileID: 6589664445795784244}
   originPos: {x: 0, y: 0, z: 0}
-  onEnemyDead:
-    m_PersistentCalls:
-      m_Calls: []
   view: {fileID: 0}
 --- !u!70 &1743010451054600671
 CapsuleCollider2D:

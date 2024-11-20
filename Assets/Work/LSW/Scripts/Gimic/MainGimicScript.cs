@@ -8,7 +8,6 @@ using UnityEngine.InputSystem.iOS;
 
 public class MainGimicScript : MonoBehaviour, IGimic
 {
-    [SerializeField] private LayerMask _playerLayer;
     [SerializeField] MonoBehaviour _myGimicScript;
     private Action useGimic;
     [SerializeField] private Player_UseGimic _playerUseGimic;
