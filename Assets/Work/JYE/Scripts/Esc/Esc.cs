@@ -20,12 +20,14 @@ public class Esc : MonoBehaviour, IPlayerComponent
         if (cnt == 1)
         {
             _escUI.MoveTargetPos();
+            _player.GetCompo<InputReader>().Disable();
             StartCoroutine(WaitMove());
         }
         else if (cnt == 2)
         {
             Time.timeScale = 1;
             _escUI.MoveOriginPos();
+            _player.GetCompo<InputReader>().Enable();
             cnt = 0;
         }
     }
