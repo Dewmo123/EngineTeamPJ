@@ -13,7 +13,6 @@ public class Player_UseGimic : MonoBehaviour,IPlayerComponent
     private void HandleInteraction()
     {
         Collider2D gimic = Physics2D.OverlapCircle(transform.position, _length, _gimicLayer);
-        Debug.Log(gimic);
         if(gimic)
             gimic.GetComponent<MainGimicScript>().UseGimic();
     }

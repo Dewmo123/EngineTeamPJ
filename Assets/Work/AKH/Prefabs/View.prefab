@@ -119,7 +119,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   _obstacleMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 2176
   _enemyFindDelay: 0.01
   _maxCheckCount: 10
   _meshResolution: 0.2

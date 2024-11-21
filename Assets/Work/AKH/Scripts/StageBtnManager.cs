@@ -13,7 +13,7 @@ public class StageBtnManager : MonoBehaviour
     }
     public void SetButton()
     {
-        int cnt = StageManager.Instance.curStageCnt;
+        int cnt = StageManager.Instance.unlockStageCnt;
         for (int i = 0; i < cnt; i++)
             stageInfo[i]._isUnlock.Value = true;
         for (int i = cnt; i < stageInfo.Length; i++)

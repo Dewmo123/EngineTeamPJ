@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canRopeLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4224
 --- !u!120 &9193672909981861305
 LineRenderer:
   serializedVersion: 2
@@ -379,7 +379,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 66f53a664cef3e8458c02e9c9e1d4515, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -581,6 +581,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  _attackRadius: 1.5
 --- !u!114 &5709398961308325201
 MonoBehaviour:
   m_ObjectHideFlags: 0

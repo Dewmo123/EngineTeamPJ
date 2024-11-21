@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class StageManager : MonoBehaviour
 {
     public static StageManager Instance { get; set; }
-    public int curStageCnt;
+    public int curStageCnt = 0;
+    public int unlockStageCnt = 0;
     private int _targetCnt = 0;
     private int _finCnt = 0;
     private void Awake()
@@ -49,7 +50,7 @@ public class StageManager : MonoBehaviour
             using (StreamReader sr = new StreamReader(File.Open("asd.txt", FileMode.Open)))
             {
                 int cnt = int.Parse(sr.ReadLine());
-                curStageCnt = cnt;
+                unlockStageCnt = cnt;
                 return true;
             }
         }
@@ -64,8 +65,10 @@ public class StageManager : MonoBehaviour
 
     public void CompleteStage()      //클리어하면 호출할 것!!
     {
-        if (curStageCnt == 9) return;
-        SaveStageData(++curStageCnt);
+        if (++curStageCnt > unlockStageCnt)
+            unlockStageCnt = curStageCnt;
+        if (curStageCnt == 11) return;
+        SaveStageData(unlockStageCnt);
         EnterStage(curStageCnt);
     }
 
@@ -78,7 +81,9 @@ public class StageManager : MonoBehaviour
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("TargetEnemy");
         _targetCnt = targets.Length;
-        Debug.Log(_targetCnt);
-        targets.ToList().ForEach(item => item.GetComponent<Enemy>().onEnemyDead += AddDeadCount);
+        targets.ToList().ForEach(item =>
+        {
+            item.GetComponent<Enemy>().onEnemyDead += AddDeadCount;
+        });
     }
 }

@@ -19,9 +19,4 @@ public class HitEnemyState : EnemyState
         if (_endTriggerCalled)
             _enemy.SetDeadState();
     }
-    public override void Exit()
-    {
-        base.Exit();
-        _enemy.view.gameObject.SetActive(true);
-    }
 }

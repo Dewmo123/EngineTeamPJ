@@ -129,7 +129,7 @@ MonoBehaviour:
   _oneTickAngle: 0.4
   _fovLight: {fileID: 107258132672900300}
   _enemiesInView: []
-  _rotate: 1
+  rotate: 1
 --- !u!1 &4716377663181363813
 GameObject:
   m_ObjectHideFlags: 0

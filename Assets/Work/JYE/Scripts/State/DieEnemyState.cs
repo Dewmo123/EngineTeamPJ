@@ -12,8 +12,9 @@ public class DieEnemyState : EnemyState
         base.UpdateState();
         if (_endTriggerCalled)
         {
-            Debug.Log("asd");
+            Debug.Log(_enemy.gameObject.name);
             _enemy.SetDead();
+            _endTriggerCalled = false;
         }
     }
     public override void Exit()

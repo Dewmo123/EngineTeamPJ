@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class RedTileDie : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Awake()
     {
+        GetComponent<Collider2D>().isTrigger = true;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
         if (collision.gameObject.layer == 6)
         {
             collision.gameObject.GetComponent<GamePlayer>().SetDeadState();
