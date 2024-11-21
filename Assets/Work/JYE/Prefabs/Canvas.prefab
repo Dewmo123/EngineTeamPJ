@@ -548,7 +548,6 @@ GameObject:
   - component: {fileID: 8893541405947145721}
   - component: {fileID: 1684504159882785836}
   - component: {fileID: 5920997203986394831}
-  - component: {fileID: 54016210541766938}
   - component: {fileID: 2273675188243375201}
   m_Layer: 5
   m_Name: Esc
@@ -632,23 +631,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 0.3
---- !u!114 &54016210541766938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2236653742007927953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2c8f44e95c4d9b4e84990e29c5aa08f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartUIElements:
-  - text: {fileID: 5920997203986394831}
-    originPos: {x: 0, y: 1140}
-    targetPos: {x: 0, y: 0}
-    wait: 0
 --- !u!114 &2273675188243375201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,6 +643,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71a8c2b34eddfa4dbf8f2932047e338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartUIElements:
+  - text: {fileID: 5920997203986394831}
+    originPos: {x: 0, y: 1140}
+    targetPos: {x: 0, y: 0}
+    wait: 0
+  mixer: {fileID: 24100000, guid: b9305d16ed1d3e5468ad10940e3fed89, type: 2}
 --- !u!1 &3368856703239013752
 GameObject:
   m_ObjectHideFlags: 0

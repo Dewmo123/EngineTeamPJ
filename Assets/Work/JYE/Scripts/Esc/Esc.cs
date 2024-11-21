@@ -14,7 +14,7 @@ public class Esc : MonoBehaviour, IPlayerComponent
     {
         _player.GetCompo<InputReader>().EscEvent += ShowEsc;
     }
-    private void ShowEsc()
+    public void ShowEsc()
     {
         cnt++;
         if (cnt == 1)
@@ -37,7 +37,6 @@ public class Esc : MonoBehaviour, IPlayerComponent
         yield return new WaitForSeconds(0.3f);
         Time.timeScale = 0;
     }
-
     public void Initialize(Player player)
     {
         _player = player;
