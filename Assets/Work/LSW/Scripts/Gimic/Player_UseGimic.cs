@@ -14,7 +14,7 @@ public class Player_UseGimic : MonoBehaviour,IPlayerComponent
     {
         Collider2D gimic = Physics2D.OverlapCircle(transform.position, _length, _gimicLayer);
         if(gimic)
-            gimic.GetComponent<MainGimicScript>().UseGimic();
+            gimic.GetComponent<IGimic>().UseGimic();
     }
     public void Initialize(Player agent)
     {

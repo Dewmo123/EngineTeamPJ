@@ -67,7 +67,7 @@ public class CCTV : MonoBehaviour
         _viewMesh = new Mesh();
         _viewMesh.name = "View Mesh";
         _meshFilter.mesh = _viewMesh;
-
+        UpdateAim();
         MeshRenderer renderer = _viewVisual.GetComponent<MeshRenderer>();
         renderer.sortingOrder = 20;
     }

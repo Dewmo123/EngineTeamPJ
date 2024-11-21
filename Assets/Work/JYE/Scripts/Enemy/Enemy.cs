@@ -125,7 +125,14 @@ public abstract class Enemy : MonoBehaviour
 
         Type();
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GamePlayer player;
+        if(collision.gameObject.TryGetComponent(out player))
+        {
+            player.SetDeadState();
+        }
+    }
     protected virtual void Type() //≈∏¿‘ ∫∞
     {
 
