@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canRopeLayer:
     serializedVersion: 2
-    m_Bits: 4224
+    m_Bits: 6272
 --- !u!120 &9193672909981861305
 LineRenderer:
   serializedVersion: 2
@@ -659,8 +659,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.062462807, y: 0.004997015}
-  m_Size: {x: 0.96472263, y: 1.8494921}
+  m_Offset: {x: -0.062462807, y: -0.27020633}
+  m_Size: {x: 0.96472263, y: 1.2990854}
   m_Direction: 0
 --- !u!50 &3893483582694214653
 Rigidbody2D:
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   _enemyLayer: 12
   _canRopeLayer:
     serializedVersion: 2
-    m_Bits: 4224
+    m_Bits: 6272
   gunHolder: {fileID: 8826105192454134164}
   gunPivot: {fileID: 192237468451265630}
   firePoint: {fileID: 7731448067068220061}

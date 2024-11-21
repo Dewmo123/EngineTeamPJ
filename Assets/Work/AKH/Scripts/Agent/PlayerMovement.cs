@@ -58,9 +58,9 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     private void FixedUpdate()
     {
         if (_isDash) return;
-        _player.jointCompo.distance = Vector2.Distance(transform.position, _player.jointCompo.connectedAnchor);
         CheckGrounded();
         ApplyExtraGravity();
+        _player.jointCompo.distance = Vector2.Distance(transform.position, _player.jointCompo.connectedAnchor);
     }
 
     public void OnDash(Vector2 direction,float dashTime,Action endTrigger)
