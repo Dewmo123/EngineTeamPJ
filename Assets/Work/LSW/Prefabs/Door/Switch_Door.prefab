@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 487823754851872017}
   - component: {fileID: 361404590163870356}
   - component: {fileID: 8559704061648854867}
+  - component: {fileID: 7422941732654751303}
   m_Layer: 10
   m_Name: Switch_Door
   m_TagString: Untagged
@@ -146,10 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68676e5623a80de4a9a68fd34e431d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _myGimicScript: {fileID: 8559704061648854867}
   _playerUseGimic: {fileID: 0}
 --- !u!114 &8559704061648854867
 MonoBehaviour:
@@ -167,6 +164,27 @@ MonoBehaviour:
   _door: {fileID: 3686594810619290593}
   _time: 0
   _goalPos: {fileID: 395554369968923102}
+--- !u!95 &7422941732654751303
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408648901751651875}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5791e8a9524584449b2a1d66b42f5f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3686594810619290593
 GameObject:
   m_ObjectHideFlags: 0
