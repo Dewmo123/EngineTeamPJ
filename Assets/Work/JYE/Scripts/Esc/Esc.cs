@@ -35,7 +35,7 @@ public class Esc : MonoBehaviour, IPlayerComponent
 
     private void OnDestroy()
     {
-
+        _player.GetCompo<InputReader>().Enable();
         _player.GetCompo<InputReader>().EscEvent -= ShowEsc;
     }
     private IEnumerator WaitMove()
