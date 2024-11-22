@@ -610,7 +610,7 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 2176
-  _groundCheckerSize: {x: 1, y: 0.3}
+  _groundCheckerSize: {x: 0.55, y: 0.4}
   isRope: 0
   landEvent:
     m_PersistentCalls:
@@ -687,7 +687,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!231 &6295040942185780547
 SpringJoint2D:
