@@ -23,6 +23,7 @@ public class EscButtons : MoveUIManager
             _sliders.Add(item.gameObject.name, item);
             float val;
             mixer.GetFloat(item.gameObject.name, out val);
+            Debug.Log(val);
             item.value = val;
         });
         _buttons = GetComponentsInChildren<Button>();
@@ -31,11 +32,13 @@ public class EscButtons : MoveUIManager
     #region Set Button ans Move
     private void DisableButtons()
     {
+        Debug.Log("Disable");
         _buttons.ToList().ForEach(item => item.interactable = false);
         _sliders.ToList().ForEach(item => item.Value.interactable = false);
     }
     private void EnableButtons()
     {
+        Debug.Log("Enable");
         _buttons.ToList().ForEach(item => item.interactable = true);
         _sliders.ToList().ForEach(item => item.Value.interactable = true);
     }

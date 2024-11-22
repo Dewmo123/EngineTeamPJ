@@ -125,12 +125,12 @@ MonoBehaviour:
   _meshResolution: 0.2
   _edgeIterationCount: 4
   _edgeThreshold: 0.5
-  _startAngle: 30
+  _startAngle: 0
   _endAngle: 0
   _oneTickAngle: 0
   _fovLight: {fileID: 107258132672900300}
   _enemiesInView: []
-  _rotate: 0
+  rotate: 0
 --- !u!1 &4716377663181363813
 GameObject:
   m_ObjectHideFlags: 0

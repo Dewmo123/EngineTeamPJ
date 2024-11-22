@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4911535154292171758}
   - component: {fileID: 8409443959191456116}
   m_Layer: 5
-  m_Name: SoundSlider
+  m_Name: MASTER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,13 +83,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 7047277566507469185}
   m_HandleRect: {fileID: 6334888148649704124}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0.829
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2273675188243375201}
+        m_TargetAssemblyTypeName: EscButtons, Assembly-CSharp
+        m_MethodName: HandleSliderValueChanged
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MASTER
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &251645106590650163
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +433,7 @@ GameObject:
   - component: {fileID: 786553161695292506}
   - component: {fileID: 6731468924488173561}
   m_Layer: 5
-  m_Name: EffectSlider
+  m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -493,13 +505,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 2781664966324962284}
   m_HandleRect: {fileID: 8015796739112631822}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0.829
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2273675188243375201}
+        m_TargetAssemblyTypeName: EscButtons, Assembly-CSharp
+        m_MethodName: HandleSliderValueChanged
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SFX
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2053113645562781429
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +673,21 @@ MonoBehaviour:
     targetPos: {x: 0, y: 0}
     wait: 0
   mixer: {fileID: 24100000, guid: b9305d16ed1d3e5468ad10940e3fed89, type: 2}
+  onSceneLoad:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Esc, Assembly-CSharp
+        m_MethodName: ShowEsc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3368856703239013752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1397,7 @@ GameObject:
   - component: {fileID: 4451198535372160224}
   - component: {fileID: 5943211364511812749}
   m_Layer: 5
-  m_Name: BackgroundSlider
+  m_Name: BGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1430,13 +1469,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 8864109664470405881}
   m_HandleRect: {fileID: 5384402858732101160}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0.829
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2273675188243375201}
+        m_TargetAssemblyTypeName: EscButtons, Assembly-CSharp
+        m_MethodName: HandleSliderValueChanged
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: BGM
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4945435887381442968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2319,10 +2370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

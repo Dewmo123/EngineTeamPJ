@@ -65,6 +65,7 @@ public abstract class Enemy : MonoBehaviour
     public void SetDead()
     {
         onEnemyDead?.Invoke();
+        Destroy(gameObject);
     }
     public void EndTriggerCalled()
     {
