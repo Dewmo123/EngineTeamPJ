@@ -30,6 +30,13 @@ public class InputReader : ScriptableObject, IActionActions, IPlayerComponent
             _playerInput = new PlayerInput();
         _playerInput.Action.SetCallbacks(this);
         _playerInput.Action.Enable();
+    }public void Disable()
+    {
+        _playerInput.Action.Disable();
+    }
+    public void Enable()
+    {
+        _playerInput.Action.Enable();
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
