@@ -288,17 +288,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49472d4ad50f6fa43a2f351fd26f1fe3, type: 3}
---- !u!114 &98400821 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 54016210541766938, guid: 49472d4ad50f6fa43a2f351fd26f1fe3, type: 3}
-  m_PrefabInstance: {fileID: 98400820}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2c8f44e95c4d9b4e84990e29c5aa08f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &141592608
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +586,7 @@ PrefabInstance:
     - target: {fileID: 8067270318244094854, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
       propertyPath: _escUI
       value: 
-      objectReference: {fileID: 98400821}
+      objectReference: {fileID: 0}
     - target: {fileID: 8826105192454134164, guid: 943b652a512615245a9d846c9899e5b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.1
@@ -1719,7 +1708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 163409395738847782, guid: cbf2844e9dfa3df4e81197a1d34e57c1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.7130241
+      value: 4.039399
       objectReference: {fileID: 0}
     - target: {fileID: 163409395738847782, guid: cbf2844e9dfa3df4e81197a1d34e57c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1727,7 +1716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 163409395738847782, guid: cbf2844e9dfa3df4e81197a1d34e57c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 91.1835
+      value: 91.3466
       objectReference: {fileID: 0}
     - target: {fileID: 254819514023459397, guid: cbf2844e9dfa3df4e81197a1d34e57c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -116678,7 +116667,7 @@ MonoBehaviour:
   _meshResolution: 0.2
   _edgeIterationCount: 4
   _edgeThreshold: 0.5
-  _startAngle: 110
+  _startAngle: 290
   _endAngle: 0
   _oneTickAngle: 0
   _fovLight: {fileID: 6145581056127607496}
