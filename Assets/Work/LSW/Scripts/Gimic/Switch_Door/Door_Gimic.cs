@@ -15,6 +15,8 @@ public class Door_Gimic : MonoBehaviour
     private Vector2 _origin;
     private Vector2 originPos;
 
+    private Animator buttonAnimator;
+
     //private AudioSource _audioSource;
     //public AudioClip _switchSound, _doorOpenSound, _doorCloseSound;
 
@@ -22,6 +24,7 @@ public class Door_Gimic : MonoBehaviour
     private void Awake()
     {
         _origin = _door.transform.position;
+        buttonAnimator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -50,6 +53,7 @@ public class Door_Gimic : MonoBehaviour
 
         _door.transform.DOMove(_goalPos.position,_time);
         IsOpen = true;
+        buttonAnimator.SetBool("Click", true);
     }
 
     private void Close()
@@ -57,6 +61,7 @@ public class Door_Gimic : MonoBehaviour
         //_audioSource.PlayOneShot(_doorCloseSound);
         _door.transform.DOMove(_origin, _time);
         IsOpen = false;
+        buttonAnimator.SetBool("Click", false);
     }
 
     private void OnDisable()

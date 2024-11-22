@@ -10,6 +10,12 @@ public class PushButtonGimmick : MonoBehaviour
     [SerializeField] private LayerMask _targetLayer;
     [SerializeField] private float _distance;
     private NotifyValue<Collider2D> _curObj = new NotifyValue<Collider2D>();
+
+    private Animator buttonAnimator;
+    private void Awake()
+    {
+        buttonAnimator = GetComponentInChildren<Animator>();
+    }
     private void Start()
     {
         _curObj.OnValueChanged += HandleColliderChanged;
@@ -18,9 +24,15 @@ public class PushButtonGimmick : MonoBehaviour
     private void HandleColliderChanged(Collider2D prev, Collider2D next)
     {
         if (next == null)
+        {
+            buttonAnimator.SetBool("Click", false);
             _doorObj.SetActive(true);
+        }
         else
+        {
+            buttonAnimator.SetBool("Click", true);
             _doorObj.SetActive(false);
+        }
     }
 
     private void Update()
