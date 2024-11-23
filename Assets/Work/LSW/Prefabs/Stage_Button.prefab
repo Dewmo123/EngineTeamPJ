@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneNum: 0
-  _unlockImage: {fileID: 21300000, guid: 4d317c54440e8a74a8154218ef00496e, type: 3}
-  _lockImage: {fileID: 21300000, guid: a3c64059e9c28034da12ed1fb7779cee, type: 3}
+  _unlockImage: {fileID: 21300000, guid: a22a38578ff7a8c4488e18103a118ec5, type: 3}
+  _lockImage: {fileID: 21300000, guid: 85b4931c823e3f941885618f42a90d63, type: 3}
 --- !u!1 &2684280775914113036
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7fa4c2dd4977cf46b219f4e990276d2, type: 3}
-  m_Name: PositiveBGM
+  m_Name: MainSceneBGM
   m_EditorClassIdentifier: 
   audioType: 1
-  clip: {fileID: 8300000, guid: a5bc080790496a64c9bfd54c383331ea, type: 3}
+  clip: {fileID: 8300000, guid: 4391fffabefddc44699d9a99239afd93, type: 3}
   loop: 1
   randomizePitch: 0
   randomPitchModifier: 0.1
