@@ -326,7 +326,7 @@ MonoBehaviour:
   _oneTickAngle: 0
   _fovLight: {fileID: 9023440194551273975}
   _enemiesInView: []
-  _rotate: 0
+  rotate: 0
 --- !u!1 &8443177159668847999
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +426,7 @@ Animator:
   m_GameObject: {fileID: 8443177159668847999}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5096f48da4d20f24485716988de4c466, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1c8d6d275ee0b6245a91d34750bf4de4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

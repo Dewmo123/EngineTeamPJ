@@ -21,7 +21,10 @@ public class GameManager : MonoBehaviour
     public Dictionary<string, PoolingItemSO> poolItemDic { get; private set; }
     [SerializeField] private List<SoundSO> _sounds;
     public Dictionary<string, SoundSO> _soundDic;
+    public List<SoundSO> BGMs;
     private List<Player> _players;
+
+    private SoundPlayer _beforeBGM;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -29,10 +32,14 @@ public class GameManager : MonoBehaviour
             _instance = this;
         poolItemDic = new Dictionary<string, PoolingItemSO>();
         _soundDic = new Dictionary<string, SoundSO>();
-    }
-    private void Start()
-    {
         InitDic();
+    }
+    public void PlayBGM(int idx)
+    {
+        _beforeBGM?.StopAndGoToPool();
+        var sp = poolManager.Pop(poolItemDic["SoundPlayer"].poolType) as SoundPlayer;
+        sp.PlaySound(BGMs[idx]);
+        _beforeBGM = sp;
     }
     public void ReStart()
     {
