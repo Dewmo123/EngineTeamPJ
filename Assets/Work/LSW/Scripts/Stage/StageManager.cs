@@ -25,14 +25,16 @@ public class StageManager : MonoBehaviour
         if (!LoadStageData()) Debug.LogWarning("Cant Save Load Data");
         SetTargetEnemy();
     }
+    private void Start()
+    {
+        GameManager.Instance.PlayBGM(curStageCnt);
+    }
 
     private void AddDeadCount()
     {
-        Debug.Log("addFin");
         _finCnt++;
         if (_targetCnt == _finCnt)
         {
-            Debug.Log("Complete");
             CompleteStage();
         }
     }

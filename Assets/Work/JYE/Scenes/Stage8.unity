@@ -1512,7 +1512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a722faf07d13b49aaf74d2ad6db2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sound: {fileID: 11400000, guid: eeff596e07aa7a245b496e06d661d08b, type: 2}
+  _sound: {fileID: 11400000, guid: b3bd0bb4e929c8d44943e5ae41ee199e, type: 2}
 --- !u!114 &1392746403
 MonoBehaviour:
   m_ObjectHideFlags: 0

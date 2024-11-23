@@ -71,6 +71,12 @@ public abstract class Enemy : MonoBehaviour
     {
         _stateMachine.currentState.AnimationEndTrigger();
     }
+    public void WalkSound()
+    {
+        var poolManager = GameManager.Instance.poolManager;
+        var sp = poolManager.Pop(GameManager.Instance.poolItemDic["SoundPlayer"].poolType) as SoundPlayer;
+        sp.PlaySound(GameManager.Instance._soundDic["Walk"]);
+    }
     public void Hit()
     {
         _stateMachine.ChangeState(EnemyStateType.Hit);
