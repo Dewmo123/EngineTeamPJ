@@ -13,7 +13,6 @@ public class Esc : MonoBehaviour, IPlayerComponent
     private void Start()
     {
         _player.GetCompo<InputReader>().EscEvent += ShowEsc;
-        Debug.Log(cnt);
     }
     public void ShowEsc()
     {
