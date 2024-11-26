@@ -63,12 +63,11 @@ public class GrappleGun : MonoBehaviour, IPlayerComponent
     }
     public void Launch()
     {
-        if (_grappleRope.isGrappling)
+        if (_grappleRope.isGrappling&&!_player.movementCompo.isGround.Value)
         {
             StopLaunch();
             Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
             Vector2 targetPos = grapplePoint - firePointDistnace;
-            targetPos += targetPos.y < transform.position.y ? Vector2.up : Vector2.down;
             gunHolder.transform.DOMove(targetPos,0.5f);
         }
     }
