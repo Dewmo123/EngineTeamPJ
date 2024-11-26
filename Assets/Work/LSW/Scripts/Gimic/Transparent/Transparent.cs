@@ -8,6 +8,7 @@ public class Transparent : MonoBehaviour, IPlayerComponent
 {
     [SerializeField] private int _ignoreLayer;
     [SerializeField] private int _playerLayer;
+    [SerializeField] private float _delay;
     public bool isActive { get; private set; }
     private NotifyValue<Vector2> _movement = new NotifyValue<Vector2>();
     private Player _player;
@@ -24,11 +25,8 @@ public class Transparent : MonoBehaviour, IPlayerComponent
 
     private void HandleMoveChanged(Vector2 prev, Vector2 next)
     {
-        if (next == Vector2.zero&&_player.movementCompo.isGround.Value)
-        {
-            if(_hide==null)
-            _hide = StartCoroutine(Hide());
-        }
+        if (next == Vector2.zero && _player.movementCompo.isGround.Value)
+            StartHideCoroutine();
         else
         {
             StopAllCoroutines();
@@ -37,11 +35,15 @@ public class Transparent : MonoBehaviour, IPlayerComponent
             ShowEvent?.Invoke();
         }
     }
-
+    public void StartHideCoroutine()
+    {
+        if (_hide == null)
+            _hide = StartCoroutine(Hide());
+    }
     private IEnumerator Hide()
     {
-        yield return new WaitForSeconds(0.1f);
         _player.gameObject.layer = _ignoreLayer;
+        yield return new WaitForSeconds(_delay);
         HideEvent?.Invoke();
     }
 

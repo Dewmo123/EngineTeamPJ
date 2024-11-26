@@ -80,7 +80,7 @@ public class GamePlayer : Player
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GetCompo<GrappleGun>().StopLaunch();
+        GetCompo<GrappleGun>()?.StopLaunch();
     }
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

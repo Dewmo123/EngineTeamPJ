@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3720602949400118761}
   - component: {fileID: 2795850486912850224}
   - component: {fileID: 5723572987473547207}
+  - component: {fileID: 469776201294984997}
   m_Layer: 6
   m_Name: ShowFeedback
   m_TagString: Untagged
@@ -58,6 +59,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _alpha: 1
+--- !u!114 &469776201294984997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295142992891114007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89d4a63a9ca87641b6f1cbdb6f6f211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volume: {fileID: 8490492384708418577, guid: 7f75b16c89ac3e44a90495f77a908459, type: 3}
+  _intensity: 0
 --- !u!1 &1318264337899689930
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ignoreLayer: 9
   _playerLayer: 6
+  _delay: 0.2
   HideEvent:
     m_PersistentCalls:
       m_Calls:
@@ -853,6 +869,8 @@ GameObject:
   - component: {fileID: 1261493444448317921}
   - component: {fileID: 329878577613402358}
   - component: {fileID: 5001271888849482131}
+  - component: {fileID: 7661267495055659512}
+  - component: {fileID: 3761701697017349243}
   m_Layer: 6
   m_Name: HideFeedback
   m_TagString: Untagged
@@ -913,6 +931,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sound: {fileID: 11400000, guid: b7b8509aaee4de8458ffb13302cdc010, type: 2}
+--- !u!114 &7661267495055659512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258010140648024928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89d4a63a9ca87641b6f1cbdb6f6f211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volume: {fileID: 8490492384708418577, guid: 7f75b16c89ac3e44a90495f77a908459, type: 3}
+  _intensity: 0.4
+--- !u!114 &3761701697017349243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258010140648024928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfcd604ecb60ab4099ecec0560231b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemName: Smoke
 --- !u!1 &6328753777363745715
 GameObject:
   m_ObjectHideFlags: 0

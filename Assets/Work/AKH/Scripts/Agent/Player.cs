@@ -60,6 +60,8 @@ public abstract class Player : MonoBehaviour
     public void HandleSpriteFlip(Vector3 targetPosition)
     {
         bool isRight = IsFacingRight();
+        if (Mathf.Abs(targetPosition.x-transform.position.x)<0.1f)
+            return;
         if (targetPosition.x < transform.position.x && isRight)
         {
             transform.eulerAngles = new Vector3(0, -180F, 0);

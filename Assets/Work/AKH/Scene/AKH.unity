@@ -2306,6 +2306,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc22b93d7d87b864e9e987e8186d39fb, type: 2}
   - {fileID: 11400000, guid: b3db10d5c81cd32488eab48d01a04cfe, type: 2}
   - {fileID: 11400000, guid: 28ace5c2b834eb64ab08e97a5951f403, type: 2}
+  BGMs: []
 --- !u!1 &1520577616
 GameObject:
   m_ObjectHideFlags: 0
