@@ -78,6 +78,10 @@ public class GamePlayer : Player
         yield return new WaitForSeconds(time);
         callback.Invoke();
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GetCompo<GrappleGun>().StopLaunch();
+    }
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
