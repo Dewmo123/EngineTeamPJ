@@ -11,6 +11,7 @@ public class PlayerIdleState : PlayerMoveState, IAttackableState
     {
         base.Enter();
         _player.GetCompo<InputReader>().AttackEvent += HandleAttack;
+        _player.GetCompo<Transparent>().StartHideCoroutine();
     }
     public void HandleAttack()
     {
