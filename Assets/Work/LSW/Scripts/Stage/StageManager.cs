@@ -40,6 +40,8 @@ public class StageManager : MonoBehaviour
     }
     public void SaveStageData(int stageCnt)
     {
+        if (File.Exists("asd.txt"))
+            File.Delete("asd.txt");
         using (StreamWriter sw = new StreamWriter(File.Open("asd.txt", FileMode.OpenOrCreate)))
         {
             sw.Write(stageCnt);
